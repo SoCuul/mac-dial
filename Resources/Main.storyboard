@@ -137,9 +137,6 @@
                                     </menuItem>
                                 </items>
                             </menu>
-                            <connections>
-                                <action selector="rotationClickSelectWithItem:" target="gIN-nu-Pip" id="Fyd-4R-ZCY"/>
-                            </connections>
                         </menuItem>
                         <menuItem title="Haptics" id="g2u-Rf-4tx">
                             <modifierMask key="keyEquivalentModifierMask"/>
@@ -170,7 +167,6 @@
                         <outlet property="menuDialControlModeScroll" destination="v7h-h5-CmP" id="uVG-cd-CG4"/>
                         <outlet property="menuDialControlModeVolume" destination="gME-7l-za8" id="LpZ-nM-dTV"/>
                         <outlet property="menuDialControlModeZoom" destination="ElE-Uo-sbd" id="pX0-sp-mlm"/>
-                        <outlet property="menuHaptics" destination="g2u-Rf-4tx" id="04T-ka-edn"/>
                         <outlet property="menuQuit" destination="O5Z-zk-v4Z" id="bua-Re-Fya"/>
                         <outlet property="menuSensitivity" destination="FER-f3-ImN" id="Rer-iP-HjA"/>
                         <outlet property="menuSensitivityHigh" destination="RIY-2g-aZW" id="cR2-bb-siw"/>
@@ -180,6 +176,7 @@
                         <outlet property="menuWheelDirection" destination="Rcn-BF-7He" id="Ctr-CJ-bK0"/>
                         <outlet property="menuWheelDirectionCCW" destination="lmT-ql-Of7" id="aVI-2a-bmL"/>
                         <outlet property="menuWheelDirectionCW" destination="8eF-Lz-fi6" id="I5a-qp-eiU"/>
+                        <outlet property="rotationClick" destination="g2u-Rf-4tx" id="Ryy-bb-eid"/>
                         <outlet property="statusMenu" destination="G3k-FC-fVx" id="8SM-pk-HuJ"/>
                     </connections>
                 </customObject>
