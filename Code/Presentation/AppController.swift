@@ -35,7 +35,7 @@ class AppController: NSObject {
     @IBOutlet private var menuWheelDirectionCW: NSMenuItem!
     @IBOutlet private var menuWheelDirectionCCW: NSMenuItem!
 
-    @IBOutlet private var menuHaptics: NSMenuItem!
+    @IBOutlet private var rotationClick: NSMenuItem!
 
     @IBOutlet private var menuState: NSMenuItem!
     @IBOutlet private var menuQuit: NSMenuItem!
@@ -83,7 +83,7 @@ class AppController: NSObject {
         menuWheelDirectionCW.title = NSLocalizedString("menu.direction.cw", comment: "")
         menuWheelDirectionCCW.title = NSLocalizedString("menu.direction.ccw", comment: "")
 
-        menuHaptics.title = NSLocalizedString("menu.rotationFeedback", comment: "")
+        rotationClick.title = NSLocalizedString("menu.rotationFeedback", comment: "")
         menuQuit.title = NSLocalizedString("menu.quit", comment: "")
 
         switch settings.dialMode {
@@ -253,7 +253,7 @@ class AppController: NSObject {
     private func updateRotationClickSetting(newValue: Bool) {
         settings.isRotationClickEnabled = newValue
         dial?.isRotationClickEnabled = newValue
-        menuHaptics.state = newValue ? .on : .off
+        rotationClick.state = newValue ? .on : .off
     }
 
     @IBAction
