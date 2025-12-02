@@ -1,21 +1,21 @@
 //
-// Dial
-// MacDial
+//  Dial
+//  MacDial
 //
-// Created by Alex Babaev on 28 January 2022.
+//  Created by Alex Babaev
 //
-// Based on Andreas Karlsson sources
-// https://github.com/andreasjhkarlsson/mac-dial
+//  Based on Andreas Karlsson sources
+//  https://github.com/andreasjhkarlsson/mac-dial
 //
-// License: MIT
+//  License: MIT
 //
 
 import Foundation
 
 class Dial {
-    var controls: [DeviceControl] = []
+    // MARK: - Persistent state
 
-    var wheelSensitivity: Double {
+    var wheelSensitivity: WheelSensitivity {
         get { device.wheelSensitivity }
         set { device.wheelSensitivity = newValue }
     }
@@ -25,10 +25,28 @@ class Dial {
         set { device.wheelDirection = newValue }
     }
 
-    var isRotationClickEnabled: Bool {
-        get { device.isRotationClickEnabled }
-        set { device.isRotationClickEnabled = newValue }
+    var isHapticFeedbackEnabled: Bool {
+        get { device.isHapticFeedbackEnabled }
+        set { device.isHapticFeedbackEnabled = newValue }
     }
+    
+    var shouldKeepDialAwake: Bool {
+        get { device.shouldKeepDialAwake }
+        set { device.shouldKeepDialAwake = newValue }
+    }
+    
+    var showOSD: Bool = true
+    
+    // MARK: - Temporary state
+    
+    var controls: [DeviceControl] = []
+    
+    var isHittingBounds: Bool {
+        get { device.isHittingBounds }
+        set { device.isHittingBounds = newValue }
+    }
+    
+    // MARK: - Device
 
     private var device: DialDevice!
 
@@ -55,15 +73,22 @@ class Dial {
         self.lastButtonState = state
 
         switch (lastButtonState, state) {
-            case (.released, .pressed): controls.forEach { $0.buttonPress() }
-            case (.pressed, .released): controls.forEach { $0.buttonRelease() }
+            case (.released, .pressed): controls.forEach { $0.buttonPress(self) }
+            case (.pressed, .released): controls.forEach { $0.buttonRelease(self) }
             default: break
         }
     }
 
     private func processRotation(state: RotationState) -> Bool {
+        // Reset haptic bounds
+        self.isHittingBounds = false
+        
         var result = false
-        controls.forEach { result = $0.rotationChanged(state) || result }
+        controls.forEach { result = $0.rotationChanged(self, state) || result }
         return result
+    }
+    
+    public func sendKeepAlive() {
+        device.sendKeepAlive()
     }
 }

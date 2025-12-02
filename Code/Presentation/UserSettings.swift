@@ -1,134 +1,196 @@
 //
-// UserSettings
-// MacDial
+//  UserSettings
+//  MacDial
 //
-// Created by Alex Babaev on 28 January 2022.
+//  Created by Alex Babaev
 //
-// Based on Andreas Karlsson sources
-// https://github.com/andreasjhkarlsson/mac-dial
+//  Based on Andreas Karlsson sources
+//  https://github.com/andreasjhkarlsson/mac-dial
 //
-// License: MIT
+//  Based on Andreas Karlsson sources
+//  https://github.com/andreasjhkarlsson/mac-dial
+//
+//  License: MIT
 //
 
 import Foundation
 
 extension SettingsValueKey {
     static let dialMode: SettingsValueKey = "settings.dialMode"
+    static let keyScrollModifiers: SettingsValueKey = "settings.keyScrollModifiers"
     static let buttonMode: SettingsValueKey = "settings.buttonMode"
     static let sensitivity: SettingsValueKey = "settings.sensitivity"
-    static let rotationClick: SettingsValueKey = "settings.isRotationClickEnabled"
+    static let customSensitivity: SettingsValueKey = "settings.customSensitivity"
+    static let hapticFeedback: SettingsValueKey = "settings.isHapticFeedbackEnabled"
+    static let keepDialAwake: SettingsValueKey = "settings.shouldKeepDialAwake"
+    static let showOSD: SettingsValueKey = "settings.isShowOSDEnabled"
     static let wheelDirection: SettingsValueKey = "settings.wheelDirection"
+    static let statusIcon: SettingsValueKey = "settings.statusIcon"
 }
 
 class UserSettings {
-    enum WheelSensitivity {
-        case low
-        case medium
-        case high
+    // MARK: - Data structures
+    enum WheelSensitivity: Double {
+        case low    = 1
+        case medium = 2
+        case high   = 3
+        case custom = 999
+    }
+    
+    enum WheelDirection: Int {
+        case clockwise        = 0
+        case counterclockwise = 1
     }
 
-    enum DialOperationMode {
-        case scrolling
-        case volume
-        case brightness
-        case keyboard
-        case zoom
+    enum DialOperationMode: Int {
+        case none       = 0
+        case scrolling  = 1
+        case volume     = 2
+        case brightness = 3
+        case keyboard   = 4
     }
 
-    enum ButtonOperationMode {
-        case leftClick
-        case playback
+    enum ButtonOperationMode: Int {
+        case none      = 0
+        case leftClick = 1
+        case playback  = 2
+        case mute      = 3
+    }
+    
+    enum StatusIconMode: Int {
+        case `default` = 0
+        case rotation  = 1
+        case button    = 2
+    }
+    
+    private typealias KeyScrollModifiersDict = [String: Bool]
+    
+    // MARK: - Default/fallback values
+    private static let defaultkeyScrollModifiers: KeyScrollModifiersDict = [
+        "shift":   false,
+        "command": false,
+        "option":  false,
+        "control": false
+    ]
+    
+    // MARK: - Private user defaults
+    
+    @FromUserDefaults(key: .dialMode, defaultValue: DialOperationMode.volume.rawValue)
+    static private var dialModeSetting: Int
+
+    @FromUserDefaults(key: .buttonMode, defaultValue: ButtonOperationMode.playback.rawValue)
+    static private var buttonModeSetting: Int
+
+    @FromUserDefaults(key: .sensitivity, defaultValue: WheelSensitivity.medium.rawValue)
+    static private var sensitivitySetting: Double
+    
+    @FromUserDefaults(key: .customSensitivity, defaultValue: 50)
+    static private var customSensitivitySetting: Int
+
+    @FromUserDefaults(key: .hapticFeedback, defaultValue: true)
+    static private var isHapticFeedbackEnabledSetting: Bool
+    
+    @FromUserDefaults(key: .showOSD, defaultValue: true)
+    static private var isShowOSDEnabledSetting: Bool
+    
+    @FromUserDefaults(key: .keepDialAwake, defaultValue: true)
+    static private var shouldKeepDialAwakeSetting: Bool
+
+    @FromUserDefaults(key: .wheelDirection, defaultValue: WheelDirection.clockwise.rawValue)
+    static private var wheelDirectionSetting: Int
+    
+    @FromUserDefaults(key: .statusIcon, defaultValue: StatusIconMode.default.rawValue)
+    static private var statusIconSetting: Int
+    
+    @FromUserDefaults(key: .keyScrollModifiers, defaultValue: defaultkeyScrollModifiers)
+    static private var keyScrollModifiersSetting: KeyScrollModifiersDict
+    
+    
+    // MARK: - Public computed variables
+
+    static var dialMode: DialOperationMode {
+        get { DialOperationMode(rawValue: UserSettings.dialModeSetting) ?? .volume }
+        set { UserSettings.dialModeSetting = newValue.rawValue }
     }
 
-    @FromUserDefaults(key: .dialMode, defaultValue: 2)
-    private var dialModeSetting: Int
-
-    @FromUserDefaults(key: .buttonMode, defaultValue: 2)
-    private var buttonModeSetting: Int
-
-    @FromUserDefaults(key: .sensitivity, defaultValue: 2)
-    private var sensitivitySetting: Int
-
-    @FromUserDefaults(key: .rotationClick, defaultValue: true)
-    private var isRotationClickEnabledSetting: Bool
-
-    @FromUserDefaults(key: .wheelDirection, defaultValue: 1)
-    private var wheelDirectionSetting: Int
-
-    var dialMode: DialOperationMode {
+    static var buttonMode: ButtonOperationMode {
+        get { ButtonOperationMode(rawValue: UserSettings.buttonModeSetting) ?? .playback }
+        set { UserSettings.buttonModeSetting = newValue.rawValue }
+    }
+    
+    static var sensitivity: WheelSensitivity {
+        get { WheelSensitivity(rawValue: UserSettings.sensitivitySetting) ?? .medium }
+        set { UserSettings.sensitivitySetting = newValue.rawValue }
+    }
+    
+    static var wheelDirection: WheelDirection {
         get {
-            switch dialModeSetting {
-                case 1: return .scrolling
-                case 2: return .volume
-                case 3: return .brightness
-                case 4: return .keyboard
-                case 5: return .zoom
-                default: return .scrolling
-            }
+            UserSettings.WheelDirection(rawValue: UserSettings.wheelDirectionSetting) ?? .clockwise
         }
-        set {
-            switch newValue {
-                case .scrolling: dialModeSetting = 1
-                case .volume: dialModeSetting = 2
-                case .brightness: dialModeSetting = 3
-                case .keyboard: dialModeSetting = 4
-                case .zoom: dialModeSetting = 5
-            }
-        }
+        set { UserSettings.wheelDirectionSetting = newValue.rawValue }
+    }
+    
+    static var statusIcon: StatusIconMode {
+        get { UserSettings.StatusIconMode(rawValue: UserSettings.statusIconSetting) ?? .default }
+        set { UserSettings.statusIconSetting = newValue.rawValue }
     }
 
-    var buttonMode: ButtonOperationMode {
-        get {
-            switch dialModeSetting {
-                case 1: return .leftClick
-                case 2: return .playback
-                default: return .playback
-            }
-        }
-        set {
-            switch newValue {
-                case .leftClick: dialModeSetting = 1
-                case .playback: dialModeSetting = 2
-            }
-        }
+    static var isHapticFeedbackEnabled: Bool {
+        get { UserSettings.isHapticFeedbackEnabledSetting }
+        set { UserSettings.isHapticFeedbackEnabledSetting = newValue }
     }
-
-    var sensitivity: WheelSensitivity {
-        get {
-            switch sensitivitySetting {
-                case 1: return .low
-                case 2: return .medium
-                case 3: return .high
-                default: return .low
+    
+    static var shouldKeepDialAwake: Bool {
+        get { UserSettings.shouldKeepDialAwakeSetting }
+        set { UserSettings.shouldKeepDialAwakeSetting = newValue }
+    }
+    
+    static var isShowOSDEnabled: Bool {
+        get { UserSettings.isShowOSDEnabledSetting }
+        set { UserSettings.isShowOSDEnabledSetting = newValue }
+    }
+    
+    enum keyScrollModifiers {
+        static var shift: Bool {
+            get {
+                keyScrollModifiersSetting["shift"] ?? false
+            }
+            set {
+                keyScrollModifiersSetting["shift"] = newValue
             }
         }
-        set {
-            switch newValue {
-                case .low: sensitivitySetting = 1
-                case .medium: sensitivitySetting = 2
-                case .high: sensitivitySetting = 3
+        
+        static var command: Bool {
+            get {
+                keyScrollModifiersSetting["command"] ?? false
+            }
+            set {
+                keyScrollModifiersSetting["command"] = newValue
             }
         }
-    }
-
-    var isRotationClickEnabled: Bool {
-        get {
-            isRotationClickEnabledSetting
+        
+        static var option: Bool {
+            get {
+                keyScrollModifiersSetting["option"] ?? false
+            }
+            set {
+                keyScrollModifiersSetting["option"] = newValue
+            }
         }
-        set {
-            isRotationClickEnabledSetting = newValue
-        }
-    }
-
-    var wheelDirection: WheelDirection {
-        get {
-            wheelDirectionSetting < 0 ? .anticlockwise : .clockwise
-        }
-        set {
-            wheelDirectionSetting = newValue == .clockwise ? 1 : -1
+        
+        static var control: Bool {
+            get {
+                keyScrollModifiersSetting["control"] ?? false
+            }
+            set {
+                keyScrollModifiersSetting["control"] = newValue
+            }
         }
     }
 }
+
+typealias WheelSensitivity = UserSettings.WheelSensitivity
+typealias WheelDirection = UserSettings.WheelDirection
 
 struct SettingsValueKey: ExpressibleByStringLiteral {
     var name: String

@@ -1,13 +1,13 @@
 //
-// Device
-// MacDial
+//  Device
+//  MacDial
 //
-// Created by Alex Babaev on 28 January 2022.
+//  Created by Alex Babaev
 //
-// Based on Andreas Karlsson sources
-// https://github.com/andreasjhkarlsson/mac-dial
+//  Based on Andreas Karlsson sources
+//  https://github.com/andreasjhkarlsson/mac-dial
 //
-// License: MIT
+//  License: MIT
 //
 
 import AppKit
@@ -19,7 +19,7 @@ private let _dialProductId: UInt16 = 0x091B
 private var _connectedSerialNumbers: [String] = []
 private var _setDevicePointerHandler: (IOHIDDevice, String) -> Void = { _, _ in }
 
-private var _wheelSensitivity: Double = 1.0
+private var _wheelSensitivity: WheelSensitivity = .medium
 private var _wheelDirection: WheelDirection = .clockwise
 
 private var _buttonHandler: (ButtonState) -> Void = { _ in }
@@ -33,7 +33,9 @@ private var _queue: IOHIDQueue?
 private var _hapticsElementManualTrigger: IOHIDElement?
 
 class DialDevice {
-    var wheelSensitivity: Double {
+    // MARK: - Persistent state
+    
+    var wheelSensitivity: WheelSensitivity {
         get { _wheelSensitivity }
         set { _wheelSensitivity = newValue }
     }
@@ -43,12 +45,24 @@ class DialDevice {
         set { _wheelDirection = newValue }
     }
 
-    var isRotationClickEnabled: Bool = false
+    var isHapticFeedbackEnabled: Bool = false
+    
+    var shouldKeepDialAwake: Bool = false
+    
+    // MARK: - Temporary state
+    
+    var isHittingBounds: Bool = false
+    
+    // MARK: - Private state
 
     private var dialDevice: IOHIDDevice?
     private var serialNumber: String = "—"
 
     private var isConnected: Bool { dialDevice != nil }
+    
+    private var keepAliveTimer: DispatchSourceTimer?
+    
+    // MARK: - Init
 
     init(
         buttonHandler: @escaping (ButtonState) -> Void,
@@ -79,11 +93,15 @@ class DialDevice {
             serialNumber = "—"
 
             _hapticsElementManualTrigger = nil
+            
+            destroyKeepAlive()
 
             disconnectionHandler()
         }
         _sendHapticsTapToDialHandler = { [self] in
-            sendHapticsTapToDial()
+            let haptic: DeviceHaptic = isHittingBounds ? .rumble : .click
+
+            sendHaptic(pattern: haptic)
         }
 
         createHidManager()
@@ -94,19 +112,25 @@ class DialDevice {
         IOHIDManagerClose(hidManager, UInt32(kIOHIDOptionsTypeNone))
         log(tag: "Manager", "closed")
     }
+    
+    // MARK: HIDManager
 
     private var hidManager: IOHIDManager!
 
     private func createHidManager() {
-        let manager = IOHIDManagerCreate(kCFAllocatorDefault, UInt32(kIOHIDOptionsTypeNone))
-        let result = IOHIDManagerOpen(manager, 0)
+        let manager = IOHIDManagerCreate(kCFAllocatorDefault, IOOptionBits(kIOHIDOptionsTypeNone))
+        let result = IOHIDManagerOpen(manager, IOOptionBits(kIOHIDOptionsTypeNone))
         guard result == kIOReturnSuccess else { fatalError("Can't open HID manager") }
 
         let matchingDictionary: NSMutableDictionary = .init()
         matchingDictionary[kIOHIDVendorIDKey as NSString] = NSNumber(value: _dialVendorId)
         matchingDictionary[kIOHIDProductIDKey as NSString] = NSNumber(value: _dialProductId)
         IOHIDManagerSetDeviceMatching(manager, matchingDictionary)
-        IOHIDManagerScheduleWithRunLoop(manager, CFRunLoopGetCurrent(), CFRunLoopMode.defaultMode.rawValue);
+        IOHIDManagerScheduleWithRunLoop(
+            manager,
+            CFRunLoopGetCurrent(),
+            CFRunLoopMode.commonModes.rawValue
+        )
         log(tag: "Manager", "opened")
 
         let inputCallback: IOHIDValueCallback = { _, result, _, value in
@@ -123,36 +147,36 @@ class DialDevice {
             let usagePage = IOHIDElementGetUsagePage(element)
             let usageId = IOHIDElementGetUsage(element)
 
-//            let reportId = IOHIDElementGetReportID(element)
-//            log(tag: "Manager", "value \(hex: usagePage)|\(hex: usageId)|\(hex: reportId): \(data.map { "\(hex: $0)" }.joined(separator: ", "))")
-
+            ///   let reportId = IOHIDElementGetReportID(element)
+            ///   log(tag: "Manager", "value \(hex: usagePage)|\(hex: usageId)|\(hex: reportId): \(data.map { "\(hex: $0)" }.joined(separator: ", "))")
+            //
             //    Manager monitoring 0x9|0x1|0x1: 0x0
-            //          Buttons. Primary button.
-            //          1/0
+            ///          Buttons. Primary button.
+            ///          1/0
             //    Manager monitoring 0x1|0x37|0x1: 0x0, 0x0
-            //          Dial.
-            //          1/-1/0.
-            //          A rotary control for generating a variable value, normally in the form of a knob spun by the index finger and thumb.
-            //          Report values should increase as controls are spun clockwise.
-            //          This usage does not follow the HID orientation conventions.
-            //
-            //    Not used:
-            //
+            ///          Dial.
+            ///          1/-1/0.
+            ///          A rotary control for generating a variable value, normally in the form of a knob spun by the index finger and thumb.
+            ///          Report values should increase as controls are spun clockwise.
+            ///          This usage does not follow the HID orientation conventions.
+            ///
+            //   Not used:
+            ///
             //    Manager monitoring 0xd|0x48|0x1: 0x3a
-            //          Dial. Width
+            ///          Dial. Width
             //    Manager monitoring 0x1|0x30|0x1: 0xa, 0xb
-            //          Generic. X.
-            //          A linear translation in the X direction.
-            //          Report values should increase as the control’s position is moved from left to right.
+            ///          Generic. X.
+            ///          A linear translation in the X direction.
+            ///          Report values should increase as the control’s position is moved from left to right.
             //    Manager monitoring 0x1|0x31|0x1: 0xc, 0xd
-            //          Generic. Y.
-            //          A linear translation in the Y direction.
-            //          Report values should increase as the control’s position is moved from far to near.
+            ///          Generic. Y.
+            ///          A linear translation in the Y direction.
+            ///          Report values should increase as the control’s position is moved from far to near.
             //    Manager monitoring 0xd|0x33|0x1: 0x1
             //          Digitizers. Touch.
             //          1/0 (?)
-            //          A bit quantity for touch pads analogous to In Range that indicates that a finger is touching the pad.
-            //          A system will typically map a Touch usage to a primary button.
+            ///          A bit quantity for touch pads analogous to In Range that indicates that a finger is touching the pad.
+            ///          A system will typically map a Touch usage to a primary button.
 
             switch (usagePage, usageId) {
                 case (0x01, 0x37): // Generic page; Dial
@@ -164,22 +188,25 @@ class DialDevice {
                         case 1:
                             let direction: RotationState = _wheelDirection == .clockwise
                                 ? .clockwise(_wheelSensitivity)
-                                : .anticlockwise(_wheelSensitivity)
+                                : .counterclockwise(_wheelSensitivity)
                             needHaptics = _rotationHandler(direction)
                         case -1:
                             let direction: RotationState = _wheelDirection == .clockwise
-                                ? .anticlockwise(_wheelSensitivity)
+                                ? .counterclockwise(_wheelSensitivity)
                                 : .clockwise(_wheelSensitivity)
                             needHaptics = _rotationHandler(direction)
                         default:
                             needHaptics = false
                     }
+                
                     if needHaptics {
                         _sendHapticsTapToDialHandler()
                     }
+                
                 case (0x09, 0x01): // Generic page; Button
                     let stateValue = IOHIDValueGetIntegerValue(value)
                     _buttonHandler(stateValue == 1 ? .pressed : .released)
+                
                 default:
                     break
             }
@@ -199,18 +226,18 @@ class DialDevice {
         }
 
         let hidDeviceMatchingCallback: IOHIDDeviceCallback = { context, result, _, device in
-            log(tag: "Manager", "Monitor gor a dial...")
+            log(tag: "Manager", "Monitoring detected a dial...")
 
             let serialNumberValue = IOHIDDeviceGetProperty(device, kIOHIDSerialNumberKey as NSString) as? NSString
             guard let serialNumber = serialNumberValue as? String else { return }
             guard !_connectedSerialNumbers.contains(serialNumber) else { return }
 
-            log(tag: "Manager", "Found dial serial number \(serialNumber)")
+            log(tag: "Manager", "Found dial, serial number: \(serialNumber)")
             _setDevicePointerHandler(device, serialNumber)
         }
 
         IOHIDManagerRegisterDeviceMatchingCallback(hidManager, hidDeviceMatchingCallback, nil)
-        log(tag: "Manager", "monitoring started")
+        log(tag: "Manager", "Monitoring started")
     }
 
     func disconnect() {
@@ -218,6 +245,8 @@ class DialDevice {
         IOHIDManagerRegisterInputReportCallback(hidManager, nil, nil)
         IOHIDManagerClose(hidManager, 0)
     }
+    
+    // MARK: Setup device input
 
     private let reportBufferLength: Int = 128
     private lazy var reportBuffer: UnsafeMutablePointer<UInt8> = .allocate(capacity: reportBufferLength)
@@ -338,18 +367,55 @@ class DialDevice {
             log(tag: "Device", "removed")
         }
         IOHIDDeviceRegisterRemovalCallback(dialDevice, removalCallback, nil)
+        
+        setupKeepAlive()
+    }
+    
+    // MARK: Keep device alive
+    
+    /// The Surface Dial has a timeout of exactly **5 minutes** of not being used, before disconnecting. \
+    /// Sending empty haptic feedback to the dial every **285 seconds (4m45s)** keeps it connected.
+    private func setupKeepAlive() {
+        keepAliveTimer = DispatchSource.makeTimerSource(queue: .global())
+        keepAliveTimer?.schedule(deadline: .now() + 5, repeating: 285)
+        keepAliveTimer?.setEventHandler { [weak self] in
+            self?.sendKeepAlive()
+        }
+        keepAliveTimer?.resume()
+    }
+    
+    private func destroyKeepAlive() {
+        keepAliveTimer?.cancel()
+        
+        keepAliveTimer = nil
+    }
+    
+    /// Sends empty haptic feedback to the dial to keep it connected
+    public func sendKeepAlive() {
+        if isConnected && shouldKeepDialAwake {
+            log(tag:"Device", "sending keep alive haptic")
+            
+            sendHaptic(pattern: .none)
+        }
+    }
+    
+    // MARK: Device haptics
+
+    public enum DeviceHaptic: Int {
+        case click = 0x1003
+        case rumble = 0x1005
+
+        case buzz = 0x1004
+        
+        case none = 0x1000
     }
 
-    private let hapticsClick: Int = 0x1003
-    private let hapticsBuzz: Int = 0x1004
-    private let hapticsRumble: Int = 0x1005
+    public func sendHaptic(pattern haptic: DeviceHaptic) {
+        guard isHapticFeedbackEnabled, let dialDevice, let _hapticsElementManualTrigger else { return }
 
-    private func sendHapticsTapToDial() {
-        guard isRotationClickEnabled, let dialDevice, let _hapticsElementManualTrigger else { return }
+        // log(tag: "Device", "haptics tapping...")
 
-//        log(tag: "Device", "haptics tapping...")
-
-        let valueManualTrigger = IOHIDValueCreateWithIntegerValue(nil, _hapticsElementManualTrigger, 0, hapticsClick)
+        let valueManualTrigger = IOHIDValueCreateWithIntegerValue(nil, _hapticsElementManualTrigger, 0, haptic.rawValue)
 
         let values = [
             _hapticsElementManualTrigger: valueManualTrigger,
@@ -357,9 +423,15 @@ class DialDevice {
 
         let result = IOHIDDeviceSetValueMultiple(dialDevice, values)
         if result != kIOReturnSuccess {
-            log(tag: "Device", "haptics tap error: \(result)")
-        } else {
-//            log(tag: "Device", "haptics tapped")
+            if case .none = haptic {
+                log(tag: "Device", "keep alive error: \(result)")
+            }
+            else {
+                log(tag: "Device", "haptics tap error: \(result)")
+            }
+        }
+        else {
+            // log(tag: "Device", "haptics tapped")
         }
     }
 }

@@ -3,54 +3,45 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 50;
+	objectVersion = 70;
 	objects = {
 
 /* Begin PBXBuildFile section */
-		2DBA116C33D51297D5384A52 /* DeviceControl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2DBA11B74C37AE96041F400D /* DeviceControl.swift */; };
-		2DBA1531BDED42DBEA94036E /* HID.Helpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2DBA151FDA5C8860610CD02D /* HID.Helpers.swift */; };
-		2DBA16DB57BAE6DE838B0866 /* ButtonPlaybackControl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2DBA134817855F7B605FABE8 /* ButtonPlaybackControl.swift */; };
-		2DBA179F38FAAE40805B5323 /* ButtonPressControl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2DBA1BDF69863D61FDD7CB3F /* ButtonPressControl.swift */; };
-		2DBA1905BF6BCA15F82AF8B8 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2DBA14031F68B505C8B42CD0 /* Main.storyboard */; };
-		2DBA1B39EA030F1D06E675B7 /* UserSettings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2DBA1898A55AE4BDB7ED1A4C /* UserSettings.swift */; };
-		2DBA1EB5593E29FFD3DD16DF /* DialZoomControl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2DBA11338B12EF8AD2CB3645 /* DialZoomControl.swift */; };
-		2DBA1FB8954597E33AFFEB26 /* Device.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2DBA134CA4B2FEEA02C66B07 /* Device.swift */; };
-		C882FA1A26F1430C00595EE1 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C882FA1926F1430C00595EE1 /* AppDelegate.swift */; };
-		C882FA1E26F1430D00595EE1 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C882FA1D26F1430D00595EE1 /* Assets.xcassets */; };
-		C89D242B2703CF4500B1A458 /* DialScrollControl.swift in Sources */ = {isa = PBXBuildFile; fileRef = C89D242A2703CF4500B1A458 /* DialScrollControl.swift */; };
-		C89D242D2704870C00B1A458 /* DialKeysUpDownControl.swift in Sources */ = {isa = PBXBuildFile; fileRef = C89D242C2704870C00B1A458 /* DialKeysUpDownControl.swift */; };
-		C89F31592701090400A8B365 /* Dial.swift in Sources */ = {isa = PBXBuildFile; fileRef = C89F31582701090400A8B365 /* Dial.swift */; };
+		6519213B2EC578EF000A91B4 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 651921342EC578EF000A91B4 /* Assets.xcassets */; };
+		6519213D2EC578EF000A91B4 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 651921372EC578EF000A91B4 /* Localizable.strings */; };
+		6519213E2EC578EF000A91B4 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 651921392EC578EF000A91B4 /* Main.storyboard */; };
+		651D5B4E2EDFA6D300C88C77 /* TODO.md in Resources */ = {isa = PBXBuildFile; fileRef = 651D5B4D2EDFA6D300C88C77 /* TODO.md */; };
+		652BA41E2EC6AA10004D6964 /* MediaRemote.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 652BA41D2EC6AA10004D6964 /* MediaRemote.framework */; };
+		657721242EC0542C00C0C55F /* DisplayServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 657721232EC0542C00C0C55F /* DisplayServices.framework */; };
+		6577212E2EC0643100C0C55F /* CoreBrightness.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6577212D2EC0643100C0C55F /* CoreBrightness.framework */; };
+		65993F172EC81ECD000C12B7 /* OSD.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 65993F162EC81ECD000C12B7 /* OSD.framework */; };
 		C89F315B2701266400A8B365 /* CoreFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C89F315A2701266400A8B365 /* CoreFoundation.framework */; };
 		C89F315D2701266A00A8B365 /* IOKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C89F315C2701266A00A8B365 /* IOKit.framework */; };
 		C89F315F270126E100A8B365 /* AppKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C89F315E270126E100A8B365 /* AppKit.framework */; };
-		FA01D9B527A5541700B542F9 /* AppController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA01D9B427A5541700B542F9 /* AppController.swift */; };
-		FA8BA9CC29214B4E008383F4 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = FA8BA9CE29214B4E008383F4 /* Localizable.strings */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		2DBA11338B12EF8AD2CB3645 /* DialZoomControl.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DialZoomControl.swift; sourceTree = "<group>"; };
-		2DBA11B74C37AE96041F400D /* DeviceControl.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DeviceControl.swift; sourceTree = "<group>"; };
-		2DBA134817855F7B605FABE8 /* ButtonPlaybackControl.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ButtonPlaybackControl.swift; sourceTree = "<group>"; };
-		2DBA134CA4B2FEEA02C66B07 /* Device.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Device.swift; sourceTree = "<group>"; };
-		2DBA14031F68B505C8B42CD0 /* Main.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
-		2DBA151FDA5C8860610CD02D /* HID.Helpers.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HID.Helpers.swift; sourceTree = "<group>"; };
 		2DBA1824516DE7C2EA24F590 /* HIDReport.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = HIDReport.md; sourceTree = "<group>"; };
-		2DBA1898A55AE4BDB7ED1A4C /* UserSettings.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserSettings.swift; sourceTree = "<group>"; };
-		2DBA1BDF69863D61FDD7CB3F /* ButtonPressControl.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ButtonPressControl.swift; sourceTree = "<group>"; };
+		651921342EC578EF000A91B4 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		651921352EC578EF000A91B4 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		651921362EC578EF000A91B4 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
+		651921382EC578EF000A91B4 /* MacDial.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = MacDial.entitlements; sourceTree = "<group>"; };
+		651921392EC578EF000A91B4 /* Main.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
+		651D5B4D2EDFA6D300C88C77 /* TODO.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = TODO.md; sourceTree = "<group>"; };
+		652BA41D2EC6AA10004D6964 /* MediaRemote.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MediaRemote.framework; path = ../../../../../System/Library/PrivateFrameworks/MediaRemote.framework; sourceTree = "<group>"; };
+		657721232EC0542C00C0C55F /* DisplayServices.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = DisplayServices.framework; path = ../../../../../System/Library/PrivateFrameworks/DisplayServices.framework; sourceTree = "<group>"; };
+		6577212D2EC0643100C0C55F /* CoreBrightness.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreBrightness.framework; path = ../../../../../System/Library/PrivateFrameworks/CoreBrightness.framework; sourceTree = "<group>"; };
+		65993F162EC81ECD000C12B7 /* OSD.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OSD.framework; path = ../../../../../System/Library/PrivateFrameworks/OSD.framework; sourceTree = "<group>"; };
+		65993F1A2EC82DC8000C12B7 /* ApplicationServices.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ApplicationServices.framework; path = System/Library/Frameworks/ApplicationServices.framework; sourceTree = SDKROOT; };
 		C882FA1626F1430C00595EE1 /* MacDial.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MacDial.app; sourceTree = BUILT_PRODUCTS_DIR; };
-		C882FA1926F1430C00595EE1 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		C882FA1D26F1430D00595EE1 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
-		C882FA2526F1430D00595EE1 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		C882FA2626F1430D00595EE1 /* MacDial.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = MacDial.entitlements; sourceTree = "<group>"; };
-		C89D242A2703CF4500B1A458 /* DialScrollControl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DialScrollControl.swift; sourceTree = "<group>"; };
-		C89D242C2704870C00B1A458 /* DialKeysUpDownControl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DialKeysUpDownControl.swift; sourceTree = "<group>"; };
-		C89F31582701090400A8B365 /* Dial.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Dial.swift; sourceTree = "<group>"; };
 		C89F315A2701266400A8B365 /* CoreFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreFoundation.framework; path = System/Library/Frameworks/CoreFoundation.framework; sourceTree = SDKROOT; };
 		C89F315C2701266A00A8B365 /* IOKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = IOKit.framework; path = System/Library/Frameworks/IOKit.framework; sourceTree = SDKROOT; };
 		C89F315E270126E100A8B365 /* AppKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AppKit.framework; path = System/Library/Frameworks/AppKit.framework; sourceTree = SDKROOT; };
-		FA01D9B427A5541700B542F9 /* AppController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppController.swift; sourceTree = "<group>"; };
-		FA8BA9CD29214B4E008383F4 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
 /* End PBXFileReference section */
+
+/* Begin PBXFileSystemSynchronizedRootGroup section */
+		65F4783B2ED401E400B29607 /* Code */ = {isa = PBXFileSystemSynchronizedRootGroup; explicitFileTypes = {}; explicitFolders = (); path = Code; sourceTree = "<group>"; };
+/* End PBXFileSystemSynchronizedRootGroup section */
 
 /* Begin PBXFrameworksBuildPhase section */
 		C882FA1326F1430C00595EE1 /* Frameworks */ = {
@@ -60,17 +51,34 @@
 				C89F315F270126E100A8B365 /* AppKit.framework in Frameworks */,
 				C89F315B2701266400A8B365 /* CoreFoundation.framework in Frameworks */,
 				C89F315D2701266A00A8B365 /* IOKit.framework in Frameworks */,
+				65993F172EC81ECD000C12B7 /* OSD.framework in Frameworks */,
+				657721242EC0542C00C0C55F /* DisplayServices.framework in Frameworks */,
+				6577212E2EC0643100C0C55F /* CoreBrightness.framework in Frameworks */,
+				652BA41E2EC6AA10004D6964 /* MediaRemote.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		6519213A2EC578EF000A91B4 /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				651921342EC578EF000A91B4 /* Assets.xcassets */,
+				651921352EC578EF000A91B4 /* Info.plist */,
+				651921372EC578EF000A91B4 /* Localizable.strings */,
+				651921382EC578EF000A91B4 /* MacDial.entitlements */,
+				651921392EC578EF000A91B4 /* Main.storyboard */,
+			);
+			path = Resources;
+			sourceTree = "<group>";
+		};
 		C882FA0D26F1430C00595EE1 = {
 			isa = PBXGroup;
 			children = (
-				C882FA1826F1430C00595EE1 /* Code */,
-				FAC9E62627A46ACB00A6A453 /* Resources */,
+				651D5B4D2EDFA6D300C88C77 /* TODO.md */,
+				65F4783B2ED401E400B29607 /* Code */,
+				6519213A2EC578EF000A91B4 /* Resources */,
 				C882FA1726F1430C00595EE1 /* Products */,
 				C89F31562701079000A8B365 /* Frameworks */,
 				2DBA1824516DE7C2EA24F590 /* HIDReport.md */,
@@ -85,69 +93,19 @@
 			name = Products;
 			sourceTree = "<group>";
 		};
-		C882FA1826F1430C00595EE1 /* Code */ = {
-			isa = PBXGroup;
-			children = (
-				FAC9E62927A46AFD00A6A453 /* ControlModes */,
-				FAC9E62827A46AF000A6A453 /* Dial */,
-				FAC9E62727A46ADF00A6A453 /* Presentation */,
-				C882FA1926F1430C00595EE1 /* AppDelegate.swift */,
-			);
-			path = Code;
-			sourceTree = "<group>";
-		};
 		C89F31562701079000A8B365 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				65993F1A2EC82DC8000C12B7 /* ApplicationServices.framework */,
+				65993F162EC81ECD000C12B7 /* OSD.framework */,
+				652BA41D2EC6AA10004D6964 /* MediaRemote.framework */,
+				6577212D2EC0643100C0C55F /* CoreBrightness.framework */,
+				657721232EC0542C00C0C55F /* DisplayServices.framework */,
 				C89F315E270126E100A8B365 /* AppKit.framework */,
 				C89F315C2701266A00A8B365 /* IOKit.framework */,
 				C89F315A2701266400A8B365 /* CoreFoundation.framework */,
 			);
 			name = Frameworks;
-			sourceTree = "<group>";
-		};
-		FAC9E62627A46ACB00A6A453 /* Resources */ = {
-			isa = PBXGroup;
-			children = (
-				C882FA1D26F1430D00595EE1 /* Assets.xcassets */,
-				C882FA2526F1430D00595EE1 /* Info.plist */,
-				C882FA2626F1430D00595EE1 /* MacDial.entitlements */,
-				2DBA14031F68B505C8B42CD0 /* Main.storyboard */,
-				FA8BA9CE29214B4E008383F4 /* Localizable.strings */,
-			);
-			path = Resources;
-			sourceTree = "<group>";
-		};
-		FAC9E62727A46ADF00A6A453 /* Presentation */ = {
-			isa = PBXGroup;
-			children = (
-				2DBA1898A55AE4BDB7ED1A4C /* UserSettings.swift */,
-				FA01D9B427A5541700B542F9 /* AppController.swift */,
-			);
-			path = Presentation;
-			sourceTree = "<group>";
-		};
-		FAC9E62827A46AF000A6A453 /* Dial */ = {
-			isa = PBXGroup;
-			children = (
-				C89F31582701090400A8B365 /* Dial.swift */,
-				2DBA134CA4B2FEEA02C66B07 /* Device.swift */,
-				2DBA11B74C37AE96041F400D /* DeviceControl.swift */,
-			);
-			path = Dial;
-			sourceTree = "<group>";
-		};
-		FAC9E62927A46AFD00A6A453 /* ControlModes */ = {
-			isa = PBXGroup;
-			children = (
-				C89D242A2703CF4500B1A458 /* DialScrollControl.swift */,
-				C89D242C2704870C00B1A458 /* DialKeysUpDownControl.swift */,
-				2DBA151FDA5C8860610CD02D /* HID.Helpers.swift */,
-				2DBA1BDF69863D61FDD7CB3F /* ButtonPressControl.swift */,
-				2DBA134817855F7B605FABE8 /* ButtonPlaybackControl.swift */,
-				2DBA11338B12EF8AD2CB3645 /* DialZoomControl.swift */,
-			);
-			path = ControlModes;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -164,6 +122,9 @@
 			buildRules = (
 			);
 			dependencies = (
+			);
+			fileSystemSynchronizedGroups = (
+				65F4783B2ED401E400B29607 /* Code */,
 			);
 			name = MacDial;
 			productName = MacDial;
@@ -209,9 +170,10 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				C882FA1E26F1430D00595EE1 /* Assets.xcassets in Resources */,
-				FA8BA9CC29214B4E008383F4 /* Localizable.strings in Resources */,
-				2DBA1905BF6BCA15F82AF8B8 /* Main.storyboard in Resources */,
+				651D5B4E2EDFA6D300C88C77 /* TODO.md in Resources */,
+				6519213B2EC578EF000A91B4 /* Assets.xcassets in Resources */,
+				6519213D2EC578EF000A91B4 /* Localizable.strings in Resources */,
+				6519213E2EC578EF000A91B4 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -222,28 +184,16 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				FA01D9B527A5541700B542F9 /* AppController.swift in Sources */,
-				C882FA1A26F1430C00595EE1 /* AppDelegate.swift in Sources */,
-				C89D242D2704870C00B1A458 /* DialKeysUpDownControl.swift in Sources */,
-				C89F31592701090400A8B365 /* Dial.swift in Sources */,
-				C89D242B2703CF4500B1A458 /* DialScrollControl.swift in Sources */,
-				2DBA1FB8954597E33AFFEB26 /* Device.swift in Sources */,
-				2DBA116C33D51297D5384A52 /* DeviceControl.swift in Sources */,
-				2DBA1B39EA030F1D06E675B7 /* UserSettings.swift in Sources */,
-				2DBA1531BDED42DBEA94036E /* HID.Helpers.swift in Sources */,
-				2DBA179F38FAAE40805B5323 /* ButtonPressControl.swift in Sources */,
-				2DBA16DB57BAE6DE838B0866 /* ButtonPlaybackControl.swift in Sources */,
-				2DBA1EB5593E29FFD3DD16DF /* DialZoomControl.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXVariantGroup section */
-		FA8BA9CE29214B4E008383F4 /* Localizable.strings */ = {
+		651921372EC578EF000A91B4 /* Localizable.strings */ = {
 			isa = PBXVariantGroup;
 			children = (
-				FA8BA9CD29214B4E008383F4 /* en */,
+				651921362EC578EF000A91B4 /* en */,
 			);
 			name = Localizable.strings;
 			sourceTree = "<group>";
@@ -373,6 +323,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				AUTOMATION_APPLE_EVENTS = YES;
 				CODE_SIGN_ENTITLEMENTS = Resources/MacDial.entitlements;
 				CODE_SIGN_IDENTITY = "-";
 				CODE_SIGN_STYLE = Manual;
@@ -380,8 +331,15 @@
 				CURRENT_PROJECT_VERSION = 45;
 				DEAD_CODE_STRIPPING = YES;
 				DEVELOPMENT_TEAM = "";
+				ENABLE_APP_SANDBOX = NO;
 				ENABLE_HARDENED_RUNTIME = YES;
 				ENABLE_PREVIEWS = YES;
+				ENABLE_RESOURCE_ACCESS_AUDIO_INPUT = NO;
+				ENABLE_RESOURCE_ACCESS_CALENDARS = NO;
+				ENABLE_RESOURCE_ACCESS_CAMERA = NO;
+				ENABLE_RESOURCE_ACCESS_CONTACTS = NO;
+				ENABLE_RESOURCE_ACCESS_LOCATION = NO;
+				ENABLE_RESOURCE_ACCESS_PHOTO_LIBRARY = NO;
 				INFOPLIST_FILE = Resources/Info.plist;
 				INFOPLIST_KEY_CFBundleDisplayName = MacDial;
 				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.utilities";
@@ -389,12 +347,23 @@
 					"$(inherited)",
 					"@executable_path/../Frameworks",
 				);
-				MACOSX_DEPLOYMENT_TARGET = 12.0;
+				MACOSX_DEPLOYMENT_TARGET = 12;
 				MARKETING_VERSION = 1.4.2;
-				PRODUCT_BUNDLE_IDENTIFIER = com.lonelybytes.macdial;
+				PRODUCT_BUNDLE_IDENTIFIER = com.socuul.macdial;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
+				RUNTIME_EXCEPTION_ALLOW_DYLD_ENVIRONMENT_VARIABLES = NO;
+				RUNTIME_EXCEPTION_ALLOW_JIT = NO;
+				RUNTIME_EXCEPTION_ALLOW_UNSIGNED_EXECUTABLE_MEMORY = NO;
+				RUNTIME_EXCEPTION_DEBUGGING_TOOL = NO;
+				RUNTIME_EXCEPTION_DISABLE_EXECUTABLE_PAGE_PROTECTION = NO;
+				RUNTIME_EXCEPTION_DISABLE_LIBRARY_VALIDATION = NO;
+				SWIFT_OBJC_BRIDGING_HEADER = "$(SRCROOT)/Code/$(SWIFT_MODULE_NAME)-Bridging-Header.h";
 				SWIFT_VERSION = 5.0;
+				SYSTEM_FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(SYSTEM_LIBRARY_DIR)/PrivateFrameworks",
+				);
 			};
 			name = Debug;
 		};
@@ -403,6 +372,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				AUTOMATION_APPLE_EVENTS = YES;
 				CODE_SIGN_ENTITLEMENTS = Resources/MacDial.entitlements;
 				CODE_SIGN_IDENTITY = "Apple Development";
 				"CODE_SIGN_IDENTITY[sdk=macosx*]" = "Developer ID Application";
@@ -412,8 +382,15 @@
 				DEAD_CODE_STRIPPING = YES;
 				DEVELOPMENT_TEAM = 2Y29N9EKUS;
 				"DEVELOPMENT_TEAM[sdk=macosx*]" = 2Y29N9EKUS;
+				ENABLE_APP_SANDBOX = NO;
 				ENABLE_HARDENED_RUNTIME = YES;
 				ENABLE_PREVIEWS = YES;
+				ENABLE_RESOURCE_ACCESS_AUDIO_INPUT = NO;
+				ENABLE_RESOURCE_ACCESS_CALENDARS = NO;
+				ENABLE_RESOURCE_ACCESS_CAMERA = NO;
+				ENABLE_RESOURCE_ACCESS_CONTACTS = NO;
+				ENABLE_RESOURCE_ACCESS_LOCATION = NO;
+				ENABLE_RESOURCE_ACCESS_PHOTO_LIBRARY = NO;
 				INFOPLIST_FILE = Resources/Info.plist;
 				INFOPLIST_KEY_CFBundleDisplayName = MacDial;
 				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.utilities";
@@ -421,13 +398,24 @@
 					"$(inherited)",
 					"@executable_path/../Frameworks",
 				);
-				MACOSX_DEPLOYMENT_TARGET = 12.0;
+				MACOSX_DEPLOYMENT_TARGET = 12;
 				MARKETING_VERSION = 1.4.2;
-				PRODUCT_BUNDLE_IDENTIFIER = com.lonelybytes.macdial;
+				PRODUCT_BUNDLE_IDENTIFIER = com.socuul.macdial;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "(Developer ID) Mac Dial Status Bar Item";
 				"PROVISIONING_PROFILE_SPECIFIER[sdk=macosx*]" = "(Developer ID) Mac Dial Status Bar Item";
+				RUNTIME_EXCEPTION_ALLOW_DYLD_ENVIRONMENT_VARIABLES = NO;
+				RUNTIME_EXCEPTION_ALLOW_JIT = NO;
+				RUNTIME_EXCEPTION_ALLOW_UNSIGNED_EXECUTABLE_MEMORY = NO;
+				RUNTIME_EXCEPTION_DEBUGGING_TOOL = NO;
+				RUNTIME_EXCEPTION_DISABLE_EXECUTABLE_PAGE_PROTECTION = NO;
+				RUNTIME_EXCEPTION_DISABLE_LIBRARY_VALIDATION = NO;
+				SWIFT_OBJC_BRIDGING_HEADER = "$(SRCROOT)/Code/$(SWIFT_MODULE_NAME)-Bridging-Header.h";
 				SWIFT_VERSION = 5.0;
+				SYSTEM_FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(SYSTEM_LIBRARY_DIR)/PrivateFrameworks",
+				);
 			};
 			name = Release;
 		};

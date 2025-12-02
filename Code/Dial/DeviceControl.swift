@@ -1,13 +1,13 @@
 //
-// DialDelegate
-// MacDial
+//  DeviceControl
+//  MacDial
 //
-// Created by Alex Babaev on 28 January 2022.
+//  Created by Alex Babaev
 //
-// Based on Andreas Karlsson sources
-// https://github.com/andreasjhkarlsson/mac-dial
+//  Based on Andreas Karlsson sources
+//  https://github.com/andreasjhkarlsson/mac-dial
 //
-// License: MIT
+//  License: MIT
 //
 
 import Foundation
@@ -17,27 +17,34 @@ enum ButtonState: Equatable {
     case released
 }
 
-enum WheelDirection: Equatable {
-    case clockwise
-    case anticlockwise
-}
-
 enum RotationState: Equatable {
-    case clockwise(Double)
-    case anticlockwise(Double)
+    case clockwise(WheelSensitivity)
+    case counterclockwise(WheelSensitivity)
     case stationary
 
-    var amount: Double {
+    var sensitivity: WheelSensitivity {
         switch self {
             case .clockwise(let amount): return amount
-            case .anticlockwise(let amount): return -amount
-            case .stationary: return 0
+            case .counterclockwise(let amount): return amount
+            case .stationary: return .medium
         }
+    }
+    
+    var isClockwise: Bool {
+        if case .clockwise = self { return true }
+        return false
+    }
+
+    var isCounterclockwise: Bool {
+        if case .counterclockwise = self { return true }
+        return false
     }
 }
 
+
 protocol DeviceControl: AnyObject {
-    func buttonPress()
-    func buttonRelease()
-    func rotationChanged(_ rotation: RotationState) -> Bool
+    func buttonPress(_ dial: Dial)
+    func buttonRelease(_ dial: Dial)
+    
+    func rotationChanged(_ dial: Dial, _ rotation: RotationState) -> Bool
 }

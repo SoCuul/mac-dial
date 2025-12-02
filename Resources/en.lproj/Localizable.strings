@@ -1,26 +1,52 @@
-"dial.connected" = "Surface Dial SN: %@";
-"dial.disconnected" = "Surface Dial disconnected";
+"menu.accessibilityPermissions" = "Needs accessibility permissions!";
+"menu.tooltip.accessibilityPermissions" = "MacDial needs accessibility permissions to function properly. Click to fix this!";
 
-"menu.buttonMode" = "Button";
+"menu.buttonMode" = "Button Mode";
 "menu.buttonMode.leftClick" = "Left Mouse Click";
 "menu.buttonMode.playback" = "Playback Control";
+"menu.buttonMode.mute" = "Mute";
+"menu.buttonMode.none" = "None";
 
-"menu.dialMode" = "Rotation";
+"menu.dialMode" = "Rotation Mode";
 "menu.dialMode.scroll" = "Scrolling";
 "menu.dialMode.music" = "Volume Control";
 "menu.dialMode.brightness" = "Brightness Control";
 "menu.dialMode.keyboard" = "Keyboard Light Control";
-"menu.dialMode.zoom" = "Zoom";
+"menu.dialMode.none" = "None";
+
+"menu.keyScrollModifiers" = "Key/Scroll Modifiers";
+"menu.tooltip.keyScrollModifiers" = "Modifier keys which will be held down during rotation in the key or scroll modes";
 
 "menu.rotationSensitivity" = "Sensitivity";
 "menu.rotationSensitivity.low" = "Low";
 "menu.rotationSensitivity.medium" = "Medium";
 "menu.rotationSensitivity.high" = "High";
+"menu.rotationSensitivity.custom" = "Custom";
 
 "menu.direction" = "Direction";
 "menu.direction.cw" = "Clockwise Is Up";
-"menu.direction.ccw" = "Anticlockwise Is Up";
+"menu.direction.ccw" = "Counterclockwise Is Up";
 
-"menu.rotationFeedback" = "Haptics";
+"menu.hapticFeedback" = "Haptics";
+"menu.tooltip.hapticFeedback" = "Enables haptic feedback (vibration) on rotation of the dial";
+
+"menu.keepDialAwake" = "Keep Dial Awake";
+"menu.tooltip.keepDialAwake" = "Prevents the dial from automatically sleeping (reduces battery life)";
+
+"menu.showOSD" = "Show Changes on OSD";
+"menu.tooltip.showOSD" = "Whether the system OSD should be shown on rotation (like if you had pushed the volume/brightness key)";
+
+"menu.statusIcon" = "Menu Bar Icon";
+"menu.statusIcon.default" = "Default";
+"menu.statusIcon.rotation" = "Rotation Mode";
+"menu.tooltip.statusIcon.rotation" = "Shows the active rotation mode";
+"menu.statusIcon.button" = "Button Mode";
+"menu.tooltip.statusIcon.button" = "Shows the active button mode";
 
 "menu.quit" = "Quit";
+
+"dial.connected" = "Surface Dial SN: %@";
+"dial.disconnected" = "Not Connected to Dial";
+
+"dialog.accessibilityTitle" = "Permissions needed";
+"dialog.accessibilityDescription" = "MacDial needs Accessibility permissions to work properly. In the next dialog you will be asked to open the Settings app to enable the permissions.\n\nDue to an issue in macOS, if you're upgrading from an earlier version of MacDial you might have to remove MacDial from the accessibility permissions and then restart the app to re-add the permissions.";
