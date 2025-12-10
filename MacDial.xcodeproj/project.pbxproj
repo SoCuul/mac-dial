@@ -10,10 +10,11 @@
 		6519213B2EC578EF000A91B4 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 651921342EC578EF000A91B4 /* Assets.xcassets */; };
 		6519213D2EC578EF000A91B4 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 651921372EC578EF000A91B4 /* Localizable.strings */; };
 		6519213E2EC578EF000A91B4 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 651921392EC578EF000A91B4 /* Main.storyboard */; };
-		651D5B4E2EDFA6D300C88C77 /* TODO.md in Resources */ = {isa = PBXBuildFile; fileRef = 651D5B4D2EDFA6D300C88C77 /* TODO.md */; };
-		C89F315B2701266400A8B365 /* CoreFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C89F315A2701266400A8B365 /* CoreFoundation.framework */; };
-		C89F315D2701266A00A8B365 /* IOKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C89F315C2701266A00A8B365 /* IOKit.framework */; };
-		C89F315F270126E100A8B365 /* AppKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C89F315E270126E100A8B365 /* AppKit.framework */; settings = {ATTRIBUTES = (Required, ); }; };
+		656BAEF02EE9574D00714682 /* OSD.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 65993F162EC81ECD000C12B7 /* OSD.framework */; };
+		656BAEF12EE9574F00714682 /* MediaRemote.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 652BA41D2EC6AA10004D6964 /* MediaRemote.framework */; };
+		656BAEF22EE9575000714682 /* CoreBrightness.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6577212D2EC0643100C0C55F /* CoreBrightness.framework */; };
+		656BAEF32EE9575200714682 /* DisplayServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 657721232EC0542C00C0C55F /* DisplayServices.framework */; };
+		656BAEF52EE961F900714682 /* AccessibilityPopover.html in Resources */ = {isa = PBXBuildFile; fileRef = 656BAEF42EE961F900714682 /* AccessibilityPopover.html */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -25,10 +26,10 @@
 		651921392EC578EF000A91B4 /* Main.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
 		651D5B4D2EDFA6D300C88C77 /* TODO.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = TODO.md; sourceTree = "<group>"; };
 		652BA41D2EC6AA10004D6964 /* MediaRemote.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MediaRemote.framework; path = ../../../../../System/Library/PrivateFrameworks/MediaRemote.framework; sourceTree = "<group>"; };
+		656BAEF42EE961F900714682 /* AccessibilityPopover.html */ = {isa = PBXFileReference; lastKnownFileType = text.html; path = AccessibilityPopover.html; sourceTree = "<group>"; };
 		657721232EC0542C00C0C55F /* DisplayServices.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = DisplayServices.framework; path = ../../../../../System/Library/PrivateFrameworks/DisplayServices.framework; sourceTree = "<group>"; };
 		6577212D2EC0643100C0C55F /* CoreBrightness.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreBrightness.framework; path = ../../../../../System/Library/PrivateFrameworks/CoreBrightness.framework; sourceTree = "<group>"; };
 		65993F162EC81ECD000C12B7 /* OSD.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OSD.framework; path = ../../../../../System/Library/PrivateFrameworks/OSD.framework; sourceTree = "<group>"; };
-		65993F1A2EC82DC8000C12B7 /* ApplicationServices.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ApplicationServices.framework; path = System/Library/Frameworks/ApplicationServices.framework; sourceTree = SDKROOT; };
 		C882FA1626F1430C00595EE1 /* MacDial.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MacDial.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		C89F315A2701266400A8B365 /* CoreFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreFoundation.framework; path = System/Library/Frameworks/CoreFoundation.framework; sourceTree = SDKROOT; };
 		C89F315C2701266A00A8B365 /* IOKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = IOKit.framework; path = System/Library/Frameworks/IOKit.framework; sourceTree = SDKROOT; };
@@ -44,9 +45,10 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				C89F315F270126E100A8B365 /* AppKit.framework in Frameworks */,
-				C89F315B2701266400A8B365 /* CoreFoundation.framework in Frameworks */,
-				C89F315D2701266A00A8B365 /* IOKit.framework in Frameworks */,
+				656BAEF02EE9574D00714682 /* OSD.framework in Frameworks */,
+				656BAEF22EE9575000714682 /* CoreBrightness.framework in Frameworks */,
+				656BAEF12EE9574F00714682 /* MediaRemote.framework in Frameworks */,
+				656BAEF32EE9575200714682 /* DisplayServices.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -61,6 +63,7 @@
 				651921372EC578EF000A91B4 /* Localizable.strings */,
 				651921382EC578EF000A91B4 /* MacDial.entitlements */,
 				651921392EC578EF000A91B4 /* Main.storyboard */,
+				656BAEF42EE961F900714682 /* AccessibilityPopover.html */,
 			);
 			path = Resources;
 			sourceTree = "<group>";
@@ -88,7 +91,6 @@
 		C89F31562701079000A8B365 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				65993F1A2EC82DC8000C12B7 /* ApplicationServices.framework */,
 				65993F162EC81ECD000C12B7 /* OSD.framework */,
 				652BA41D2EC6AA10004D6964 /* MediaRemote.framework */,
 				6577212D2EC0643100C0C55F /* CoreBrightness.framework */,
@@ -162,10 +164,10 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				651D5B4E2EDFA6D300C88C77 /* TODO.md in Resources */,
 				6519213B2EC578EF000A91B4 /* Assets.xcassets in Resources */,
 				6519213D2EC578EF000A91B4 /* Localizable.strings in Resources */,
 				6519213E2EC578EF000A91B4 /* Main.storyboard in Resources */,
+				656BAEF52EE961F900714682 /* AccessibilityPopover.html in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -341,8 +343,6 @@
 				);
 				MACOSX_DEPLOYMENT_TARGET = 12;
 				MARKETING_VERSION = 1.4.2;
-				OTHER_CFLAGS = "\"-Fsystem /System/Library/PrivateFrameworks\"";
-				OTHER_LDFLAGS = "\"-Fsystem /System/Library/PrivateFrameworks\"";
 				PRODUCT_BUNDLE_IDENTIFIER = com.socuul.macdial;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
@@ -354,7 +354,10 @@
 				RUNTIME_EXCEPTION_DISABLE_LIBRARY_VALIDATION = NO;
 				SWIFT_OBJC_BRIDGING_HEADER = "$(SRCROOT)/Code/$(SWIFT_MODULE_NAME)-Bridging-Header.h";
 				SWIFT_VERSION = 5.0;
-				SYSTEM_FRAMEWORK_SEARCH_PATHS = "$(inherited)";
+				SYSTEM_FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(SYSTEM_LIBRARY_DIR)/PrivateFrameworks",
+				);
 			};
 			name = Debug;
 		};
@@ -391,8 +394,6 @@
 				);
 				MACOSX_DEPLOYMENT_TARGET = 12;
 				MARKETING_VERSION = 1.4.2;
-				OTHER_CFLAGS = "\"-Fsystem /System/Library/PrivateFrameworks\"";
-				OTHER_LDFLAGS = "\"-Fsystem /System/Library/PrivateFrameworks\"";
 				PRODUCT_BUNDLE_IDENTIFIER = com.socuul.macdial;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "(Developer ID) Mac Dial Status Bar Item";
@@ -405,7 +406,10 @@
 				RUNTIME_EXCEPTION_DISABLE_LIBRARY_VALIDATION = NO;
 				SWIFT_OBJC_BRIDGING_HEADER = "$(SRCROOT)/Code/$(SWIFT_MODULE_NAME)-Bridging-Header.h";
 				SWIFT_VERSION = 5.0;
-				SYSTEM_FRAMEWORK_SEARCH_PATHS = "$(inherited)";
+				SYSTEM_FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(SYSTEM_LIBRARY_DIR)/PrivateFrameworks",
+				);
 			};
 			name = Release;
 		};

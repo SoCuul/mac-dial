@@ -48,7 +48,10 @@
 "dial.connected" = "Surface Dial SN: %@";
 "dial.disconnected" = "Not Connected to Dial";
 
-"dialog.accessibilityTitle" = "Permissions needed";
-"dialog.accessibilityDescription" = "MacDial needs Accessibility permissions to work properly. In the next dialog you will be asked to open the Settings app to enable the permissions.\n\nDue to an issue in macOS, if you're upgrading from an earlier version of MacDial you might have to remove MacDial from the accessibility permissions and then restart the app to re-add the permissions.";
-
 "customSensitivity.display" = "Sensitivity: %ld/1000";
+
+"accessibilityDialog.title" = "Permissions needed";
+"accessibilityDialog.description" = "MacDial needs Accessibility permissions to work properly. In the next dialog you will be asked to open the Settings app to enable the permissions.\n\nIf you keep seeing this message, click the help icon for assistance.\nComplete the actions shown in the help popup before clicking OK.";
+
+"accessibilityDialogPopover.header" = "How to Reset Accessibility Permissions";
+"accessibilityDialogPopover.settingsButton" = "Open Accessibility Settings";

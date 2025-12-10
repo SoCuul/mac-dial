@@ -165,7 +165,7 @@ class AppController: NSObject, NSMenuDelegate {
         )
         
         // TODO: REENABLE THIS DO NOT LEAVE IT DISABLED
-        //requestPermissions()
+        requestPermissions()
     }
     
     func menuWillOpen(_ menu: NSMenu) {
@@ -565,10 +565,10 @@ class AppController: NSObject, NSMenuDelegate {
             let alert = NSAlert()
             alert.delegate = alertDelegate
             alert.showsHelp = true
-            alert.messageText = NSLocalizedString("dialog.accessibilityTitle", comment: "")
+            alert.messageText = NSLocalizedString("accessibilityDialog.title", comment: "")
             alert.alertStyle = NSAlert.Style.informational
             alert.icon = NSImage(systemSymbolName:"accessibility", accessibilityDescription: "Accessibility")?.withSymbolConfiguration(iconConfig)
-            alert.informativeText = NSLocalizedString("dialog.accessibilityDescription", comment: "")
+            alert.informativeText = NSLocalizedString("accessibilityDialog.description", comment: "")
             alert.runModal()
         }
         
@@ -592,8 +592,7 @@ class AccessibilityAlertDelegate : NSObject, NSAlertDelegate {
 
         let popover = NSPopover()
         popover.behavior = .transient
-        popover.contentSize = NSSize(width: 280, height: 160)
-        popover.contentViewController = AccessibilityPopoverViewController()
+        popover.contentViewController = AccessibilityPopoverView()
 
         popover.show(relativeTo: helpButton.bounds, of: helpButton, preferredEdge: .maxX)
         
