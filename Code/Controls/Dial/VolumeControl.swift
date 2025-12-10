@@ -16,12 +16,6 @@
 import AppKit
 
 class DialVolumeControl: DeviceControl {
-    let changeIncrements: [WheelSensitivity: Float] = [
-        .low: 0.005,
-        .medium: 0.01,
-        .high: 0.0625 // Key volume key up/down amount
-    ]
-
     func buttonPress(_ dial: Dial) {
     }
 
@@ -29,30 +23,49 @@ class DialVolumeControl: DeviceControl {
     }
 
     func rotationChanged(_ dial: Dial, _ rotation: RotationState) -> Bool {
-        guard var currentVolume = Sound.volume() else { return false }
+        // .high = Volume key up/down amount
+        let changeIncrements: [WheelSensitivity: Float] = [
+            .low: 0.005,
+            .medium: 0.01,
+            .high: 0.0625,
+            .custom: Float(UserSettings.customSensitivity) / 5000
+        ]
         
+        guard let previousLevel = Sound.volume() else { return false }
+        
+        var newLevel = previousLevel
+                
         switch rotation {
             case .stationary:
                 return false
             case .clockwise:
-                currentVolume += changeIncrements[rotation.sensitivity] ?? 0
+                newLevel += changeIncrements[rotation.sensitivity] ?? 0
             case .counterclockwise:
-                currentVolume -= changeIncrements[rotation.sensitivity] ?? 0
+                newLevel -= changeIncrements[rotation.sensitivity] ?? 0
         }
+
+        // Make sure volume doesn't go under 0 or over 1
+        newLevel = ClosedRange(uncheckedBounds: (0, 1))
+            .clamp(previousLevel.roundTo(places: 4))
         
-        Sound.setVolume(currentVolume)
+        Sound.setVolume(newLevel)
         
-        log(tag:"Volume", "\(currentVolume)")
-        
-        if (dial.showOSD) {
-            OSD.show(
-                currentVolume > 0 ? OSD.images.volume : OSD.images.mute,
-                UInt32(currentVolume * 100)
-            )
-        }
-        
-        if (currentVolume <= 0 || currentVolume >= 1) {
-            dial.isHittingBounds = true
+        // Reflect current output volume (changed or not)
+        if let updatedLevel = Sound.volume() {
+            log(tag:"Volume", "\(updatedLevel)")
+            
+            print("Previous level: \(previousLevel)\nNew level: \(newLevel)\nUpdated Level: \(updatedLevel)\nDoesn't equal: \(updatedLevel != previousLevel)")
+            
+//            if ((updatedLevel != previousLevel) && UserSettings.showOSD) {
+//                OSD.show(
+//                    updatedLevel > 0 ? OSD.images.volume : OSD.images.mute,
+//                    UInt32(updatedLevel * 100)
+//                )
+//            }
+            
+            if (updatedLevel <= 0 || updatedLevel >= 1) {
+                dial.isHittingBounds = true
+            }
         }
 
         return true

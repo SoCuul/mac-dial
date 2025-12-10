@@ -23,7 +23,31 @@ private func getValueCode(_ value: Any?) -> String? {
 
 // MARK: - Enum argument commands
 
+@MainActor
 class scriptable_setRotationMode: NSScriptCommand {
+    
+    /// ## AppleScript usage
+    ///```perl
+    ///tell application "MacDial"
+    ///    set status icon rotation mode
+    ///
+    ///    set rotation mode volume
+    ///    delay 2
+    ///    set rotation mode brightness
+    ///    delay 2
+    ///    set rotation mode keyboard
+    ///    delay 2
+    ///    set rotation mode scrolling
+    ///    delay 2
+    ///    set rotation mode none
+    ///    delay 2
+    ///    set rotation mode volume
+    ///    delay 2
+    ///
+    ///    set status icon default
+    ///end tell
+    ///```
+    
     override func performDefaultImplementation() -> Any? {
 
         guard let args = self.evaluatedArguments else { return nil }
@@ -33,6 +57,8 @@ class scriptable_setRotationMode: NSScriptCommand {
         guard let enumValue = args[""] as? Int64 else { return nil }
         
         if let code = getValueCode(enumValue) {
+            log(tag:"Scripting: setRotationMode", "Enum code: \(code)")
+            
             switch (code) {
                 case "MDRv":
                     AppController.shared.setDialMode(mode: .volume)
@@ -54,7 +80,29 @@ class scriptable_setRotationMode: NSScriptCommand {
     }
 }
 
+@MainActor
 class scriptable_setButtonMode: NSScriptCommand {
+    
+    /// ## AppleScript usage
+    ///```perl
+    ///tell application "MacDial"
+    ///    set status icon button mode
+    ///
+    ///    set button mode playback
+    ///    delay 2
+    ///    set button mode mute
+    ///    delay 2
+    ///    set button mode leftClick
+    ///    delay 2
+    ///    set button mode none
+    ///    delay 2
+    ///    set button mode mute
+    ///    delay 2
+    ///
+    ///    set status icon default
+    ///end tell
+    ///```
+    
     override func performDefaultImplementation() -> Any? {
 
         guard let args = self.evaluatedArguments else { return nil }
@@ -64,6 +112,8 @@ class scriptable_setButtonMode: NSScriptCommand {
         guard let enumValue = args[""] as? Int64 else { return nil }
         
         if let code = getValueCode(enumValue) {
+            log(tag:"Scripting: setButtonMode", "Enum code: \(code)")
+            
             switch (code) {
                 case "MDBp":
                     AppController.shared.setButtonMode(mode: .playback)
@@ -83,7 +133,24 @@ class scriptable_setButtonMode: NSScriptCommand {
     }
 }
 
+@MainActor
 class scriptable_setWheelSensitivity: NSScriptCommand {
+    
+    /// ## AppleScript usage
+    ///```perl
+    ///tell application "MacDial"
+    ///    set wheel sensitivity low
+    ///    delay 5
+    ///    set wheel sensitivity medium
+    ///    delay 5
+    ///    set wheel sensitivity high
+    ///    delay 5
+    ///    set wheel sensitivity custom
+    ///    delay 5
+    ///    set wheel sensitivity medium
+    ///end tell
+    ///```
+    
     override func performDefaultImplementation() -> Any? {
 
         guard let args = self.evaluatedArguments else { return nil }
@@ -93,6 +160,8 @@ class scriptable_setWheelSensitivity: NSScriptCommand {
         guard let enumValue = args[""] as? Int64 else { return nil }
         
         if let code = getValueCode(enumValue) {
+            log(tag:"Scripting: setWheelSensitivity", "Enum code: \(code)")
+            
             switch (code) {
                 case "MDSl":
                     AppController.shared.setSensitivity(sensitivity: .low)
@@ -112,7 +181,18 @@ class scriptable_setWheelSensitivity: NSScriptCommand {
     }
 }
 
+@MainActor
 class scriptable_setWheelDirection: NSScriptCommand {
+    
+    /// ## AppleScript usage
+    ///```perl
+    ///tell application "MacDial"
+    ///    set wheel direction counterclockwise
+    ///    delay 5
+    ///    set wheel direction clockwise
+    ///end tell
+    ///```
+    ///
     override func performDefaultImplementation() -> Any? {
 
         guard let args = self.evaluatedArguments else { return nil }
@@ -122,6 +202,8 @@ class scriptable_setWheelDirection: NSScriptCommand {
         guard let enumValue = args[""] as? Int64 else { return nil }
         
         if let code = getValueCode(enumValue) {
+            log(tag:"Scripting: setWheelDirection", "Enum code: \(code)")
+            
             switch (code) {
                 case "MDDr":
                     AppController.shared.setDirection(direction: .clockwise)
@@ -137,7 +219,20 @@ class scriptable_setWheelDirection: NSScriptCommand {
     }
 }
 
+@MainActor
 class scriptable_setStatusIcon: NSScriptCommand {
+    
+    /// ## AppleScript usage
+    ///```perl
+    ///tell application "MacDial"
+    ///    set status icon rotation mode
+    ///    delay 2
+    ///    set status icon button mode
+    ///    delay 2
+    ///    set status icon default
+    ///end tell
+    ///```
+    
     override func performDefaultImplementation() -> Any? {
 
         guard let args = self.evaluatedArguments else { return nil }
@@ -164,10 +259,49 @@ class scriptable_setStatusIcon: NSScriptCommand {
     }
 }
 
+// MARK: - Integer argument commands
+
+@MainActor
+class scriptable_setCustomSensitivity: NSScriptCommand {
+    
+    /// ## AppleScript usage
+    ///```perl
+    ///tell application "MacDial"
+    ///    set custom sensitivity 1000
+    ///    delay 5
+    ///    set custom sensitivity 500
+    ///end tell
+    ///```
+    
+    override func performDefaultImplementation() -> Any? {
+
+        guard let args = self.evaluatedArguments else { return nil }
+        
+        log(tag:"Scripting: setCustomSensitivity", "Received args: \(args)")
+        
+        if let value = args[""] as? Int {
+            AppController.shared.customSensitivity?.value = value
+        }
+        
+        return nil
+        
+    }
+}
 
 // MARK: - Bool argument commands
 
+@MainActor
 class scriptable_setHaptics: NSScriptCommand {
+    
+    /// ## AppleScript usage
+    ///```perl
+    ///tell application "MacDial"
+    ///    set haptics false
+    ///    delay 5
+    ///    set haptics true
+    ///end tell
+    ///```
+    
     override func performDefaultImplementation() -> Any? {
 
         guard let args = self.evaluatedArguments else { return nil }
@@ -183,7 +317,18 @@ class scriptable_setHaptics: NSScriptCommand {
     }
 }
 
+@MainActor
 class scriptable_setKeepDialAwake: NSScriptCommand {
+    
+    /// ## AppleScript usage
+    ///```perl
+    ///tell application "MacDial"
+    ///    set keep dial awake false
+    ///    delay 5
+    ///    set keep dial awake true
+    ///end tell
+    ///```
+    
     override func performDefaultImplementation() -> Any? {
 
         guard let args = self.evaluatedArguments else { return nil }
@@ -199,7 +344,18 @@ class scriptable_setKeepDialAwake: NSScriptCommand {
     }
 }
 
+@MainActor
 class scriptable_setShowOsd: NSScriptCommand {
+    
+    /// ## AppleScript usage
+    ///```perl
+    ///tell application "MacDial"
+    ///    set show osd false
+    ///    delay 5
+    ///    set show osd true
+    ///end tell
+    ///```
+    
     override func performDefaultImplementation() -> Any? {
 
         guard let args = self.evaluatedArguments else { return nil }
@@ -211,6 +367,66 @@ class scriptable_setShowOsd: NSScriptCommand {
         }
         
         return nil
+        
+    }
+}
+
+// MARK: - Multiple boolean argument commands
+@MainActor
+class scriptable_setKeyScrollModifiers: NSScriptCommand {
+    
+    /// ## AppleScript usage
+    ///```perl
+    ///tell application "MacDial"
+    ///    set rotation mode scrolling
+    ///
+    ///    set key scroll modifiers with shift without command, option and control
+    ///    delay 5
+    ///    set key scroll modifiers with command without shift, option and control
+    ///    delay 5
+    ///    set key scroll modifiers with option without shift, command and control
+    ///    delay 5
+    ///    set key scroll modifiers with control without shift, command and option
+    ///    delay 5
+    ///    set key scroll modifiers without shift, command, option and control
+    ///    delay 5
+    ///    set key scroll modifiers with shift, command, option and control
+    ///    delay 5
+    ///    set key scroll modifiers without shift, command, option and control
+    ///    delay 5
+    ///
+    ///    set rotation mode volume
+    ///end tell
+    ///```
+    
+    override func performDefaultImplementation() -> Any? {
+
+        guard let args = self.evaluatedArguments else { return nil }
+        
+        log(tag:"Scripting: setKeyScrollModifiers", "Received args: \(args)")
+        
+        var modifiers: [String: Bool] = [:]
+        
+        // Iterate over AppleScript returned arguments
+        for (key, value) in args {
+            if let b = value as? Bool {
+                modifiers[key] = b
+            }
+        }
+        
+        AppController.shared.setKeyScrollModifiers(
+            shift: modifiers["shift"],
+            command: modifiers["command"],
+            option: modifiers["option"],
+            control: modifiers["control"]
+        )
+        
+        return [
+            "shift": UserSettings.keyScrollModifiers.shift,
+            "command": UserSettings.keyScrollModifiers.command,
+            "option": UserSettings.keyScrollModifiers.option,
+            "control": UserSettings.keyScrollModifiers.control
+        ]
         
     }
 }

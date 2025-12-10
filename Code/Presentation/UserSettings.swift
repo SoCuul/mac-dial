@@ -84,7 +84,7 @@ class UserSettings {
     @FromUserDefaults(key: .sensitivity, defaultValue: WheelSensitivity.medium.rawValue)
     static private var sensitivitySetting: Double
     
-    @FromUserDefaults(key: .customSensitivity, defaultValue: 50)
+    @FromUserDefaults(key: .customSensitivity, defaultValue: 500)
     static private var customSensitivitySetting: Int
 
     @FromUserDefaults(key: .hapticFeedback, defaultValue: true)
@@ -134,18 +134,34 @@ class UserSettings {
         get { UserSettings.StatusIconMode(rawValue: UserSettings.statusIconSetting) ?? .default }
         set { UserSettings.statusIconSetting = newValue.rawValue }
     }
+    
+    static var customSensitivity: Int {
+        get { UserSettings.customSensitivitySetting }
+        set {
+            switch newValue {
+                case ..<1:
+                    UserSettings.customSensitivitySetting = 1
+                case 1...1000:
+                    UserSettings.customSensitivitySetting = newValue
+                case 1001...:
+                    UserSettings.customSensitivitySetting = 1000
+                default:
+                    break
+            }
+        }
+    }
 
-    static var isHapticFeedbackEnabled: Bool {
+    static var hapticsEnabled: Bool {
         get { UserSettings.isHapticFeedbackEnabledSetting }
         set { UserSettings.isHapticFeedbackEnabledSetting = newValue }
     }
     
-    static var shouldKeepDialAwake: Bool {
+    static var keepDialAwake: Bool {
         get { UserSettings.shouldKeepDialAwakeSetting }
         set { UserSettings.shouldKeepDialAwakeSetting = newValue }
     }
     
-    static var isShowOSDEnabled: Bool {
+    static var showOSD: Bool {
         get { UserSettings.isShowOSDEnabledSetting }
         set { UserSettings.isShowOSDEnabledSetting = newValue }
     }

@@ -13,12 +13,6 @@
 import AppKit
 
 class DialBrightnessControl: DeviceControl {
-    private let changeIncrements: [WheelSensitivity: Float] = [
-        .low: 0.005,
-        .medium: 0.01,
-        .high: 0.0625 // Brightness key up/down amount
-    ]
-
     func buttonPress(_ dial: Dial) {
     }
 
@@ -26,27 +20,43 @@ class DialBrightnessControl: DeviceControl {
     }
 
     func rotationChanged(_ dial: Dial, _ rotation: RotationState) -> Bool {
-        var currentBrightness = Brightness.display
+        // .high = Brightness key up/down amount
+        let changeIncrements: [WheelSensitivity: Float] = [
+            .low: 0.005,
+            .medium: 0.01,
+            .high: 0.0625,
+            .custom: Float(UserSettings.customSensitivity) / 5000
+        ]
+        
+        let previousLevel = Brightness.display
+        
+        var newLevel = previousLevel
         
         switch rotation {
             case .stationary:
                 return false
             case .clockwise:
-                currentBrightness += changeIncrements[rotation.sensitivity] ?? 0
+                newLevel += changeIncrements[rotation.sensitivity] ?? 0
             case .counterclockwise:
-                currentBrightness -= changeIncrements[rotation.sensitivity] ?? 0
+                newLevel -= changeIncrements[rotation.sensitivity] ?? 0
         }
         
-        Brightness.display = currentBrightness
-        currentBrightness = Brightness.display
+        // Make sure brightness doesn't go under 0 or over 1
+        newLevel = ClosedRange(uncheckedBounds: (0, 1))
+            .clamp(previousLevel.roundTo(places: 4))
         
-        log(tag:"Display Brightness", "\(currentBrightness)")
+        Brightness.display = newLevel
         
-        if (dial.showOSD) {
-            OSD.show(OSD.images.brightness, UInt32(currentBrightness * 100))
+        // Reflect current display brightness (changed or not)
+        let updatedLevel = Brightness.display
+        
+        log(tag:"Display Brightness", "\(updatedLevel)")
+        
+        if (UserSettings.showOSD) {
+            OSD.show(OSD.images.brightness, UInt32(updatedLevel * 100))
         }
         
-        if (currentBrightness <= 0 || currentBrightness >= 1) {
+        if (updatedLevel <= 0 || updatedLevel >= 1) {
             dial.isHittingBounds = true
         }
 

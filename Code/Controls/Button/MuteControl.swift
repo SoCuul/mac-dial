@@ -31,7 +31,7 @@ class ButtonMuteControl: DeviceControl {
         
         log(tag:"Mute", "\(isMuted)")
         
-        if (dial.showOSD) {
+        if (UserSettings.showOSD) {
             if let currentVolume = Sound.volume() {
                 OSD.show(
                     isMuted ? OSD.images.mute : OSD.images.volume,

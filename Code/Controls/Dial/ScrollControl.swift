@@ -16,13 +16,6 @@
 import AppKit
 
 class DialScrollControl: DeviceControl {
-    // Distance to scroll (in pixels)
-    private let changeIncrements: [WheelSensitivity: Int] = [
-        .low: 1,
-        .medium: 40,
-        .high: 80
-    ]
-
     func buttonPress(_ dial: Dial) {
     }
 
@@ -30,6 +23,14 @@ class DialScrollControl: DeviceControl {
     }
 
     func rotationChanged(_ dial: Dial, _ rotation: RotationState) -> Bool {
+        // Distance to scroll (in pixels)
+        let changeIncrements: [WheelSensitivity: Int] = [
+            .low: 1,
+            .medium: 40,
+            .high: 80,
+            .custom: UserSettings.customSensitivity
+        ]
+        
         var wheel1: Int
         switch rotation {
             case .stationary:

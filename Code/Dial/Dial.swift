@@ -13,30 +13,6 @@
 import Foundation
 
 class Dial {
-    // MARK: - Persistent state
-
-    var wheelSensitivity: WheelSensitivity {
-        get { device.wheelSensitivity }
-        set { device.wheelSensitivity = newValue }
-    }
-
-    var wheelDirection: WheelDirection {
-        get { device.wheelDirection }
-        set { device.wheelDirection = newValue }
-    }
-
-    var isHapticFeedbackEnabled: Bool {
-        get { device.isHapticFeedbackEnabled }
-        set { device.isHapticFeedbackEnabled = newValue }
-    }
-    
-    var shouldKeepDialAwake: Bool {
-        get { device.shouldKeepDialAwake }
-        set { device.shouldKeepDialAwake = newValue }
-    }
-    
-    var showOSD: Bool = true
-    
     // MARK: - Temporary state
     
     var controls: [DeviceControl] = []

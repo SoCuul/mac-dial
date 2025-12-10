@@ -15,7 +15,7 @@ tell application "System Events"
             
             if exists slider 1 of firstSplitter then
                 
-                -perform action "AXIncrement" of slider 1 of firstSplitter
+                perform action "AXIncrement" of slider 1 of firstSplitter
                 --perform action "AXDecrement" of slider 1 of firstSplitter
                 
                 return true

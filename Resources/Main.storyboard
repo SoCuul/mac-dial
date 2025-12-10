@@ -142,7 +142,7 @@
                             <modifierMask key="keyEquivalentModifierMask"/>
                             <menu key="submenu" title="Key/Scroll Modifiers" id="DVA-0e-asg">
                                 <items>
-                                    <menuItem title="Shift ⇧" id="maD-G7-YDZ">
+                                    <menuItem title="Shift (⇧)" id="maD-G7-YDZ">
                                         <modifierMask key="keyEquivalentModifierMask"/>
                                         <connections>
                                             <action selector="keyScrollModifierSelectWithItem:" target="gIN-nu-Pip" id="lb6-Ow-FSi"/>

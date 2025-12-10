@@ -12,7 +12,8 @@
 
 import AppKit
 
-class AppController: NSObject, NSMenuDelegate, CustomSensitivityDelegate {
+@MainActor
+class AppController: NSObject, NSMenuDelegate {
     // MARK: - @IBOutlet
     @IBOutlet private var statusMenu: NSMenu!
     
@@ -69,10 +70,8 @@ class AppController: NSObject, NSMenuDelegate, CustomSensitivityDelegate {
     private var dialControl: DeviceControl?
     private var buttonControl: DeviceControl?
     
-    private var customSensitivityView: CustomSensitivityView?
-    
     // Dynamic menu items
-    @objc dynamic var accessibilityPermissionsGranted = false
+    @objc dynamic private var accessibilityPermissionsGranted = false
     
     override init() {
         statusItem = NSStatusBar.system.statusItem(withLength: NSStatusItem.variableLength)
@@ -84,7 +83,10 @@ class AppController: NSObject, NSMenuDelegate, CustomSensitivityDelegate {
         dial = Dial(connectionHandler: connected, disconnectionHandler: disconnected)
     }
     
-    static var shared: AppController!
+    // Public
+    static public var shared: AppController!
+    
+    public var customSensitivity: CustomSensitivityView?
     
     // MARK: - Nib & menu delegate setup
 
@@ -143,24 +145,24 @@ class AppController: NSObject, NSMenuDelegate, CustomSensitivityDelegate {
         menuQuit.title = NSLocalizedString("menu.quit", comment: "")
         
         // Custom sensitivity view
-        self.customSensitivityView = CustomSensitivityView()
-        menuSensitivityCustomSubitem.view = self.customSensitivityView?.view
+        self.customSensitivity = CustomSensitivityView()
+        menuSensitivityCustomSubitem.view = self.customSensitivity?.view
         
         // Menu state init
         setDialMode(mode: UserSettings.dialMode)
         setButtonMode(mode: UserSettings.buttonMode)
         setSensitivity(sensitivity: UserSettings.sensitivity)
         setDirection(direction: UserSettings.wheelDirection)
-        setHaptics(enabled: UserSettings.isHapticFeedbackEnabled)
-        setKeepDialAwake(enabled: UserSettings.shouldKeepDialAwake)
-        setShowOSD(enabled: UserSettings.isShowOSDEnabled)
+        setHaptics(enabled: UserSettings.hapticsEnabled)
+        setKeepDialAwake(enabled: UserSettings.keepDialAwake)
+        setShowOSD(enabled: UserSettings.showOSD)
         setStatusIcon(icon: UserSettings.statusIcon)
-        
-        // Menu key scroll modifiers
-        menuKeyScrollModifierShift.stateBool = UserSettings.keyScrollModifiers.shift
-        menuKeyScrollModifierCommand.stateBool = UserSettings.keyScrollModifiers.command
-        menuKeyScrollModifierOption.stateBool = UserSettings.keyScrollModifiers.option
-        menuKeyScrollModifierControl.stateBool = UserSettings.keyScrollModifiers.control
+        setKeyScrollModifiers(
+            shift: UserSettings.keyScrollModifiers.shift,
+            command: UserSettings.keyScrollModifiers.command,
+            option: UserSettings.keyScrollModifiers.option,
+            control: UserSettings.keyScrollModifiers.control
+        )
         
         // TODO: REENABLE THIS DO NOT LEAVE IT DISABLED
         //requestPermissions()
@@ -267,20 +269,16 @@ class AppController: NSObject, NSMenuDelegate, CustomSensitivityDelegate {
     private func keyScrollModifierSelect(item: NSMenuItem) {
         switch item.identifier {
             case menuKeyScrollModifierShift.identifier:
-                UserSettings.keyScrollModifiers.shift = !UserSettings.keyScrollModifiers.shift
-                item.stateBool = UserSettings.keyScrollModifiers.shift
+                setKeyScrollModifiers(shift: !UserSettings.keyScrollModifiers.shift, command: nil, option: nil, control: nil)
                 
             case menuKeyScrollModifierCommand.identifier:
-                UserSettings.keyScrollModifiers.command = !UserSettings.keyScrollModifiers.command
-                item.stateBool = UserSettings.keyScrollModifiers.command
+                setKeyScrollModifiers(shift: nil, command: !UserSettings.keyScrollModifiers.command, option: nil, control: nil)
                 
             case menuKeyScrollModifierOption.identifier:
-                UserSettings.keyScrollModifiers.option = !UserSettings.keyScrollModifiers.option
-                item.stateBool = UserSettings.keyScrollModifiers.option
+                setKeyScrollModifiers(shift: nil, command: nil, option: !UserSettings.keyScrollModifiers.option, control: nil)
                 
             case menuKeyScrollModifierControl.identifier:
-                UserSettings.keyScrollModifiers.control = !UserSettings.keyScrollModifiers.control
-                item.stateBool = UserSettings.keyScrollModifiers.control
+                setKeyScrollModifiers(shift: nil, command: nil, option: nil, control: !UserSettings.keyScrollModifiers.control)
                 
             default:
                 break
@@ -299,19 +297,15 @@ class AppController: NSObject, NSMenuDelegate, CustomSensitivityDelegate {
         switch item.identifier {
             case menuSensitivityLow.identifier:
                 item.state = .on
-                dial?.wheelSensitivity = .low
                 UserSettings.sensitivity = .low
             case menuSensitivityMedium.identifier:
                 item.state = .on
-                dial?.wheelSensitivity = .medium
                 UserSettings.sensitivity = .medium
             case menuSensitivityHigh.identifier:
                 item.state = .on
-                dial?.wheelSensitivity = .high
                 UserSettings.sensitivity = .high
             case menuSensitivityCustom.identifier:
                 item.state = .on
-                dial?.wheelSensitivity = .custom
                 UserSettings.sensitivity = .custom
             default:
                 break
@@ -326,11 +320,9 @@ class AppController: NSObject, NSMenuDelegate, CustomSensitivityDelegate {
         switch item.identifier {
             case menuWheelDirectionCW.identifier:
                 menuWheelDirectionCW.state = .on
-                dial?.wheelDirection = .clockwise
                 UserSettings.wheelDirection = .clockwise
             case menuWheelDirectionCCW.identifier:
                 menuWheelDirectionCCW.state = .on
-                dial?.wheelDirection = .counterclockwise
                 UserSettings.wheelDirection = .counterclockwise
             default:
                 break
@@ -339,19 +331,19 @@ class AppController: NSObject, NSMenuDelegate, CustomSensitivityDelegate {
     
     @IBAction
     private func hapticFeedbackSelect(_: NSMenuItem) {
-        updateHapticFeedbackSetting(enabled: !UserSettings.isHapticFeedbackEnabled)
+        updateHapticFeedbackSetting(enabled: !UserSettings.hapticsEnabled)
     }
     
     // Menu Separator //
     
     @IBAction
     private func keepDialAwakeSelect(_: NSMenuItem) {
-        updateKeepDialAwakeSetting(enabled: !UserSettings.shouldKeepDialAwake)
+        updateKeepDialAwakeSetting(enabled: !UserSettings.keepDialAwake)
     }
     
     @IBAction
     private func showOSDSelect(_: NSMenuItem) {
-        updateShowOSDSetting(enabled: !UserSettings.isShowOSDEnabled)
+        updateShowOSDSetting(enabled: !UserSettings.showOSD)
     }
     
     @IBAction
@@ -384,13 +376,6 @@ class AppController: NSObject, NSMenuDelegate, CustomSensitivityDelegate {
     private func quitTap(_ item: NSMenuItem) {
         NSApplication.shared.terminate(self)
     }
-    
-    
-    // MARK: - Custom sensitivity delegate
-    
-    func customSensitivityValueDidChange() {
-        
-    }
 
     
     // MARK: - Public setters
@@ -421,6 +406,29 @@ class AppController: NSObject, NSMenuDelegate, CustomSensitivityDelegate {
             case .mute:
                 buttonModeSelect(item: menuButtonControlModeMute)
         }
+    }
+    
+    public func setKeyScrollModifiers(shift: Bool?, command: Bool?, option: Bool?, control: Bool?) {
+        if let shift {
+            UserSettings.keyScrollModifiers.shift = shift
+            menuKeyScrollModifierShift.stateBool = shift
+        }
+        
+        if let command {
+            UserSettings.keyScrollModifiers.command = command
+            menuKeyScrollModifierCommand.stateBool = command
+        }
+        
+        if let option {
+            UserSettings.keyScrollModifiers.option = option
+            menuKeyScrollModifierOption.stateBool = option
+        }
+        
+        if let control {
+            UserSettings.keyScrollModifiers.control = control
+            menuKeyScrollModifierControl.stateBool = control
+        }
+        
     }
     
     public func setSensitivity(sensitivity: UserSettings.WheelSensitivity) {
@@ -487,14 +495,12 @@ class AppController: NSObject, NSMenuDelegate, CustomSensitivityDelegate {
     // MARK: - Helper
     
     private func updateHapticFeedbackSetting(enabled: Bool) {
-        UserSettings.isHapticFeedbackEnabled = enabled
-        dial?.isHapticFeedbackEnabled = enabled
+        UserSettings.hapticsEnabled = enabled
         hapticFeedback.state = enabled ? .on : .off
     }
     
     private func updateKeepDialAwakeSetting(enabled: Bool) {
-        UserSettings.shouldKeepDialAwake = enabled
-        dial?.shouldKeepDialAwake = enabled
+        UserSettings.keepDialAwake = enabled
         keepDialAwake.state = enabled ? .on : .off
         
         // Trigger empty haptic when updating menu option
@@ -502,20 +508,26 @@ class AppController: NSObject, NSMenuDelegate, CustomSensitivityDelegate {
     }
     
     private func updateShowOSDSetting(enabled: Bool) {
-        UserSettings.isShowOSDEnabled = enabled
-        dial?.showOSD = enabled
+        UserSettings.showOSD = enabled
         showOSD.state = enabled ? .on : .off
     }
     
     private func updateMenuBarItemImage(from: NSMenuItem?) {
         guard let from else { return }
         
-        // TODO: it seems that when a rotation/button mode is selected to show in menu bar icon, it shrinks the icon slighly in the menu item dropdown where its selected and in the menu bar itself
+        // Copy image data, to not resize original icon shown in NSMenu dropdown
+        let selectedImage = NSImage(
+            cgImage: (
+                from.image?.cgImage(forProposedRect:nil, context:nil, hints:nil)
+                ?? NSImage(named: "menuicon-dial")?.cgImage(forProposedRect: nil, context: nil, hints: nil)
+            )!,
+            size: .init(width: 16, height: 16),
+        )
+        selectedImage.isTemplate = true
         
-        let selectedImage = from.image ?? NSImage(named: "menuicon-dial")
         statusItem.button?.image = selectedImage
-        statusItem.button?.image?.size = .init(width: 16, height: 16)
         statusItem.button?.imagePosition = .imageLeft
+        
         updateMenuBarTooltip()
     }
     
@@ -567,12 +579,23 @@ class AppController: NSObject, NSMenuDelegate, CustomSensitivityDelegate {
 }
 
 class AccessibilityAlertDelegate : NSObject, NSAlertDelegate {
+    
     func alertShowHelp(_ alert: NSAlert) -> Bool {
-        // TODO: add a proper page or smtn to show how to remove app from accessibility
-        
-        if let helpUrl = URL(string: "https://stackoverflow.com/questions/29006379/accessibility-permissions-reset-after-application-update") {
-            NSWorkspace().open(helpUrl)
+        let window = alert.window
+
+        guard let helpButton = window.contentView?
+            .subviews
+            .compactMap({ $0 as? NSButton })
+            .first(where: { $0.bezelStyle == .helpButton }) else {
+            return false
         }
+
+        let popover = NSPopover()
+        popover.behavior = .transient
+        popover.contentSize = NSSize(width: 280, height: 160)
+        popover.contentViewController = AccessibilityPopoverViewController()
+
+        popover.show(relativeTo: helpButton.bounds, of: helpButton, preferredEdge: .maxX)
         
         return true
     }

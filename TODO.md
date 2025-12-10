@@ -3,8 +3,25 @@
     - [ ] Ensure same default value in all places
     - [ ] Ensure battery life is not being drained
 
-- [ ] Fix status bar icon being shrunk when selected in rotation/button mode
-- [ ] Finish custom sensitivity setting
-    - [ ] Add custom sensitivity support to controls
-    - [ ] Allow setting custom sensitivity through AppleScript
-    - [ ] Auto-select custom option when setting custom sensitivity
+- [ ] Finish accessibility prompt
+    - [ ] Re-enable prompt on app open
+    - [ ] Add link (or something else) to show how to re-add the app, on click of the help button in the dialog
+
+- [ ] Add left-right & up-down arrow key mode
+
+- [ ] Create new app logo
+
+- [ ] (Maybe) Create color picker control (through the use of GUI scripting)
+
+- [ ] (Maybe) Create .help bundle for MacDial
+
+
+---
+
+
+# Done
+- [x] Add ability to set key/scroll modifiers through AppleScript
+- [x] Finish custom sensitivity setting
+    - [x] Add custom sensitivity support to controls
+    - [x] Allow setting custom sensitivity through AppleScript
+    - [x] Auto-select custom option when setting custom sensitivity

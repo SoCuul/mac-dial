@@ -19,9 +19,6 @@ private let _dialProductId: UInt16 = 0x091B
 private var _connectedSerialNumbers: [String] = []
 private var _setDevicePointerHandler: (IOHIDDevice, String) -> Void = { _, _ in }
 
-private var _wheelSensitivity: WheelSensitivity = .medium
-private var _wheelDirection: WheelDirection = .clockwise
-
 private var _buttonHandler: (ButtonState) -> Void = { _ in }
 private var _rotationHandler: (RotationState) -> Bool = { _ in false }
 private var _connectionHandler: (_ serialNumber: String) -> Void = { _ in }
@@ -33,22 +30,6 @@ private var _queue: IOHIDQueue?
 private var _hapticsElementManualTrigger: IOHIDElement?
 
 class DialDevice {
-    // MARK: - Persistent state
-    
-    var wheelSensitivity: WheelSensitivity {
-        get { _wheelSensitivity }
-        set { _wheelSensitivity = newValue }
-    }
-
-    var wheelDirection: WheelDirection {
-        get { _wheelDirection }
-        set { _wheelDirection = newValue }
-    }
-
-    var isHapticFeedbackEnabled: Bool = false
-    
-    var shouldKeepDialAwake: Bool = false
-    
     // MARK: - Temporary state
     
     var isHittingBounds: Bool = false
@@ -186,14 +167,14 @@ class DialDevice {
                         case 0:
                             needHaptics = _rotationHandler(.stationary)
                         case 1:
-                            let direction: RotationState = _wheelDirection == .clockwise
-                                ? .clockwise(_wheelSensitivity)
-                                : .counterclockwise(_wheelSensitivity)
+                            let direction: RotationState = UserSettings.wheelDirection == .clockwise
+                                ? .clockwise(UserSettings.sensitivity)
+                                : .counterclockwise(UserSettings.sensitivity)
                             needHaptics = _rotationHandler(direction)
                         case -1:
-                            let direction: RotationState = _wheelDirection == .clockwise
-                                ? .counterclockwise(_wheelSensitivity)
-                                : .clockwise(_wheelSensitivity)
+                            let direction: RotationState = UserSettings.wheelDirection == .clockwise
+                                ? .counterclockwise(UserSettings.sensitivity)
+                                : .clockwise(UserSettings.sensitivity)
                             needHaptics = _rotationHandler(direction)
                         default:
                             needHaptics = false
@@ -374,10 +355,10 @@ class DialDevice {
     // MARK: Keep device alive
     
     /// The Surface Dial has a timeout of exactly **5 minutes** of not being used, before disconnecting. \
-    /// Sending empty haptic feedback to the dial every **285 seconds (4m45s)** keeps it connected.
+    /// Sending empty haptic feedback to the dial every **270 seconds (4m30s)** keeps it connected, any longer causes accidental disconnects.
     private func setupKeepAlive() {
         keepAliveTimer = DispatchSource.makeTimerSource(queue: .global())
-        keepAliveTimer?.schedule(deadline: .now() + 5, repeating: 285)
+        keepAliveTimer?.schedule(deadline: .now() + 5, repeating: 270)
         keepAliveTimer?.setEventHandler { [weak self] in
             self?.sendKeepAlive()
         }
@@ -392,7 +373,7 @@ class DialDevice {
     
     /// Sends empty haptic feedback to the dial to keep it connected
     public func sendKeepAlive() {
-        if isConnected && shouldKeepDialAwake {
+        if isConnected && UserSettings.keepDialAwake {
             log(tag:"Device", "sending keep alive haptic")
             
             sendHaptic(pattern: .none)
@@ -411,7 +392,7 @@ class DialDevice {
     }
 
     public func sendHaptic(pattern haptic: DeviceHaptic) {
-        guard isHapticFeedbackEnabled, let dialDevice, let _hapticsElementManualTrigger else { return }
+        guard UserSettings.hapticsEnabled, let dialDevice, let _hapticsElementManualTrigger else { return }
 
         // log(tag: "Device", "haptics tapping...")
 

@@ -43,49 +43,67 @@
         <!-- ==================================================================================================================== -->
         
         <command name="set rotation mode" code="MDsetrtm" description="Sets which mode is used for dial rotation.">
-            <direct-parameter name="type" type="rotation mode" optional="no" description="the dial rotation mode">
+            <direct-parameter name="" type="rotation mode" optional="no" description="the dial rotation mode">
             </direct-parameter>
             <cocoa class="MacDial.scriptable_setRotationMode"/>
         </command>
 
         <command name="set button mode" code="MDsetbtm" description="Sets which mode is used for dial press.">
-            <direct-parameter name="type" type="button mode" optional="no" description="the dial button mode">
+            <direct-parameter name="" type="button mode" optional="no" description="the dial button mode">
             </direct-parameter>
             <cocoa class="MacDial.scriptable_setButtonMode"/>
         </command>
 
+        <command name="set key scroll modifiers" code="MDsetksm" description="Sets which modifiers are pressed for key/scroll rotation modes.">
+            <parameter name="shift" code="MDKs" type="boolean" optional="no" description="Shift (⇧)">
+            </parameter>
+            <parameter name="command" code="MDKm" type="boolean" optional="no" description="Command (⌘)">
+            </parameter>
+            <parameter name="option" code="MDKo" type="boolean" optional="no" description="Option/alt (⌥)">
+            </parameter>
+            <parameter name="control" code="MDKc" type="boolean" optional="no" description="Control (⌃)">
+            </parameter>
+            <cocoa class="MacDial.scriptable_setKeyScrollModifiers"/>
+        </command>
+
         <command name="set wheel sensitivity" code="MDsetwhs" description="Sets the sensitivity of the dial rotation.">
-            <direct-parameter name="type" type="wheel sensitivity" optional="no" description="the dial rotation sensitivity">
+            <direct-parameter name="" type="wheel sensitivity" optional="no" description="the dial rotation sensitivity">
             </direct-parameter>
             <cocoa class="MacDial.scriptable_setWheelSensitivity"/>
         </command>
 
+        <command name="set custom sensitivity" code="MDsetcus" description="Sets the custom sensitivity level for dial rotation.">
+            <direct-parameter name="" type="integer" optional="no" description="the custom sensitivity level">
+            </direct-parameter>
+            <cocoa class="MacDial.scriptable_setCustomSensitivity"/>
+        </command>
+
         <command name="set wheel direction" code="MDsetwhd" description="Sets the direction of the wheel rotation.">
-            <direct-parameter name="type" type="wheel direction" optional="no" description="the wheel rotation direction">
+            <direct-parameter name="" type="wheel direction" optional="no" description="the wheel rotation direction">
             </direct-parameter>
             <cocoa class="MacDial.scriptable_setWheelDirection"/>
         </command>
 
         <command name="set status icon" code="MDsetsbi" description="Sets the icon mode of the menu bar extra.">
-            <direct-parameter name="enabled" type="status icon" optional="no">
+            <direct-parameter name="" type="status icon" optional="no">
             </direct-parameter>
             <cocoa class="MacDial.scriptable_setStatusIcon"/>
         </command>
 
         <command name="set haptics" code="MDsethap" description="Sets whether rotation haptics are enabled.">
-            <direct-parameter name="enabled" type="boolean" optional="no">
+            <direct-parameter name="" type="boolean" optional="no">
             </direct-parameter>
             <cocoa class="MacDial.scriptable_setHaptics"/>
         </command>
         
         <command name="set keep dial awake" code="MDkawake" description="Sets whether the dial is prevented from automatically sleeping.">
-            <direct-parameter name="enabled" type="boolean" optional="no">
+            <direct-parameter name="" type="boolean" optional="no">
             </direct-parameter>
             <cocoa class="MacDial.scriptable_setKeepDialAwake"/>
         </command>
 
         <command name="set show osd" code="MDsetosd" description="Sets whether changes are displayed on the system OSD.">
-            <direct-parameter name="enabled" type="boolean" optional="no">
+            <direct-parameter name="" type="boolean" optional="no">
             </direct-parameter>
             <cocoa class="MacDial.scriptable_setShowOsd"/>
         </command>
