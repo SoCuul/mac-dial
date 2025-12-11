@@ -10,6 +10,8 @@
             <enumerator name="brightness" code="MDRb" description="Brightness"/>
             <enumerator name="keyboard"   code="MDRk" description="Keyboard"/>
             <enumerator name="scrolling"  code="MDRs" description="Scrolling"/>
+            <enumerator name="leftright"  code="MDRl" description="Keyboard (Left/Right)"/>
+            <enumerator name="updown"     code="MDRu" description="Keyboard (Up/Down)"/>
             <enumerator name="none"       code="MDno" description="None"/>
         </enumeration>
 

@@ -30,8 +30,8 @@ enum RotationState: Equatable {
         }
     }
     
-    var customSensitivity: Int {
-        UserSettings.customSensitivity
+    var customSensitivity: Bool {
+        self.sensitivity == .custom
     }
     
     var isClockwise: Bool {

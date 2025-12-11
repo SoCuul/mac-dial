@@ -25,18 +25,20 @@
                         <outlet property="menuButtonControlModeMute" destination="LSm-Mu-42P" id="lZe-Rx-fkd"/>
                         <outlet property="menuButtonControlModeNone" destination="l8i-as-qMM" id="9aY-Oc-Lkr"/>
                         <outlet property="menuButtonControlModePlayback" destination="I2U-aD-qMg" id="bSw-L0-5rz"/>
-                        <outlet property="menuDialControlMode" destination="8LI-uh-zfA" id="Ffe-T2-bRA"/>
-                        <outlet property="menuDialControlModeBrightness" destination="IO3-RU-FHq" id="h4S-5Q-QXn"/>
-                        <outlet property="menuDialControlModeKeyboard" destination="AOl-K5-pLD" id="hKL-9S-L42"/>
-                        <outlet property="menuDialControlModeNone" destination="OPo-Bq-GO4" id="0dk-I2-qDh"/>
-                        <outlet property="menuDialControlModeScroll" destination="v7h-h5-CmP" id="uVG-cd-CG4"/>
-                        <outlet property="menuDialControlModeVolume" destination="gME-7l-za8" id="LpZ-nM-dTV"/>
                         <outlet property="menuKeyScrollModifierCommand" destination="UW6-lp-JkP" id="qBS-Hg-sNF"/>
                         <outlet property="menuKeyScrollModifierControl" destination="ZLW-Az-7YN" id="zKR-2O-Ps7"/>
                         <outlet property="menuKeyScrollModifierOption" destination="kgp-pn-FQf" id="DFv-qY-wpS"/>
                         <outlet property="menuKeyScrollModifierShift" destination="maD-G7-YDZ" id="nYi-yS-AuZ"/>
                         <outlet property="menuKeyScrollModifiers" destination="alI-kK-XQC" id="a7v-ma-boz"/>
                         <outlet property="menuQuit" destination="O5Z-zk-v4Z" id="bua-Re-Fya"/>
+                        <outlet property="menuRotationControlMode" destination="8LI-uh-zfA" id="ama-Z7-Szm"/>
+                        <outlet property="menuRotationControlModeBrightness" destination="IO3-RU-FHq" id="XfP-Fp-XxH"/>
+                        <outlet property="menuRotationControlModeKeyboard" destination="AOl-K5-pLD" id="LMq-rS-MX0"/>
+                        <outlet property="menuRotationControlModeLeftRight" destination="hRU-nD-LWM" id="sXh-IF-7ck"/>
+                        <outlet property="menuRotationControlModeNone" destination="OPo-Bq-GO4" id="l7x-BE-hYH"/>
+                        <outlet property="menuRotationControlModeScroll" destination="v7h-h5-CmP" id="NVw-8A-4xe"/>
+                        <outlet property="menuRotationControlModeUpDown" destination="O5d-g5-OxQ" id="LK3-ZJ-ZNO"/>
+                        <outlet property="menuRotationControlModeVolume" destination="gME-7l-za8" id="TuY-ad-vtZ"/>
                         <outlet property="menuSensitivity" destination="FER-f3-ImN" id="Rer-iP-HjA"/>
                         <outlet property="menuSensitivityCustom" destination="Hp3-9v-lad" id="ZOg-1M-uFs"/>
                         <outlet property="menuSensitivityCustomSubitem" destination="8ic-wH-OcE" id="9ew-hK-xFu"/>
@@ -78,7 +80,7 @@
                 </application>
                 <menu id="G3k-FC-fVx" userLabel="Status Item Menu">
                     <items>
-                        <menuItem title="Needs accessibility permissions!" id="e44-d1-klT">
+                        <menuItem title="* Needs accessibility permissions!" id="e44-d1-klT">
                             <imageReference key="image" image="accessibility.fill" catalog="system" symbolScale="large" renderingMode="hierarchical">
                                 <hierarchicalColors>
                                     <color white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -97,50 +99,62 @@
                             </connections>
                         </menuItem>
                         <menuItem isSeparatorItem="YES" id="OWX-BO-3GA"/>
-                        <menuItem title="Rotation Mode" id="8LI-uh-zfA">
+                        <menuItem title="* Rotation Mode" id="8LI-uh-zfA">
                             <modifierMask key="keyEquivalentModifierMask"/>
-                            <menu key="submenu" title="Rotation Mode" id="MrT-v4-Wf1">
+                            <menu key="submenu" title="* Rotation Mode" id="MrT-v4-Wf1">
                                 <items>
-                                    <menuItem title="Volume" state="on" image="menuicon-volume" identifier="dial.mode.playback" id="gME-7l-za8">
+                                    <menuItem title="* Volume" image="menuicon-volume" identifier="rotation.volume" id="gME-7l-za8">
                                         <modifierMask key="keyEquivalentModifierMask"/>
                                         <connections>
-                                            <action selector="dialModeSelectWithItem:" target="gIN-nu-Pip" id="jgQ-R5-3KR"/>
+                                            <action selector="rotationModeSelectWithItem:" target="gIN-nu-Pip" id="jgQ-R5-3KR"/>
                                         </connections>
                                     </menuItem>
-                                    <menuItem title="Brightness" image="menuicon-brightness" identifier="dial.mode.brightness" id="IO3-RU-FHq">
+                                    <menuItem title="* Brightness" image="menuicon-brightness" identifier="rotation.brightness" id="IO3-RU-FHq">
                                         <modifierMask key="keyEquivalentModifierMask"/>
                                         <connections>
-                                            <action selector="dialModeSelectWithItem:" target="gIN-nu-Pip" id="QnU-1e-t0R"/>
+                                            <action selector="rotationModeSelectWithItem:" target="gIN-nu-Pip" id="QnU-1e-t0R"/>
                                         </connections>
                                     </menuItem>
-                                    <menuItem title="Keyboard" image="menuicon-keyboard" identifier="dial.mode.keyboard" id="AOl-K5-pLD">
+                                    <menuItem title="* Keyboard" image="menuicon-keyboard" identifier="rotation.keyboard" id="AOl-K5-pLD">
                                         <modifierMask key="keyEquivalentModifierMask"/>
                                         <connections>
-                                            <action selector="dialModeSelectWithItem:" target="gIN-nu-Pip" id="vSd-Fx-nWd"/>
+                                            <action selector="rotationModeSelectWithItem:" target="gIN-nu-Pip" id="vSd-Fx-nWd"/>
                                         </connections>
                                     </menuItem>
                                     <menuItem isSeparatorItem="YES" id="7CL-ej-53L"/>
-                                    <menuItem title="Scroll" image="menuicon-scroll" identifier="dial.mode.scroll" id="v7h-h5-CmP">
+                                    <menuItem title="* Scrolling" image="menuicon-scroll" identifier="rotation.scroll" id="v7h-h5-CmP">
                                         <modifierMask key="keyEquivalentModifierMask"/>
                                         <connections>
-                                            <action selector="dialModeSelectWithItem:" target="gIN-nu-Pip" id="Emp-LZ-yeT"/>
+                                            <action selector="rotationModeSelectWithItem:" target="gIN-nu-Pip" id="Emp-LZ-yeT"/>
+                                        </connections>
+                                    </menuItem>
+                                    <menuItem title="* Keyboard (Left/Right)" image="menuicon-leftright" identifier="rotation.leftright" id="hRU-nD-LWM">
+                                        <modifierMask key="keyEquivalentModifierMask"/>
+                                        <connections>
+                                            <action selector="rotationModeSelectWithItem:" target="gIN-nu-Pip" id="ZLU-vP-tGk"/>
+                                        </connections>
+                                    </menuItem>
+                                    <menuItem title="* Keyboard (Up/Down)" image="menuicon-updown" identifier="rotation.updown" id="O5d-g5-OxQ">
+                                        <modifierMask key="keyEquivalentModifierMask"/>
+                                        <connections>
+                                            <action selector="rotationModeSelectWithItem:" target="gIN-nu-Pip" id="Qbf-t9-zRd"/>
                                         </connections>
                                     </menuItem>
                                     <menuItem isSeparatorItem="YES" id="A4U-aO-SM7"/>
-                                    <menuItem title="None" identifier="dial.mode.none" id="OPo-Bq-GO4">
+                                    <menuItem title="* None" identifier="rotation.none" id="OPo-Bq-GO4">
                                         <modifierMask key="keyEquivalentModifierMask"/>
                                         <connections>
-                                            <action selector="dialModeSelectWithItem:" target="gIN-nu-Pip" id="t7K-tV-ioI"/>
+                                            <action selector="rotationModeSelectWithItem:" target="gIN-nu-Pip" id="t7K-tV-ioI"/>
                                         </connections>
                                     </menuItem>
                                 </items>
                             </menu>
                         </menuItem>
-                        <menuItem title="Key/Scroll Modifiers" hidden="YES" indentationLevel="1" id="alI-kK-XQC">
+                        <menuItem title="* Key/Scroll Modifiers" hidden="YES" indentationLevel="1" id="alI-kK-XQC">
                             <attributedString key="attributedTitle"/>
                             <imageReference key="image" image="button.horizontal.top.press" catalog="system" symbolScale="default"/>
                             <modifierMask key="keyEquivalentModifierMask"/>
-                            <menu key="submenu" title="Key/Scroll Modifiers" id="DVA-0e-asg">
+                            <menu key="submenu" title="* Key/Scroll Modifiers" id="DVA-0e-asg">
                                 <items>
                                     <menuItem title="Shift (⇧)" id="maD-G7-YDZ">
                                         <modifierMask key="keyEquivalentModifierMask"/>
@@ -169,31 +183,31 @@
                                 </items>
                             </menu>
                         </menuItem>
-                        <menuItem title="Button Mode" id="Bi4-hl-Bnf">
+                        <menuItem title="* Button Mode" id="Bi4-hl-Bnf">
                             <modifierMask key="keyEquivalentModifierMask"/>
-                            <menu key="submenu" title="Button Mode" id="RM7-l6-XsX">
+                            <menu key="submenu" title="* Button Mode" id="RM7-l6-XsX">
                                 <items>
-                                    <menuItem title="Playback Control" image="menuicon-playback" identifier="button.mode.playback" id="I2U-aD-qMg">
+                                    <menuItem title="* Playback Control" image="menuicon-playback" identifier="button.playback" id="I2U-aD-qMg">
                                         <attributedString key="attributedTitle"/>
                                         <modifierMask key="keyEquivalentModifierMask"/>
                                         <connections>
                                             <action selector="buttonModeSelectWithItem:" target="gIN-nu-Pip" id="zHS-Iv-v6H"/>
                                         </connections>
                                     </menuItem>
-                                    <menuItem title="Mute" image="menuicon-mute" identifier="button.mode.mute" id="LSm-Mu-42P">
+                                    <menuItem title="* Mute" image="menuicon-mute" identifier="button.mute" id="LSm-Mu-42P">
                                         <modifierMask key="keyEquivalentModifierMask"/>
                                         <connections>
                                             <action selector="buttonModeSelectWithItem:" target="gIN-nu-Pip" id="YAl-sE-wOQ"/>
                                         </connections>
                                     </menuItem>
-                                    <menuItem title="Left Mouse Click" state="on" image="menuicon-leftclick" identifier="button.mode.leftclick" id="swb-eL-lJi">
+                                    <menuItem title="* Left Mouse Click" image="menuicon-leftclick" identifier="button.leftclick" id="swb-eL-lJi">
                                         <modifierMask key="keyEquivalentModifierMask"/>
                                         <connections>
                                             <action selector="buttonModeSelectWithItem:" target="gIN-nu-Pip" id="tZZ-6j-QNt"/>
                                         </connections>
                                     </menuItem>
                                     <menuItem isSeparatorItem="YES" id="NCt-7f-6G3"/>
-                                    <menuItem title="None" identifier="button.mode.none" id="l8i-as-qMM">
+                                    <menuItem title="* None" identifier="button.none" id="l8i-as-qMM">
                                         <modifierMask key="keyEquivalentModifierMask"/>
                                         <connections>
                                             <action selector="buttonModeSelectWithItem:" target="gIN-nu-Pip" id="dNH-xf-EJ0"/>
@@ -203,33 +217,33 @@
                             </menu>
                         </menuItem>
                         <menuItem isSeparatorItem="YES" id="dwB-c8-zpm"/>
-                        <menuItem title="Wheel Sensitivity" id="FER-f3-ImN">
+                        <menuItem title="* Wheel Sensitivity" id="FER-f3-ImN">
                             <modifierMask key="keyEquivalentModifierMask"/>
-                            <menu key="submenu" title="Wheel Sensitivity" id="vxR-co-3d8">
+                            <menu key="submenu" title="* Wheel Sensitivity" id="vxR-co-3d8">
                                 <items>
-                                    <menuItem title="Low" state="on" image="dial.low.fill" catalog="system" identifier="sensitivity.low" id="bzY-GD-JPg">
+                                    <menuItem title="* Low" image="dial.low.fill" catalog="system" identifier="sensitivity.low" id="bzY-GD-JPg">
                                         <modifierMask key="keyEquivalentModifierMask"/>
                                         <connections>
                                             <action selector="sensitivitySelectWithItem:" target="gIN-nu-Pip" id="2vg-P7-p7n"/>
                                         </connections>
                                     </menuItem>
-                                    <menuItem title="Medium" image="dial.medium.fill" catalog="system" identifier="sensitivity.medium" id="IxT-1H-xW0">
+                                    <menuItem title="* Medium" image="dial.medium.fill" catalog="system" identifier="sensitivity.medium" id="IxT-1H-xW0">
                                         <modifierMask key="keyEquivalentModifierMask"/>
                                         <connections>
                                             <action selector="sensitivitySelectWithItem:" target="gIN-nu-Pip" id="b0u-D9-dtp"/>
                                         </connections>
                                     </menuItem>
-                                    <menuItem title="High" image="dial.high.fill" catalog="system" identifier="sensitivity.high" id="RIY-2g-aZW">
+                                    <menuItem title="* High" image="dial.high.fill" catalog="system" identifier="sensitivity.high" id="RIY-2g-aZW">
                                         <modifierMask key="keyEquivalentModifierMask"/>
                                         <connections>
                                             <action selector="sensitivitySelectWithItem:" target="gIN-nu-Pip" id="UFa-WL-dBb"/>
                                         </connections>
                                     </menuItem>
-                                    <menuItem title="Custom" image="slider.horizontal.3" catalog="system" identifier="sensitivity.custom" id="Hp3-9v-lad">
+                                    <menuItem title="* Custom" image="slider.horizontal.3" catalog="system" identifier="sensitivity.custom" id="Hp3-9v-lad">
                                         <modifierMask key="keyEquivalentModifierMask"/>
-                                        <menu key="submenu" title="Menu" id="XXt-Kf-b8q">
+                                        <menu key="submenu" title="* Custom" id="XXt-Kf-b8q">
                                             <items>
-                                                <menuItem title="Custom View" id="8ic-wH-OcE">
+                                                <menuItem title="Custom Sensitivity View" id="8ic-wH-OcE">
                                                     <modifierMask key="keyEquivalentModifierMask"/>
                                                 </menuItem>
                                             </items>
@@ -241,17 +255,17 @@
                                 </items>
                             </menu>
                         </menuItem>
-                        <menuItem title="Wheel Direction" id="Rcn-BF-7He">
+                        <menuItem title="* Wheel Direction" id="Rcn-BF-7He">
                             <modifierMask key="keyEquivalentModifierMask"/>
-                            <menu key="submenu" title="Wheel Direction" id="Kia-rF-Ucp">
+                            <menu key="submenu" title="* Wheel Direction" id="Kia-rF-Ucp">
                                 <items>
-                                    <menuItem title="Clockwise Is Up" image="digitalcrown.horizontal.arrow.clockwise.fill" catalog="system" identifier="direction.cw" id="8eF-Lz-fi6">
+                                    <menuItem title="* Clockwise Is Up" image="digitalcrown.horizontal.arrow.clockwise.fill" catalog="system" identifier="direction.cw" id="8eF-Lz-fi6">
                                         <modifierMask key="keyEquivalentModifierMask"/>
                                         <connections>
                                             <action selector="directionSelectWithItem:" target="gIN-nu-Pip" id="PV3-1i-Cgb"/>
                                         </connections>
                                     </menuItem>
-                                    <menuItem title="Counterclockwise Is Up" state="on" image="digitalcrown.horizontal.arrow.counterclockwise.fill" catalog="system" identifier="direction.ccw" id="lmT-ql-Of7">
+                                    <menuItem title="* Counterclockwise Is Up" image="digitalcrown.horizontal.arrow.counterclockwise.fill" catalog="system" identifier="direction.ccw" id="lmT-ql-Of7">
                                         <modifierMask key="keyEquivalentModifierMask"/>
                                         <connections>
                                             <action selector="directionSelectWithItem:" target="gIN-nu-Pip" id="G6T-zq-OLv"/>
@@ -260,42 +274,42 @@
                                 </items>
                             </menu>
                         </menuItem>
-                        <menuItem title="Haptics" id="g2u-Rf-4tx">
+                        <menuItem title="* Haptics" id="g2u-Rf-4tx">
                             <modifierMask key="keyEquivalentModifierMask"/>
                             <connections>
                                 <action selector="hapticFeedbackSelect:" target="gIN-nu-Pip" id="tzo-Sq-8kj"/>
                             </connections>
                         </menuItem>
                         <menuItem isSeparatorItem="YES" id="F0V-vT-Qyw"/>
-                        <menuItem title="Keep Dial Awake (update default value before releasing)" allowsKeyEquivalentWhenHidden="YES" id="TgS-Ih-mTC">
+                        <menuItem title="* Keep Dial Awake" allowsKeyEquivalentWhenHidden="YES" id="TgS-Ih-mTC">
                             <modifierMask key="keyEquivalentModifierMask"/>
                             <connections>
                                 <action selector="keepDialAwakeSelect:" target="gIN-nu-Pip" id="OZa-Zz-BkM"/>
                             </connections>
                         </menuItem>
-                        <menuItem title="Show OSD" id="Va2-WS-vxc">
+                        <menuItem title="* Show OSD" id="Va2-WS-vxc">
                             <modifierMask key="keyEquivalentModifierMask"/>
                             <connections>
                                 <action selector="showOSDSelect:" target="gIN-nu-Pip" id="Mc1-3U-VQu"/>
                             </connections>
                         </menuItem>
-                        <menuItem title="Menu Bar Icon" id="Fkk-zl-dwX">
+                        <menuItem title="* Menu Bar Icon" id="Fkk-zl-dwX">
                             <modifierMask key="keyEquivalentModifierMask"/>
-                            <menu key="submenu" title="Menu Bar Icon" id="Ia8-fi-C83">
+                            <menu key="submenu" title="* Menu Bar Icon" id="Ia8-fi-C83">
                                 <items>
-                                    <menuItem title="Default" state="on" image="menuicon-dial" identifier="statusicon.default" id="YQw-Pn-Ohl">
+                                    <menuItem title="* Default" image="menuicon-dial" identifier="statusicon.default" id="YQw-Pn-Ohl">
                                         <modifierMask key="keyEquivalentModifierMask"/>
                                         <connections>
                                             <action selector="statusIconSelectWithItem:" target="gIN-nu-Pip" id="P4o-bd-dgi"/>
                                         </connections>
                                     </menuItem>
-                                    <menuItem title="Rotation Mode" identifier="statusicon.rotation" id="asL-0d-Pfl">
+                                    <menuItem title="* Rotation Mode" identifier="statusicon.rotation" id="asL-0d-Pfl">
                                         <modifierMask key="keyEquivalentModifierMask"/>
                                         <connections>
                                             <action selector="statusIconSelectWithItem:" target="gIN-nu-Pip" id="EyU-f2-nEf"/>
                                         </connections>
                                     </menuItem>
-                                    <menuItem title="Button Mode" identifier="statusicon.button" id="1HQ-HS-Vri">
+                                    <menuItem title="* Button Mode" identifier="statusicon.button" id="1HQ-HS-Vri">
                                         <modifierMask key="keyEquivalentModifierMask"/>
                                         <connections>
                                             <action selector="statusIconSelectWithItem:" target="gIN-nu-Pip" id="Wen-YD-lR5"/>
@@ -305,10 +319,10 @@
                             </menu>
                         </menuItem>
                         <menuItem isSeparatorItem="YES" id="71T-DM-FsF"/>
-                        <menuItem title="Not Connected to Dial" enabled="NO" id="yM5-u2-cSx">
+                        <menuItem title="* Not Connected to Dial" enabled="NO" id="yM5-u2-cSx">
                             <modifierMask key="keyEquivalentModifierMask"/>
                         </menuItem>
-                        <menuItem title="Quit" id="O5Z-zk-v4Z">
+                        <menuItem title="* Quit" id="O5Z-zk-v4Z">
                             <modifierMask key="keyEquivalentModifierMask"/>
                             <connections>
                                 <action selector="quitTap:" target="gIN-nu-Pip" id="A2I-i5-Kuq"/>
@@ -335,9 +349,11 @@
         <image name="menuicon-dial" width="16" height="16"/>
         <image name="menuicon-keyboard" width="18" height="18"/>
         <image name="menuicon-leftclick" width="18" height="18"/>
+        <image name="menuicon-leftright" width="18" height="18"/>
         <image name="menuicon-mute" width="18" height="18"/>
         <image name="menuicon-playback" width="18" height="18"/>
         <image name="menuicon-scroll" width="18" height="18"/>
+        <image name="menuicon-updown" width="18" height="18"/>
         <image name="menuicon-volume" width="18" height="18"/>
         <image name="slider.horizontal.3" catalog="system" width="16" height="13"/>
     </resources>

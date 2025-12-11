@@ -31,6 +31,17 @@ class AppDelegate: NSObject, NSApplicationDelegate {
 
     func applicationDidFinishLaunching(_ aNotification: Notification) {
         AppController.shared = controller
+        
+        // Terminate other instances of app running
+        let ownPID = ProcessInfo.processInfo.processIdentifier
+        let runningApps = NSRunningApplication.runningApplications(withBundleIdentifier: Bundle.main.bundleIdentifier!)
+        
+        for app in runningApps {
+            if app.processIdentifier != ownPID {
+                app.terminate()
+            }
+        }
+        
     }
 
     func applicationWillTerminate(_ aNotification: Notification) {

@@ -1,5 +1,5 @@
 //
-//  ScrollControl
+//  RotationScrollControl
 //  MacDial
 //
 //  Created by Daniel Costa
@@ -15,7 +15,7 @@
 
 import AppKit
 
-class DialScrollControl: DeviceControl {
+class RotationScrollControl: DeviceControl {
     func buttonPress(_ dial: Dial) {
     }
 

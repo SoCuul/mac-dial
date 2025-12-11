@@ -10,6 +10,13 @@
 import Foundation
 import Carbon
 
+enum KeyCode: Int32 {
+    case leftArrow = 123
+    case rightArrow = 124
+    case upArrow = 126
+    case downArrow = 125
+}
+
 private let specialSymbols: [Int32: String] = [
     123: "←",
     124: "→",
@@ -32,35 +39,29 @@ private let specialSymbols: [Int32: String] = [
     63:  "fn"
 ]
 
-func keycodeToDisplayString(_ keycode: Int32) -> String? {
-    if let s = specialSymbols[keycode] { return s }
+func keycodeToDisplayString(_ keyCode: Int32) -> String {
+    if let s = specialSymbols[keyCode] { return s }
+    
+    return String(keyCode)
+}
 
-    guard
-        let source = TISCopyCurrentKeyboardInputSource()?.takeRetainedValue(),
-        let layout = TISGetInputSourceProperty(source, kTISPropertyUnicodeKeyLayoutData)
-    else { return nil }
+// https://stackoverflow.com/a/55854051
+func HIDPostAuxKey(key: Int32, modifiers: CGEventFlags, repeatCount: Int = 1) {
+    func doKey(down: Bool) {
+        var rawFlags: UInt64 = (down ? 0xa00 : 0xb00);
+        rawFlags |= UInt64(modifiers.rawValue)
+        let flags = CGEventFlags(rawValue: rawFlags)
 
-    let data = unsafeBitCast(layout, to: CFData.self)
-    let ptr = unsafeBitCast(CFDataGetBytePtr(data), to: UnsafePointer<UCKeyboardLayout>.self)
+        let src = CGEventSource(stateID: .hidSystemState)
+        let command = CGEvent(keyboardEventSource: src, virtualKey: CGKeyCode(key), keyDown: down)
+        
+        command?.flags = flags
 
-    var dead: UInt32 = 0
-    var chars = [UniChar](repeating: 0, count: 4)
-    var len = 0
+        command?.post(tap: CGEventTapLocation.cghidEventTap)
+    }
 
-    let status = UCKeyTranslate(
-        ptr,
-        UInt16(keycode),
-        UInt16(kUCKeyActionDisplay),
-        0,
-        UInt32(LMGetKbdType()),
-        OptionBits(kUCKeyTranslateNoDeadKeysBit),
-        &dead,
-        chars.count,
-        &len,
-        &chars
-    )
-
-    return status == noErr && len > 0
-        ? String(utf16CodeUnits: chars, count: len)
-        : nil
+    for _ in 0 ..< repeatCount {
+        doKey(down: true)
+        doKey(down: false)
+    }
 }

@@ -12,7 +12,7 @@
 
 import AppKit
 
-class DialBrightnessControl: DeviceControl {
+class RotationBrightnessControl: DeviceControl {
     func buttonPress(_ dial: Dial) {
     }
 

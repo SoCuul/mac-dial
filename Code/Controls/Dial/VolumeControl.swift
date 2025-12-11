@@ -15,7 +15,7 @@
 
 import AppKit
 
-class DialVolumeControl: DeviceControl {
+class RotationVolumeControl: DeviceControl {
     func buttonPress(_ dial: Dial) {
     }
 

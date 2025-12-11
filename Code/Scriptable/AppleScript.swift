@@ -21,12 +21,18 @@ private func getValueCode(_ value: Any?) -> String? {
     return chars
 }
 
+private func getValueCodeString(value: Any?, code: String) -> String {
+    return value != nil
+        ? "\(value ?? "?") -> \(code)"
+        : code
+}
+
 // MARK: - Enum argument commands
 
 @MainActor
 class scriptable_setRotationMode: NSScriptCommand {
     
-    /// ## AppleScript usage
+    /// ## Applescript Usage
     ///```perl
     ///tell application "MacDial"
     ///    set status icon rotation mode
@@ -38,6 +44,10 @@ class scriptable_setRotationMode: NSScriptCommand {
     ///    set rotation mode keyboard
     ///    delay 2
     ///    set rotation mode scrolling
+    ///    delay 2
+    ///    set rotation mode leftright
+    ///    delay 2
+    ///    set rotation mode updown
     ///    delay 2
     ///    set rotation mode none
     ///    delay 2
@@ -57,19 +67,23 @@ class scriptable_setRotationMode: NSScriptCommand {
         guard let enumValue = args[""] as? Int64 else { return nil }
         
         if let code = getValueCode(enumValue) {
-            log(tag:"Scripting: setRotationMode", "Enum code: \(code)")
+            log(tag:"Scripting: setRotationMode", "Enum code: \(getValueCodeString(value: args.values.first, code: code))")
             
             switch (code) {
                 case "MDRv":
-                    AppController.shared.setDialMode(mode: .volume)
+                    AppController.shared.setRotationMode(mode: .volume)
                 case "MDRb":
-                    AppController.shared.setDialMode(mode: .brightness)
+                    AppController.shared.setRotationMode(mode: .brightness)
                 case "MDRk":
-                    AppController.shared.setDialMode(mode: .keyboard)
+                    AppController.shared.setRotationMode(mode: .keyboard)
                 case "MDRs":
-                    AppController.shared.setDialMode(mode: .scrolling)
+                    AppController.shared.setRotationMode(mode: .scrolling)
+                case "MDRl":
+                    AppController.shared.setRotationMode(mode: .leftRight)
+                case "MDRu":
+                    AppController.shared.setRotationMode(mode: .upDown)
                 case "MDno":
-                    AppController.shared.setDialMode(mode: .none)
+                    AppController.shared.setRotationMode(mode: .none)
                 default:
                     return nil
             }
@@ -83,7 +97,7 @@ class scriptable_setRotationMode: NSScriptCommand {
 @MainActor
 class scriptable_setButtonMode: NSScriptCommand {
     
-    /// ## AppleScript usage
+    /// ## Applescript Usage
     ///```perl
     ///tell application "MacDial"
     ///    set status icon button mode
@@ -112,7 +126,7 @@ class scriptable_setButtonMode: NSScriptCommand {
         guard let enumValue = args[""] as? Int64 else { return nil }
         
         if let code = getValueCode(enumValue) {
-            log(tag:"Scripting: setButtonMode", "Enum code: \(code)")
+            log(tag:"Scripting: setButtonMode", "Enum code: \(getValueCodeString(value: args.values.first, code: code))")
             
             switch (code) {
                 case "MDBp":
@@ -136,7 +150,7 @@ class scriptable_setButtonMode: NSScriptCommand {
 @MainActor
 class scriptable_setWheelSensitivity: NSScriptCommand {
     
-    /// ## AppleScript usage
+    /// ## Applescript Usage
     ///```perl
     ///tell application "MacDial"
     ///    set wheel sensitivity low
@@ -160,7 +174,7 @@ class scriptable_setWheelSensitivity: NSScriptCommand {
         guard let enumValue = args[""] as? Int64 else { return nil }
         
         if let code = getValueCode(enumValue) {
-            log(tag:"Scripting: setWheelSensitivity", "Enum code: \(code)")
+            log(tag:"Scripting: setWheelSensitivity", "Enum code: \(getValueCodeString(value: args.values.first, code: code))")
             
             switch (code) {
                 case "MDSl":
@@ -184,7 +198,7 @@ class scriptable_setWheelSensitivity: NSScriptCommand {
 @MainActor
 class scriptable_setWheelDirection: NSScriptCommand {
     
-    /// ## AppleScript usage
+    /// ## Applescript Usage
     ///```perl
     ///tell application "MacDial"
     ///    set wheel direction counterclockwise
@@ -202,7 +216,7 @@ class scriptable_setWheelDirection: NSScriptCommand {
         guard let enumValue = args[""] as? Int64 else { return nil }
         
         if let code = getValueCode(enumValue) {
-            log(tag:"Scripting: setWheelDirection", "Enum code: \(code)")
+            log(tag:"Scripting: setWheelDirection", "Enum code: \(getValueCodeString(value: args.values.first, code: code))")
             
             switch (code) {
                 case "MDDr":
@@ -222,7 +236,7 @@ class scriptable_setWheelDirection: NSScriptCommand {
 @MainActor
 class scriptable_setStatusIcon: NSScriptCommand {
     
-    /// ## AppleScript usage
+    /// ## Applescript Usage
     ///```perl
     ///tell application "MacDial"
     ///    set status icon rotation mode
@@ -242,6 +256,8 @@ class scriptable_setStatusIcon: NSScriptCommand {
         guard let enumValue = args[""] as? Int64 else { return nil }
         
         if let code = getValueCode(enumValue) {
+            log(tag:"Scripting: setStatusIcon", "Enum code: \(getValueCodeString(value: args.values.first, code: code))")
+            
             switch (code) {
                 case "MDMd":
                     AppController.shared.setStatusIcon(icon: .default)
@@ -264,7 +280,7 @@ class scriptable_setStatusIcon: NSScriptCommand {
 @MainActor
 class scriptable_setCustomSensitivity: NSScriptCommand {
     
-    /// ## AppleScript usage
+    /// ## Applescript Usage
     ///```perl
     ///tell application "MacDial"
     ///    set custom sensitivity 1000
@@ -293,7 +309,7 @@ class scriptable_setCustomSensitivity: NSScriptCommand {
 @MainActor
 class scriptable_setHaptics: NSScriptCommand {
     
-    /// ## AppleScript usage
+    /// ## Applescript Usage
     ///```perl
     ///tell application "MacDial"
     ///    set haptics false
@@ -320,7 +336,7 @@ class scriptable_setHaptics: NSScriptCommand {
 @MainActor
 class scriptable_setKeepDialAwake: NSScriptCommand {
     
-    /// ## AppleScript usage
+    /// ## Applescript Usage
     ///```perl
     ///tell application "MacDial"
     ///    set keep dial awake false
@@ -347,7 +363,7 @@ class scriptable_setKeepDialAwake: NSScriptCommand {
 @MainActor
 class scriptable_setShowOsd: NSScriptCommand {
     
-    /// ## AppleScript usage
+    /// ## Applescript Usage
     ///```perl
     ///tell application "MacDial"
     ///    set show osd false
@@ -375,7 +391,7 @@ class scriptable_setShowOsd: NSScriptCommand {
 @MainActor
 class scriptable_setKeyScrollModifiers: NSScriptCommand {
     
-    /// ## AppleScript usage
+    /// ## Applescript Usage
     ///```perl
     ///tell application "MacDial"
     ///    set rotation mode scrolling

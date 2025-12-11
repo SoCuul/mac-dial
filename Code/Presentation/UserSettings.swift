@@ -16,7 +16,7 @@
 import Foundation
 
 extension SettingsValueKey {
-    static let dialMode: SettingsValueKey = "settings.dialMode"
+    static let rotationMode: SettingsValueKey = "settings.rotationMode"
     static let keyScrollModifiers: SettingsValueKey = "settings.keyScrollModifiers"
     static let buttonMode: SettingsValueKey = "settings.buttonMode"
     static let sensitivity: SettingsValueKey = "settings.sensitivity"
@@ -30,7 +30,7 @@ extension SettingsValueKey {
 
 class UserSettings {
     // MARK: - Data structures
-    enum WheelSensitivity: Double {
+    enum WheelSensitivity: Int {
         case low    = 1
         case medium = 2
         case high   = 3
@@ -42,12 +42,14 @@ class UserSettings {
         case counterclockwise = 1
     }
 
-    enum DialOperationMode: Int {
+    enum RotationOperationMode: Int {
         case none       = 0
         case scrolling  = 1
         case volume     = 2
         case brightness = 3
         case keyboard   = 4
+        case leftRight  = 5
+        case upDown     = 6
     }
 
     enum ButtonOperationMode: Int {
@@ -75,14 +77,14 @@ class UserSettings {
     
     // MARK: - Private user defaults
     
-    @FromUserDefaults(key: .dialMode, defaultValue: DialOperationMode.volume.rawValue)
-    static private var dialModeSetting: Int
+    @FromUserDefaults(key: .rotationMode, defaultValue: RotationOperationMode.volume.rawValue)
+    static private var rotationModeSetting: Int
 
     @FromUserDefaults(key: .buttonMode, defaultValue: ButtonOperationMode.playback.rawValue)
     static private var buttonModeSetting: Int
 
     @FromUserDefaults(key: .sensitivity, defaultValue: WheelSensitivity.medium.rawValue)
-    static private var sensitivitySetting: Double
+    static private var sensitivitySetting: Int
     
     @FromUserDefaults(key: .customSensitivity, defaultValue: 500)
     static private var customSensitivitySetting: Int
@@ -108,9 +110,9 @@ class UserSettings {
     
     // MARK: - Public computed variables
 
-    static var dialMode: DialOperationMode {
-        get { DialOperationMode(rawValue: UserSettings.dialModeSetting) ?? .volume }
-        set { UserSettings.dialModeSetting = newValue.rawValue }
+    static var rotationMode: RotationOperationMode {
+        get { RotationOperationMode(rawValue: UserSettings.rotationModeSetting) ?? .volume }
+        set { UserSettings.rotationModeSetting = newValue.rawValue }
     }
 
     static var buttonMode: ButtonOperationMode {

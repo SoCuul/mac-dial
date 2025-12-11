@@ -1,5 +1,5 @@
 //
-//  ClickControl
+//  ButtonClickControl
 //  MacDial
 //
 //  Created by Daniel Costa
@@ -15,7 +15,7 @@
 
 import AppKit
 
-class ClickControl: DeviceControl {
+class ButtonClickControl: DeviceControl {
     private let eventDownType: CGEventType
     private let eventUpType: CGEventType
     private var lastButtonState: ButtonState?

@@ -1,21 +1,23 @@
 "menu.accessibilityPermissions" = "Needs accessibility permissions!";
 "menu.tooltip.accessibilityPermissions" = "MacDial needs accessibility permissions to function properly. Click to fix this!";
 
+"menu.rotationMode" = "Rotation Mode";
+"menu.rotationMode.music" = "Volume Control";
+"menu.rotationMode.brightness" = "Brightness Control";
+"menu.rotationMode.keyboard" = "Keyboard Light Control";
+"menu.rotationMode.scroll" = "Scrolling";
+"menu.rotationMode.leftRight" = "Keyboard (Left/Right)";
+"menu.rotationMode.upDown" = "Keyboard (Up/Down)";
+"menu.rotationMode.none" = "None";
+
+"menu.keyScrollModifiers" = "Key/Scroll Modifiers";
+"menu.tooltip.keyScrollModifiers" = "Modifier keys which will be held down during rotation in the key or scroll rotation modes";
+
 "menu.buttonMode" = "Button Mode";
 "menu.buttonMode.leftClick" = "Left Mouse Click";
 "menu.buttonMode.playback" = "Playback Control";
 "menu.buttonMode.mute" = "Mute";
 "menu.buttonMode.none" = "None";
-
-"menu.dialMode" = "Rotation Mode";
-"menu.dialMode.scroll" = "Scrolling";
-"menu.dialMode.music" = "Volume Control";
-"menu.dialMode.brightness" = "Brightness Control";
-"menu.dialMode.keyboard" = "Keyboard Light Control";
-"menu.dialMode.none" = "None";
-
-"menu.keyScrollModifiers" = "Key/Scroll Modifiers";
-"menu.tooltip.keyScrollModifiers" = "Modifier keys which will be held down during rotation in the key or scroll rotation modes";
 
 "menu.rotationSensitivity" = "Sensitivity";
 "menu.rotationSensitivity.low" = "Low";

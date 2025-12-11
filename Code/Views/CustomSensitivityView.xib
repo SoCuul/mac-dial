@@ -27,7 +27,7 @@
                                 <textField focusRingType="none" horizontalHuggingPriority="251" verticalHuggingPriority="750" id="ZwL-BW-sZS">
                                     <rect key="frame" x="16" y="0.0" width="167" height="16"/>
                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                                    <textFieldCell key="cell" lineBreakMode="clipping" continuous="YES" alignment="center" title="Sensitivity:" id="t5S-Uv-Sls">
+                                    <textFieldCell key="cell" lineBreakMode="clipping" continuous="YES" alignment="center" title="* Sensitivity:" id="t5S-Uv-Sls">
                                         <font key="font" metaFont="system"/>
                                         <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
                                         <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>

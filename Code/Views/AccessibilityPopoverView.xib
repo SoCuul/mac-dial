@@ -23,7 +23,7 @@
                 <textField focusRingType="none" horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="vQC-Hz-Pcg" userLabel="Header">
                     <rect key="frame" x="18" y="252" width="433" height="29"/>
                     <autoresizingMask key="autoresizingMask" flexibleMinY="YES"/>
-                    <textFieldCell key="cell" lineBreakMode="charWrapping" alignment="center" title="How to Reset Accessibility Permissions" id="AFE-90-pZK">
+                    <textFieldCell key="cell" lineBreakMode="charWrapping" alignment="center" title="* How to Reset Accessibility Permissions" id="AFE-90-pZK">
                         <font key="font" metaFont="systemSemibold" size="20"/>
                         <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
                         <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
@@ -36,7 +36,7 @@
                 <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="tvB-GS-dLz">
                     <rect key="frame" x="133" y="15" width="204" height="32"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                    <buttonCell key="cell" type="push" title="Open Accessibility Settings" bezelStyle="rounded" imagePosition="overlaps" alignment="center" controlSize="large" lineBreakMode="charWrapping" borderStyle="border" inset="2" id="utl-vF-ySF">
+                    <buttonCell key="cell" type="push" title="* Open Accessibility Settings" bezelStyle="rounded" imagePosition="overlaps" alignment="center" controlSize="large" lineBreakMode="charWrapping" borderStyle="border" inset="2" id="utl-vF-ySF">
                         <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                         <font key="font" metaFont="system"/>
                         <string key="keyEquivalent" base64-UTF8="YES">

@@ -19,19 +19,21 @@ class AppController: NSObject, NSMenuDelegate {
     
     @IBOutlet private var menuAccessibilityPermissions: NSMenuItem!
 
+    @IBOutlet private var menuRotationControlMode: NSMenuItem!
+    @IBOutlet private var menuRotationControlModeVolume: NSMenuItem!
+    @IBOutlet private var menuRotationControlModeBrightness: NSMenuItem!
+    @IBOutlet private var menuRotationControlModeKeyboard: NSMenuItem!
+    @IBOutlet private var menuRotationControlModeScroll: NSMenuItem!
+    @IBOutlet private var menuRotationControlModeLeftRight: NSMenuItem!
+    @IBOutlet private var menuRotationControlModeUpDown: NSMenuItem!
+    @IBOutlet private var menuRotationControlModeNone: NSMenuItem!
+    
     @IBOutlet private var menuButtonControlMode: NSMenuItem!
     @IBOutlet private var menuButtonControlModeLeftClick: NSMenuItem!
     @IBOutlet private var menuButtonControlModePlayback: NSMenuItem!
     @IBOutlet private var menuButtonControlModeMute: NSMenuItem!
     @IBOutlet private var menuButtonControlModeNone: NSMenuItem!
 
-    @IBOutlet private var menuDialControlMode: NSMenuItem!
-    @IBOutlet private var menuDialControlModeScroll: NSMenuItem!
-    @IBOutlet private var menuDialControlModeVolume: NSMenuItem!
-    @IBOutlet private var menuDialControlModeBrightness: NSMenuItem!
-    @IBOutlet private var menuDialControlModeKeyboard: NSMenuItem!
-    @IBOutlet private var menuDialControlModeNone: NSMenuItem!
-    
     @IBOutlet private var menuKeyScrollModifiers: NSMenuItem!
     @IBOutlet private var menuKeyScrollModifierShift: NSMenuItem!
     @IBOutlet private var menuKeyScrollModifierCommand: NSMenuItem!
@@ -106,12 +108,14 @@ class AppController: NSObject, NSMenuDelegate {
         menuButtonControlModeMute.title = NSLocalizedString("menu.buttonMode.mute", comment: "")
         menuButtonControlModeNone.title = NSLocalizedString("menu.buttonMode.none", comment: "")
 
-        menuDialControlMode.title = NSLocalizedString("menu.dialMode", comment: "")
-        menuDialControlModeScroll.title = NSLocalizedString("menu.dialMode.scroll", comment: "")
-        menuDialControlModeVolume.title = NSLocalizedString("menu.dialMode.music", comment: "")
-        menuDialControlModeBrightness.title = NSLocalizedString("menu.dialMode.brightness", comment: "")
-        menuDialControlModeKeyboard.title = NSLocalizedString("menu.dialMode.keyboard", comment: "")
-        menuDialControlModeNone.title = NSLocalizedString("menu.dialMode.none", comment: "")
+        menuRotationControlMode.title = NSLocalizedString("menu.rotationMode", comment: "")
+        menuRotationControlModeVolume.title = NSLocalizedString("menu.rotationMode.music", comment: "")
+        menuRotationControlModeBrightness.title = NSLocalizedString("menu.rotationMode.brightness", comment: "")
+        menuRotationControlModeKeyboard.title = NSLocalizedString("menu.rotationMode.keyboard", comment: "")
+        menuRotationControlModeScroll.title = NSLocalizedString("menu.rotationMode.scroll", comment: "")
+        menuRotationControlModeLeftRight.title = NSLocalizedString("menu.rotationMode.leftRight", comment: "")
+        menuRotationControlModeUpDown.title = NSLocalizedString("menu.rotationMode.upDown", comment: "")
+        menuRotationControlModeNone.title = NSLocalizedString("menu.rotationMode.none", comment: "")
         
         menuKeyScrollModifiers.title = NSLocalizedString("menu.keyScrollModifiers", comment: "")
         menuKeyScrollModifiers.toolTip = NSLocalizedString("menu.tooltip.keyScrollModifiers", comment: "")
@@ -149,7 +153,7 @@ class AppController: NSObject, NSMenuDelegate {
         menuSensitivityCustomSubitem.view = self.customSensitivity?.view
         
         // Menu state init
-        setDialMode(mode: UserSettings.dialMode)
+        setRotationMode(mode: UserSettings.rotationMode)
         setButtonMode(mode: UserSettings.buttonMode)
         setSensitivity(sensitivity: UserSettings.sensitivity)
         setDirection(direction: UserSettings.wheelDirection)
@@ -164,8 +168,7 @@ class AppController: NSObject, NSMenuDelegate {
             control: UserSettings.keyScrollModifiers.control
         )
         
-        // TODO: REENABLE THIS DO NOT LEAVE IT DISABLED
-        // requestPermissions()
+        requestPermissions()
     }
     
     func menuWillOpen(_ menu: NSMenu) {
@@ -186,37 +189,49 @@ class AppController: NSObject, NSMenuDelegate {
     }
     
     @IBAction
-    private func dialModeSelect(item: NSMenuItem) {
-        menuDialControlModeScroll.state = .off
-        menuDialControlModeVolume.state = .off
-        menuDialControlModeBrightness.state = .off
-        menuDialControlModeKeyboard.state = .off
-        menuDialControlModeNone.state = .off
+    private func rotationModeSelect(item: NSMenuItem) {
+        menuRotationControlModeScroll.state = .off
+        menuRotationControlModeVolume.state = .off
+        menuRotationControlModeBrightness.state = .off
+        menuRotationControlModeKeyboard.state = .off
+        menuRotationControlModeLeftRight.state = .off
+        menuRotationControlModeUpDown.state = .off
+        menuRotationControlModeNone.state = .off
         
         item.state = .on
         
-        menuDialControlMode.image = item.image
+        menuRotationControlMode.image = item.image
         
         switch item.identifier {
-            case menuDialControlModeVolume.identifier:
-                dialControl = DialVolumeControl()
-                UserSettings.dialMode = .volume
+            case menuRotationControlModeVolume.identifier:
+                dialControl = RotationVolumeControl()
+                UserSettings.rotationMode = .volume
                 menuKeyScrollModifiers.visible = false
-            case menuDialControlModeBrightness.identifier:
-                dialControl = DialBrightnessControl()
-                UserSettings.dialMode = .brightness
+            case menuRotationControlModeBrightness.identifier:
+                dialControl = RotationBrightnessControl()
+                UserSettings.rotationMode = .brightness
                 menuKeyScrollModifiers.visible = false
-            case menuDialControlModeKeyboard.identifier:
-                dialControl = DialKeyboardBacklightControl()
-                UserSettings.dialMode = .keyboard
+            case menuRotationControlModeKeyboard.identifier:
+                dialControl = RotationKeyboardBacklightControl()
+                UserSettings.rotationMode = .keyboard
                 menuKeyScrollModifiers.visible = false
-            case menuDialControlModeScroll.identifier:
-                dialControl = DialScrollControl()
-                UserSettings.dialMode = .scrolling
+                
+            case menuRotationControlModeScroll.identifier:
+                dialControl = RotationScrollControl()
+                UserSettings.rotationMode = .scrolling
                 menuKeyScrollModifiers.visible = true
-            case menuDialControlModeNone.identifier:
+            case menuRotationControlModeLeftRight.identifier:
+                dialControl = RotationArrowKeyControl(rightTurnKeyCode: .rightArrow, leftTurnKeyCode: .leftArrow)
+                UserSettings.rotationMode = .leftRight
+                menuKeyScrollModifiers.visible = true
+            case menuRotationControlModeUpDown.identifier:
+                dialControl = RotationArrowKeyControl(rightTurnKeyCode: .upArrow, leftTurnKeyCode: .downArrow)
+                UserSettings.rotationMode = .upDown
+                menuKeyScrollModifiers.visible = true
+                
+            case menuRotationControlModeNone.identifier:
                 dialControl = NoneControl()
-                UserSettings.dialMode = .none
+                UserSettings.rotationMode = .none
                 menuKeyScrollModifiers.visible = false
             default:
                 break
@@ -242,7 +257,7 @@ class AppController: NSObject, NSMenuDelegate {
         
         switch item.identifier {
             case menuButtonControlModeLeftClick.identifier:
-                buttonControl = ClickControl(eventDownType: .leftMouseDown, eventUpType: .leftMouseUp)
+                buttonControl = ButtonClickControl(eventDownType: .leftMouseDown, eventUpType: .leftMouseUp)
                 UserSettings.buttonMode = .leftClick
             case menuButtonControlModePlayback.identifier:
                 buttonControl = ButtonPlaybackControl()
@@ -250,6 +265,7 @@ class AppController: NSObject, NSMenuDelegate {
             case menuButtonControlModeMute.identifier:
                 buttonControl = ButtonMuteControl()
                 UserSettings.buttonMode = .mute
+                
             case menuButtonControlModeNone.identifier:
                 buttonControl = NoneControl()
                 UserSettings.buttonMode = .none
@@ -380,18 +396,22 @@ class AppController: NSObject, NSMenuDelegate {
     
     // MARK: - Public setters
     
-    public func setDialMode(mode: UserSettings.DialOperationMode) {
+    public func setRotationMode(mode: UserSettings.RotationOperationMode) {
         switch mode {
             case .none:
-                dialModeSelect(item: menuDialControlModeNone)
+                rotationModeSelect(item: menuRotationControlModeNone)
             case .scrolling:
-                dialModeSelect(item: menuDialControlModeScroll)
+                rotationModeSelect(item: menuRotationControlModeScroll)
             case .volume:
-                dialModeSelect(item: menuDialControlModeVolume)
+                rotationModeSelect(item: menuRotationControlModeVolume)
             case .brightness:
-                dialModeSelect(item: menuDialControlModeBrightness)
+                rotationModeSelect(item: menuRotationControlModeBrightness)
             case .keyboard:
-                dialModeSelect(item: menuDialControlModeKeyboard)
+                rotationModeSelect(item: menuRotationControlModeKeyboard)
+            case .leftRight:
+                rotationModeSelect(item: menuRotationControlModeLeftRight)
+            case .upDown:
+                rotationModeSelect(item: menuRotationControlModeUpDown)
         }
     }
     
@@ -481,13 +501,13 @@ class AppController: NSObject, NSMenuDelegate {
     
     private var selectedRotationModeItem: NSMenuItem? {
         get {
-            menuDialControlMode?.submenu?.allOnItems()[0]
+            menuRotationControlMode?.submenu?.allOnItems().first
         }
     }
     
     private var selectedButtonModeItem: NSMenuItem? {
         get {
-            menuButtonControlMode?.submenu?.allOnItems()[0]
+            menuButtonControlMode?.submenu?.allOnItems().first
         }
     }
     

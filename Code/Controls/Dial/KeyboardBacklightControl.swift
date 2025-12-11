@@ -15,7 +15,7 @@
 
 import AppKit
 
-class DialKeyboardBacklightControl: DeviceControl {
+class RotationKeyboardBacklightControl: DeviceControl {
     func buttonPress(_ dial: Dial) {
     }
 
