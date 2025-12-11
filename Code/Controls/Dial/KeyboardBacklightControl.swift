@@ -44,10 +44,6 @@ class DialKeyboardBacklightControl: DeviceControl {
                 newLevel -= changeIncrements[rotation.sensitivity] ?? 0
         }
         
-        // Make sure brightness doesn't go under 0 or over 1
-        newLevel = ClosedRange(uncheckedBounds: (0, 1))
-            .clamp(previousLevel.roundTo(places: 4))
-        
         Brightness.keyboardBacklight = newLevel
         
         // Reflect current display brightness (changed or not)

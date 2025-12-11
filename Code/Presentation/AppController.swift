@@ -165,7 +165,7 @@ class AppController: NSObject, NSMenuDelegate {
         )
         
         // TODO: REENABLE THIS DO NOT LEAVE IT DISABLED
-        requestPermissions()
+        // requestPermissions()
     }
     
     func menuWillOpen(_ menu: NSMenu) {

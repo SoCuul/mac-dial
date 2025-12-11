@@ -43,25 +43,19 @@ class DialVolumeControl: DeviceControl {
             case .counterclockwise:
                 newLevel -= changeIncrements[rotation.sensitivity] ?? 0
         }
-
-        // Make sure volume doesn't go under 0 or over 1
-        newLevel = ClosedRange(uncheckedBounds: (0, 1))
-            .clamp(previousLevel.roundTo(places: 4))
         
         Sound.setVolume(newLevel)
         
         // Reflect current output volume (changed or not)
         if let updatedLevel = Sound.volume() {
             log(tag:"Volume", "\(updatedLevel)")
-            
-            print("Previous level: \(previousLevel)\nNew level: \(newLevel)\nUpdated Level: \(updatedLevel)\nDoesn't equal: \(updatedLevel != previousLevel)")
-            
-//            if ((updatedLevel != previousLevel) && UserSettings.showOSD) {
-//                OSD.show(
-//                    updatedLevel > 0 ? OSD.images.volume : OSD.images.mute,
-//                    UInt32(updatedLevel * 100)
-//                )
-//            }
+                        
+            if (UserSettings.showOSD) {
+                OSD.show(
+                    updatedLevel > 0 ? OSD.images.volume : OSD.images.mute,
+                    UInt32(updatedLevel * 100)
+                )
+            }
             
             if (updatedLevel <= 0 || updatedLevel >= 1) {
                 dial.isHittingBounds = true

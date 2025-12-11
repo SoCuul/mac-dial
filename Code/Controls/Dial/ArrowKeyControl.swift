@@ -85,7 +85,7 @@ class ArrowKeyControl: DeviceControl {
             repeatCount: Int(clicks)
         )
 
-        log(tag: "Media", "sent \(isClockwise ? "↑" : "↓")")
+        log(tag: "Key", "sent \(keycodeToDisplayString(key) ?? String(key))")
         return true
     }
 }
