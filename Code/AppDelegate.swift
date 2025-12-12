@@ -15,12 +15,16 @@ import AppKit
 private let debugLogging: Bool = true
 
 #if DEBUG
+let debugBuild = true
+
 func log(tag: String, _ message: @autoclosure () -> String) {
     guard debugLogging else { return }
 
     print("\(Date()) [\(tag)] \(message())")
 }
 #else
+let debugBuild = false
+
 func log(tag: String, _ message: @autoclosure () -> String) {
 }
 #endif

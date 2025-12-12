@@ -10,6 +10,7 @@
 		6519213B2EC578EF000A91B4 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 651921342EC578EF000A91B4 /* Assets.xcassets */; };
 		6519213D2EC578EF000A91B4 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 651921372EC578EF000A91B4 /* Localizable.strings */; };
 		6519213E2EC578EF000A91B4 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 651921392EC578EF000A91B4 /* Main.storyboard */; };
+		65478E182EEC0C3000E18598 /* AppIcon.icon in Resources */ = {isa = PBXBuildFile; fileRef = 65478E172EEC0C3000E18598 /* AppIcon.icon */; };
 		656BAEF02EE9574D00714682 /* OSD.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 65993F162EC81ECD000C12B7 /* OSD.framework */; };
 		656BAEF12EE9574F00714682 /* MediaRemote.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 652BA41D2EC6AA10004D6964 /* MediaRemote.framework */; };
 		656BAEF22EE9575000714682 /* CoreBrightness.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6577212D2EC0643100C0C55F /* CoreBrightness.framework */; };
@@ -26,6 +27,7 @@
 		651921392EC578EF000A91B4 /* Main.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
 		651D5B4D2EDFA6D300C88C77 /* TODO.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = TODO.md; sourceTree = "<group>"; };
 		652BA41D2EC6AA10004D6964 /* MediaRemote.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MediaRemote.framework; path = ../../../../../System/Library/PrivateFrameworks/MediaRemote.framework; sourceTree = "<group>"; };
+		65478E172EEC0C3000E18598 /* AppIcon.icon */ = {isa = PBXFileReference; lastKnownFileType = folder.iconcomposer.icon; path = AppIcon.icon; sourceTree = "<group>"; };
 		656BAEF42EE961F900714682 /* AccessibilityPopover.html */ = {isa = PBXFileReference; lastKnownFileType = text.html; path = AccessibilityPopover.html; sourceTree = "<group>"; };
 		657721232EC0542C00C0C55F /* DisplayServices.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = DisplayServices.framework; path = ../../../../../System/Library/PrivateFrameworks/DisplayServices.framework; sourceTree = "<group>"; };
 		6577212D2EC0643100C0C55F /* CoreBrightness.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreBrightness.framework; path = ../../../../../System/Library/PrivateFrameworks/CoreBrightness.framework; sourceTree = "<group>"; };
@@ -55,6 +57,7 @@
 		6519213A2EC578EF000A91B4 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				65478E172EEC0C3000E18598 /* AppIcon.icon */,
 				651921342EC578EF000A91B4 /* Assets.xcassets */,
 				651921352EC578EF000A91B4 /* Info.plist */,
 				651921372EC578EF000A91B4 /* Localizable.strings */,
@@ -162,6 +165,7 @@
 				6519213D2EC578EF000A91B4 /* Localizable.strings in Resources */,
 				6519213E2EC578EF000A91B4 /* Main.storyboard in Resources */,
 				656BAEF52EE961F900714682 /* AccessibilityPopover.html in Resources */,
+				65478E182EEC0C3000E18598 /* AppIcon.icon in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -311,6 +315,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				ASSETCATALOG_COMPILER_INCLUDE_ALL_APPICON_ASSETS = YES;
 				AUTOMATION_APPLE_EVENTS = YES;
 				CODE_SIGN_ENTITLEMENTS = Resources/MacDial.entitlements;
 				CODE_SIGN_IDENTITY = "Apple Development";
@@ -361,6 +366,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				ASSETCATALOG_COMPILER_INCLUDE_ALL_APPICON_ASSETS = YES;
 				AUTOMATION_APPLE_EVENTS = YES;
 				CODE_SIGN_ENTITLEMENTS = Resources/MacDial.entitlements;
 				CODE_SIGN_IDENTITY = "Apple Development";

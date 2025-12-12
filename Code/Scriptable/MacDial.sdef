@@ -40,9 +40,9 @@
             <enumerator name="button mode"  code="MDMb" description="Button Mode"/>
         </enumeration>
         
-        <!-- ==================================================================================================================== -->
+        <!-- ========================================================================================= -->
         <!-- COMMANDS -->
-        <!-- ==================================================================================================================== -->
+        <!-- ========================================================================================= -->
         
         <command name="set rotation mode" code="MDsetrtm" description="Sets which mode is used for dial rotation.">
             <direct-parameter name="" type="rotation mode" optional="no" description="the dial rotation mode">

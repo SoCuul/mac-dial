@@ -146,6 +146,7 @@ class AppController: NSObject, NSMenuDelegate {
         menuStatusIconButton.title = NSLocalizedString("menu.statusIcon.button", comment: "")
         menuStatusIconButton.toolTip = NSLocalizedString("menu.tooltip.statusIcon.button", comment: "")
         
+        menuState.title = NSLocalizedString("dial.disconnected", comment: "")
         menuQuit.title = NSLocalizedString("menu.quit", comment: "")
         
         // Custom sensitivity view
@@ -564,7 +565,7 @@ class AppController: NSObject, NSMenuDelegate {
     }
 
     private func connected(_ serialNumber: String) {
-        menuState.title = String(format: NSLocalizedString("dial.connected", comment: ""), serialNumber)
+        menuState.title = String(format: NSLocalizedString("dial.connected", comment: ""), debugBuild ? "XXXXXXXXXXXXX" : serialNumber)
     }
 
     private func disconnected() {

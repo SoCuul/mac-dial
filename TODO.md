@@ -1,16 +1,12 @@
 # TODO
 
-- [ ] Create new app logo
-
 - [ ] (Maybe) Create color picker control (through the use of GUI scripting)
-
-- [ ] (Maybe) Create .help bundle for MacDial
-
 
 ---
 
 
 # Done
+- [x] Create new app logo
 - [x] Finish accessibility prompt
     - [x] Re-enable prompt on app open
     - [x] Add link (or something else) to show how to re-add the app, on click of the help button in the dialog
