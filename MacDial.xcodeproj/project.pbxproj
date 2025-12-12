@@ -8,9 +8,9 @@
 
 /* Begin PBXBuildFile section */
 		6519213B2EC578EF000A91B4 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 651921342EC578EF000A91B4 /* Assets.xcassets */; };
-		6519213D2EC578EF000A91B4 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 651921372EC578EF000A91B4 /* Localizable.strings */; };
 		6519213E2EC578EF000A91B4 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 651921392EC578EF000A91B4 /* Main.storyboard */; };
 		65478E182EEC0C3000E18598 /* AppIcon.icon in Resources */ = {isa = PBXBuildFile; fileRef = 65478E172EEC0C3000E18598 /* AppIcon.icon */; };
+		65478E1C2EEC185100E18598 /* Localizable.xcstrings in Resources */ = {isa = PBXBuildFile; fileRef = 65478E1B2EEC185100E18598 /* Localizable.xcstrings */; };
 		656BAEF02EE9574D00714682 /* OSD.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 65993F162EC81ECD000C12B7 /* OSD.framework */; };
 		656BAEF12EE9574F00714682 /* MediaRemote.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 652BA41D2EC6AA10004D6964 /* MediaRemote.framework */; };
 		656BAEF22EE9575000714682 /* CoreBrightness.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6577212D2EC0643100C0C55F /* CoreBrightness.framework */; };
@@ -22,12 +22,12 @@
 		2DBA1824516DE7C2EA24F590 /* HIDReport.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = HIDReport.md; sourceTree = "<group>"; };
 		651921342EC578EF000A91B4 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		651921352EC578EF000A91B4 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		651921362EC578EF000A91B4 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
 		651921382EC578EF000A91B4 /* MacDial.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = MacDial.entitlements; sourceTree = "<group>"; };
 		651921392EC578EF000A91B4 /* Main.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
 		651D5B4D2EDFA6D300C88C77 /* TODO.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = TODO.md; sourceTree = "<group>"; };
 		652BA41D2EC6AA10004D6964 /* MediaRemote.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MediaRemote.framework; path = ../../../../../System/Library/PrivateFrameworks/MediaRemote.framework; sourceTree = "<group>"; };
 		65478E172EEC0C3000E18598 /* AppIcon.icon */ = {isa = PBXFileReference; lastKnownFileType = folder.iconcomposer.icon; path = AppIcon.icon; sourceTree = "<group>"; };
+		65478E1B2EEC185100E18598 /* Localizable.xcstrings */ = {isa = PBXFileReference; lastKnownFileType = text.json.xcstrings; path = Localizable.xcstrings; sourceTree = "<group>"; };
 		656BAEF42EE961F900714682 /* AccessibilityPopover.html */ = {isa = PBXFileReference; lastKnownFileType = text.html; path = AccessibilityPopover.html; sourceTree = "<group>"; };
 		657721232EC0542C00C0C55F /* DisplayServices.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = DisplayServices.framework; path = ../../../../../System/Library/PrivateFrameworks/DisplayServices.framework; sourceTree = "<group>"; };
 		6577212D2EC0643100C0C55F /* CoreBrightness.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreBrightness.framework; path = ../../../../../System/Library/PrivateFrameworks/CoreBrightness.framework; sourceTree = "<group>"; };
@@ -60,7 +60,7 @@
 				65478E172EEC0C3000E18598 /* AppIcon.icon */,
 				651921342EC578EF000A91B4 /* Assets.xcassets */,
 				651921352EC578EF000A91B4 /* Info.plist */,
-				651921372EC578EF000A91B4 /* Localizable.strings */,
+				65478E1B2EEC185100E18598 /* Localizable.xcstrings */,
 				651921382EC578EF000A91B4 /* MacDial.entitlements */,
 				651921392EC578EF000A91B4 /* Main.storyboard */,
 				656BAEF42EE961F900714682 /* AccessibilityPopover.html */,
@@ -128,8 +128,9 @@
 		C882FA0E26F1430C00595EE1 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
+				BuildIndependentTargetsInParallel = YES;
 				LastSwiftUpdateCheck = 1250;
-				LastUpgradeCheck = 1410;
+				LastUpgradeCheck = 2610;
 				TargetAttributes = {
 					C882FA1526F1430C00595EE1 = {
 						CreatedOnToolsVersion = 12.5.1;
@@ -162,10 +163,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				6519213B2EC578EF000A91B4 /* Assets.xcassets in Resources */,
-				6519213D2EC578EF000A91B4 /* Localizable.strings in Resources */,
 				6519213E2EC578EF000A91B4 /* Main.storyboard in Resources */,
 				656BAEF52EE961F900714682 /* AccessibilityPopover.html in Resources */,
 				65478E182EEC0C3000E18598 /* AppIcon.icon in Resources */,
+				65478E1C2EEC185100E18598 /* Localizable.xcstrings in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -181,22 +182,12 @@
 		};
 /* End PBXSourcesBuildPhase section */
 
-/* Begin PBXVariantGroup section */
-		651921372EC578EF000A91B4 /* Localizable.strings */ = {
-			isa = PBXVariantGroup;
-			children = (
-				651921362EC578EF000A91B4 /* en */,
-			);
-			name = Localizable.strings;
-			sourceTree = "<group>";
-		};
-/* End PBXVariantGroup section */
-
 /* Begin XCBuildConfiguration section */
 		C882FA2726F1430D00595EE1 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
@@ -231,6 +222,7 @@
 				DEBUG_INFORMATION_FORMAT = dwarf;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				ENABLE_TESTABILITY = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu11;
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_NO_COMMON_BLOCKS = YES;
@@ -245,12 +237,15 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
+				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
 				MACOSX_DEPLOYMENT_TARGET = 11.0;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = macosx;
+				STRING_CATALOG_GENERATE_SYMBOLS = YES;
 				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 			};
 			name = Debug;
@@ -259,6 +254,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
@@ -293,6 +289,7 @@
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				ENABLE_NS_ASSERTIONS = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu11;
 				GCC_NO_COMMON_BLOCKS = YES;
 				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
@@ -301,11 +298,14 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
+				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
 				MACOSX_DEPLOYMENT_TARGET = 11.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
 				SDKROOT = macosx;
+				STRING_CATALOG_GENERATE_SYMBOLS = YES;
 				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_OPTIMIZATION_LEVEL = "-O";
 			};
 			name = Release;

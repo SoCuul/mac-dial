@@ -1,0 +1,456 @@
+{
+  "sourceLanguage" : "en",
+  "strings" : {
+    "accessibilityDialog.description" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "MacDial needs Accessibility permissions to work properly. In the next dialog you will be asked to open the Settings app to enable the permissions.\n\nIf you keep seeing this message, click the help icon for assistance.\nComplete the actions shown in the help popup before clicking OK."
+          }
+        }
+      }
+    },
+    "accessibilityDialog.title" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Permissions needed"
+          }
+        }
+      }
+    },
+    "accessibilityDialogPopover.header" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "How to Reset Accessibility Permissions"
+          }
+        }
+      }
+    },
+    "accessibilityDialogPopover.settingsButton" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Open Accessibility Settings"
+          }
+        }
+      }
+    },
+    "customSensitivity.display" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Sensitivity: %ld/1000"
+          }
+        }
+      }
+    },
+    "dial.connected" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Surface Dial SN: %@"
+          }
+        }
+      }
+    },
+    "dial.disconnected" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Not Connected to Dial"
+          }
+        }
+      }
+    },
+    "menu.accessibilityPermissions" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Needs accessibility permissions!"
+          }
+        }
+      }
+    },
+    "menu.buttonMode" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Button Mode"
+          }
+        }
+      }
+    },
+    "menu.buttonMode.leftClick" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Left Mouse Click"
+          }
+        }
+      }
+    },
+    "menu.buttonMode.mute" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Mute"
+          }
+        }
+      }
+    },
+    "menu.buttonMode.none" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "None"
+          }
+        }
+      }
+    },
+    "menu.buttonMode.playback" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Playback Control"
+          }
+        }
+      }
+    },
+    "menu.direction" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Direction"
+          }
+        }
+      }
+    },
+    "menu.direction.ccw" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Counterclockwise Is Up"
+          }
+        }
+      }
+    },
+    "menu.direction.cw" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Clockwise Is Up"
+          }
+        }
+      }
+    },
+    "menu.hapticFeedback" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Haptics"
+          }
+        }
+      }
+    },
+    "menu.keepDialAwake" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Keep Dial Awake"
+          }
+        }
+      }
+    },
+    "menu.keyScrollModifiers" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Key/Scroll Modifiers"
+          }
+        }
+      }
+    },
+    "menu.quit" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Quit"
+          }
+        }
+      }
+    },
+    "menu.rotationMode" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Rotation Mode"
+          }
+        }
+      }
+    },
+    "menu.rotationMode.brightness" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Brightness Control"
+          }
+        }
+      }
+    },
+    "menu.rotationMode.keyboard" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Keyboard Light Control"
+          }
+        }
+      }
+    },
+    "menu.rotationMode.leftRight" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Keyboard (Left/Right)"
+          }
+        }
+      }
+    },
+    "menu.rotationMode.music" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Volume Control"
+          }
+        }
+      }
+    },
+    "menu.rotationMode.none" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "None"
+          }
+        }
+      }
+    },
+    "menu.rotationMode.scroll" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Scrolling"
+          }
+        }
+      }
+    },
+    "menu.rotationMode.upDown" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Keyboard (Up/Down)"
+          }
+        }
+      }
+    },
+    "menu.rotationSensitivity" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Sensitivity"
+          }
+        }
+      }
+    },
+    "menu.rotationSensitivity.custom" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Custom"
+          }
+        }
+      }
+    },
+    "menu.rotationSensitivity.high" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "High"
+          }
+        }
+      }
+    },
+    "menu.rotationSensitivity.low" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Low"
+          }
+        }
+      }
+    },
+    "menu.rotationSensitivity.medium" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Medium"
+          }
+        }
+      }
+    },
+    "menu.showOSD" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Show Changes on OSD"
+          }
+        }
+      }
+    },
+    "menu.statusIcon" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Menu Bar Icon"
+          }
+        }
+      }
+    },
+    "menu.statusIcon.button" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Button Mode"
+          }
+        }
+      }
+    },
+    "menu.statusIcon.default" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Default"
+          }
+        }
+      }
+    },
+    "menu.statusIcon.rotation" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Rotation Mode"
+          }
+        }
+      }
+    },
+    "menu.tooltip.accessibilityPermissions" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "MacDial needs accessibility permissions to function properly. Click to fix this!"
+          }
+        }
+      }
+    },
+    "menu.tooltip.hapticFeedback" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Enables haptic feedback (vibration) on rotation of the dial"
+          }
+        }
+      }
+    },
+    "menu.tooltip.keepDialAwake" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Prevents the dial from automatically sleeping (reduces battery life)"
+          }
+        }
+      }
+    },
+    "menu.tooltip.keyScrollModifiers" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Modifier keys which will be held down during rotation in the key or scroll rotation modes"
+          }
+        }
+      }
+    },
+    "menu.tooltip.showOSD" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Whether the system OSD should be shown on rotation (like if you had pushed the volume/brightness key)"
+          }
+        }
+      }
+    },
+    "menu.tooltip.statusIcon.button" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Shows the active button mode"
+          }
+        }
+      }
+    },
+    "menu.tooltip.statusIcon.rotation" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Shows the active rotation mode"
+          }
+        }
+      }
+    }
+  },
+  "version" : "1.1"
+}
