@@ -43,13 +43,14 @@ class UserSettings {
     }
 
     enum RotationOperationMode: Int {
-        case none       = 0
-        case scrolling  = 1
-        case volume     = 2
-        case brightness = 3
-        case keyboard   = 4
-        case leftRight  = 5
-        case upDown     = 6
+        case none          = 0
+        case scrolling     = 1
+        case volume        = 2
+        case brightness    = 3
+        case keyboard      = 4
+        case leftRight     = 5
+        case upDown        = 6
+        case spotifyVolume = 7
     }
 
     enum ButtonOperationMode: Int {

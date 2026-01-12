@@ -50,6 +50,8 @@ class scriptable_setRotationMode: NSScriptCommand {
     ///    delay 2
     ///    set rotation mode updown
     ///    delay 2
+    ///    set rotation mode spotifyVolume
+    ///    delay 2
     ///    set rotation mode none
     ///    delay 2
     ///    set rotation mode volume
@@ -83,6 +85,8 @@ class scriptable_setRotationMode: NSScriptCommand {
                     AppController.shared.setRotationMode(mode: .leftRight)
                 case "MDRu":
                     AppController.shared.setRotationMode(mode: .upDown)
+                case "MDRy":
+                    AppController.shared.setRotationMode(mode: .spotifyVolume)
                 case "MDno":
                     AppController.shared.setRotationMode(mode: .none)
                 default:

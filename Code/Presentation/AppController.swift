@@ -26,6 +26,7 @@ class AppController: NSObject, NSMenuDelegate {
     @IBOutlet private var menuRotationControlModeScroll: NSMenuItem!
     @IBOutlet private var menuRotationControlModeLeftRight: NSMenuItem!
     @IBOutlet private var menuRotationControlModeUpDown: NSMenuItem!
+    @IBOutlet private var menuRotationControlModeSpotifyVolume: NSMenuItem!
     @IBOutlet private var menuRotationControlModeNone: NSMenuItem!
     
     @IBOutlet private var menuButtonControlMode: NSMenuItem!
@@ -115,6 +116,7 @@ class AppController: NSObject, NSMenuDelegate {
         menuRotationControlModeScroll.title = NSLocalizedString("menu.rotationMode.scroll", comment: "")
         menuRotationControlModeLeftRight.title = NSLocalizedString("menu.rotationMode.leftRight", comment: "")
         menuRotationControlModeUpDown.title = NSLocalizedString("menu.rotationMode.upDown", comment: "")
+        menuRotationControlModeSpotifyVolume.title = NSLocalizedString("menu.rotationMode.spotifyVolume", comment: "")
         menuRotationControlModeNone.title = NSLocalizedString("menu.rotationMode.none", comment: "")
         
         menuKeyScrollModifiers.title = NSLocalizedString("menu.keyScrollModifiers", comment: "")
@@ -195,6 +197,7 @@ class AppController: NSObject, NSMenuDelegate {
         menuRotationControlModeKeyboard.state = .off
         menuRotationControlModeLeftRight.state = .off
         menuRotationControlModeUpDown.state = .off
+        menuRotationControlModeSpotifyVolume.state = .off
         menuRotationControlModeNone.state = .off
         
         item.state = .on
@@ -227,6 +230,11 @@ class AppController: NSObject, NSMenuDelegate {
                 dialControl = RotationArrowKeyControl(rightTurnKeyCode: .upArrow, leftTurnKeyCode: .downArrow)
                 UserSettings.rotationMode = .upDown
                 menuKeyScrollModifiers.visible = true
+                
+            case menuRotationControlModeSpotifyVolume.identifier:
+                dialControl = SpotifyVolumeControl()
+                UserSettings.rotationMode = .spotifyVolume
+                menuKeyScrollModifiers.visible = false
                 
             case menuRotationControlModeNone.identifier:
                 dialControl = NoneControl()
@@ -411,6 +419,8 @@ class AppController: NSObject, NSMenuDelegate {
                 rotationModeSelect(item: menuRotationControlModeLeftRight)
             case .upDown:
                 rotationModeSelect(item: menuRotationControlModeUpDown)
+            case .spotifyVolume:
+                rotationModeSelect(item: menuRotationControlModeSpotifyVolume)
         }
     }
     

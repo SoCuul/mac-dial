@@ -271,6 +271,17 @@
         }
       }
     },
+    "menu.rotationMode.spotifyVolume" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Spotify Volume"
+          }
+        }
+      }
+    },
     "menu.rotationMode.upDown" : {
       "localizations" : {
         "en" : {
