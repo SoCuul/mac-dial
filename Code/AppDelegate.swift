@@ -46,6 +46,9 @@ class AppDelegate: NSObject, NSApplicationDelegate {
             }
         }
         
+        // Request accessibility permissions
+        controller.requestPermissions()
+        
     }
 
     func applicationWillTerminate(_ aNotification: Notification) {

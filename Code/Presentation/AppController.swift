@@ -168,8 +168,6 @@ class AppController: NSObject, NSMenuDelegate {
             option: UserSettings.keyScrollModifiers.option,
             control: UserSettings.keyScrollModifiers.control
         )
-        
-        requestPermissions()
     }
     
     func menuWillOpen(_ menu: NSMenu) {
@@ -576,7 +574,7 @@ class AppController: NSObject, NSMenuDelegate {
     
     // MARK: - Accessibility permissions
     
-    private func requestPermissions() {
+    public func requestPermissions() {
         // More information on this behaviour: https://stackoverflow.com/questions/29006379/accessibility-permissions-reset-after-application-update
         if !AXIsProcessTrusted() {
             let iconConfig = NSImage.SymbolConfiguration().applying(.init(hierarchicalColor: .systemBlue))

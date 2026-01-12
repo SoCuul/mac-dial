@@ -24,7 +24,14 @@ class AccessibilityPopoverView: NSViewController {
         settingsButton.title = String(format: NSLocalizedString("accessibilityDialogPopover.settingsButton", comment: ""))
         settingsButton.resizeToFitText()
         
-        setupWebView()
+        // Force WebKit.framework to load
+        _ = NSClassFromString("WKWebViewConfiguration")
+    }
+    
+    override func viewWillAppear() {
+        super.viewWillAppear()
+        
+        self.setupWebView()
     }
     
     @IBAction func buttonClicked(_ sender: NSButton) {
@@ -49,6 +56,8 @@ class AccessibilityPopoverView: NSViewController {
         dynamicWebView.frame = webViewContainer?.bounds ?? NSRect(x: 0, y: 0, width: 0, height: 0)
         dynamicWebView.autoresizingMask = [.width, .height]
         dynamicWebView.layer?.cornerRadius = 5.0
+        dynamicWebView.needsLayout = true
+        dynamicWebView.layoutSubtreeIfNeeded()
 
         self.webViewContainer?.addSubview(dynamicWebView)
 
