@@ -191,14 +191,7 @@ class AppController: NSObject, NSMenuDelegate {
     
     @IBAction
     private func rotationModeSelect(item: NSMenuItem) {
-        menuRotationControlModeScroll.state = .off
-        menuRotationControlModeVolume.state = .off
-        menuRotationControlModeBrightness.state = .off
-        menuRotationControlModeKeyboard.state = .off
-        menuRotationControlModeLeftRight.state = .off
-        menuRotationControlModeUpDown.state = .off
-        menuRotationControlModeSpotifyVolume.state = .off
-        menuRotationControlModeNone.state = .off
+        menuRotationControlMode.deselectSubmenuItems()
         
         item.state = .on
         
@@ -254,10 +247,7 @@ class AppController: NSObject, NSMenuDelegate {
     
     @IBAction
     private func buttonModeSelect(item: NSMenuItem) {
-        menuButtonControlModeLeftClick.state = .off
-        menuButtonControlModePlayback.state = .off
-        menuButtonControlModeMute.state = .off
-        menuButtonControlModeNone.state = .off
+        menuButtonControlMode.deselectSubmenuItems()
         
         item.state = .on
         menuButtonControlMode.image = item.image
@@ -312,10 +302,7 @@ class AppController: NSObject, NSMenuDelegate {
     
     @IBAction
     private func sensitivitySelect(item: NSMenuItem) {
-        menuSensitivityLow.state = .off
-        menuSensitivityMedium.state = .off
-        menuSensitivityHigh.state = .off
-        menuSensitivityCustom.state = .off
+        menuSensitivity.deselectSubmenuItems()
         
         switch item.identifier {
             case menuSensitivityLow.identifier:
@@ -337,8 +324,7 @@ class AppController: NSObject, NSMenuDelegate {
     
     @IBAction
     private func directionSelect(item: NSMenuItem) {
-        menuWheelDirectionCW.state = .off
-        menuWheelDirectionCCW.state = .off
+        menuWheelDirection.deselectSubmenuItems()
         
         switch item.identifier {
             case menuWheelDirectionCW.identifier:
@@ -371,9 +357,7 @@ class AppController: NSObject, NSMenuDelegate {
     
     @IBAction
     private func statusIconSelect(item: NSMenuItem) {
-        menuStatusIconDefault.state = .off
-        menuStatusIconRotation.state = .off
-        menuStatusIconButton.state = .off
+        menuStatusIcon.deselectSubmenuItems()
         
         switch item.identifier {
             case menuStatusIconDefault.identifier:

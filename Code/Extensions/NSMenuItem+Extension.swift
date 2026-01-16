@@ -32,4 +32,12 @@ extension NSMenuItem {
             self.state = newValue ? .on : .off
         }
     }
+    
+    /// Resets the state of all items in the submenu to unselected
+    /// Used before setting which item was selected by the user
+    func deselectSubmenuItems() {
+        self.submenu?.items.forEach { item in
+            item.state = .off
+        }
+    }
 }
