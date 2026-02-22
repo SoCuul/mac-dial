@@ -211,6 +211,17 @@
         }
       }
     },
+    "menu.rotationMode.appleMusicVolume" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Apple Music Volume"
+          }
+        }
+      }
+    },
     "menu.rotationMode.brightness" : {
       "localizations" : {
         "en" : {
@@ -288,6 +299,17 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Keyboard (Up/Down)"
+          }
+        }
+      }
+    },
+    "menu.rotationMode.vlcVolume" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "VLC Volume"
           }
         }
       }

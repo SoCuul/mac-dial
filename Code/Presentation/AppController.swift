@@ -26,7 +26,9 @@ class AppController: NSObject, NSMenuDelegate {
     @IBOutlet private var menuRotationControlModeScroll: NSMenuItem!
     @IBOutlet private var menuRotationControlModeLeftRight: NSMenuItem!
     @IBOutlet private var menuRotationControlModeUpDown: NSMenuItem!
+    @IBOutlet private var menuRotationControlModeAppleMusicVolume: NSMenuItem!
     @IBOutlet private var menuRotationControlModeSpotifyVolume: NSMenuItem!
+    @IBOutlet private var menuRotationControlModeVLCVolume: NSMenuItem!
     @IBOutlet private var menuRotationControlModeNone: NSMenuItem!
     
     @IBOutlet private var menuButtonControlMode: NSMenuItem!
@@ -116,7 +118,9 @@ class AppController: NSObject, NSMenuDelegate {
         menuRotationControlModeScroll.title = NSLocalizedString("menu.rotationMode.scroll", comment: "")
         menuRotationControlModeLeftRight.title = NSLocalizedString("menu.rotationMode.leftRight", comment: "")
         menuRotationControlModeUpDown.title = NSLocalizedString("menu.rotationMode.upDown", comment: "")
+        menuRotationControlModeAppleMusicVolume.title = NSLocalizedString("menu.rotationMode.appleMusicVolume", comment: "")
         menuRotationControlModeSpotifyVolume.title = NSLocalizedString("menu.rotationMode.spotifyVolume", comment: "")
+        menuRotationControlModeVLCVolume.title = NSLocalizedString("menu.rotationMode.vlcVolume", comment: "")
         menuRotationControlModeNone.title = NSLocalizedString("menu.rotationMode.none", comment: "")
         
         menuKeyScrollModifiers.title = NSLocalizedString("menu.keyScrollModifiers", comment: "")
@@ -224,9 +228,17 @@ class AppController: NSObject, NSMenuDelegate {
                 UserSettings.rotationMode = .upDown
                 menuKeyScrollModifiers.visible = true
                 
+            case menuRotationControlModeAppleMusicVolume.identifier:
+                dialControl = AppVolumeControl(.applemusic)
+                UserSettings.rotationMode = .appleMusicVolume
+                menuKeyScrollModifiers.visible = false
             case menuRotationControlModeSpotifyVolume.identifier:
-                dialControl = SpotifyVolumeControl()
+                dialControl = AppVolumeControl(.spotify)
                 UserSettings.rotationMode = .spotifyVolume
+                menuKeyScrollModifiers.visible = false
+            case menuRotationControlModeVLCVolume.identifier:
+                dialControl = AppVolumeControl(.vlc)
+                UserSettings.rotationMode = .vlcVolume
                 menuKeyScrollModifiers.visible = false
                 
             case menuRotationControlModeNone.identifier:
@@ -403,8 +415,12 @@ class AppController: NSObject, NSMenuDelegate {
                 rotationModeSelect(item: menuRotationControlModeLeftRight)
             case .upDown:
                 rotationModeSelect(item: menuRotationControlModeUpDown)
+            case .appleMusicVolume:
+                rotationModeSelect(item: menuRotationControlModeAppleMusicVolume)
             case .spotifyVolume:
                 rotationModeSelect(item: menuRotationControlModeSpotifyVolume)
+            case .vlcVolume:
+                rotationModeSelect(item: menuRotationControlModeVLCVolume)
         }
     }
     

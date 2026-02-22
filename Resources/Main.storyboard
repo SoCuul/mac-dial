@@ -32,6 +32,7 @@
                         <outlet property="menuKeyScrollModifiers" destination="alI-kK-XQC" id="a7v-ma-boz"/>
                         <outlet property="menuQuit" destination="O5Z-zk-v4Z" id="bua-Re-Fya"/>
                         <outlet property="menuRotationControlMode" destination="8LI-uh-zfA" id="ama-Z7-Szm"/>
+                        <outlet property="menuRotationControlModeAppleMusicVolume" destination="HWh-7Z-VN7" id="wYd-BT-R5x"/>
                         <outlet property="menuRotationControlModeBrightness" destination="IO3-RU-FHq" id="XfP-Fp-XxH"/>
                         <outlet property="menuRotationControlModeKeyboard" destination="AOl-K5-pLD" id="LMq-rS-MX0"/>
                         <outlet property="menuRotationControlModeLeftRight" destination="hRU-nD-LWM" id="sXh-IF-7ck"/>
@@ -39,6 +40,7 @@
                         <outlet property="menuRotationControlModeScroll" destination="v7h-h5-CmP" id="NVw-8A-4xe"/>
                         <outlet property="menuRotationControlModeSpotifyVolume" destination="Lm6-dm-DA4" id="2mL-lu-NFi"/>
                         <outlet property="menuRotationControlModeUpDown" destination="O5d-g5-OxQ" id="LK3-ZJ-ZNO"/>
+                        <outlet property="menuRotationControlModeVLCVolume" destination="zcc-Ry-mcf" id="Vyf-dt-cUz"/>
                         <outlet property="menuRotationControlModeVolume" destination="gME-7l-za8" id="TuY-ad-vtZ"/>
                         <outlet property="menuSensitivity" destination="FER-f3-ImN" id="Rer-iP-HjA"/>
                         <outlet property="menuSensitivityCustom" destination="Hp3-9v-lad" id="ZOg-1M-uFs"/>
@@ -142,10 +144,22 @@
                                         </connections>
                                     </menuItem>
                                     <menuItem isSeparatorItem="YES" id="A4U-aO-SM7"/>
+                                    <menuItem title="* Apple Music Volume" image="menuicon-applemusic" identifier="rotation.applemusicvolume" id="HWh-7Z-VN7">
+                                        <modifierMask key="keyEquivalentModifierMask"/>
+                                        <connections>
+                                            <action selector="rotationModeSelectWithItem:" target="gIN-nu-Pip" id="KSd-AR-VW8"/>
+                                        </connections>
+                                    </menuItem>
                                     <menuItem title="* Spotify Volume" image="menuicon-spotify" identifier="rotation.spotifyvolume" id="Lm6-dm-DA4">
                                         <modifierMask key="keyEquivalentModifierMask"/>
                                         <connections>
                                             <action selector="rotationModeSelectWithItem:" target="gIN-nu-Pip" id="3Ae-TS-ith"/>
+                                        </connections>
+                                    </menuItem>
+                                    <menuItem title="* VLC Volume" image="menuicon-vlc" identifier="rotation.vlcvolume" id="zcc-Ry-mcf">
+                                        <modifierMask key="keyEquivalentModifierMask"/>
+                                        <connections>
+                                            <action selector="rotationModeSelectWithItem:" target="gIN-nu-Pip" id="uqb-3T-gbF"/>
                                         </connections>
                                     </menuItem>
                                     <menuItem isSeparatorItem="YES" id="RB0-sA-2xW"/>
@@ -353,6 +367,7 @@
         <image name="dial.medium.fill" catalog="system" width="18" height="16"/>
         <image name="digitalcrown.horizontal.arrow.clockwise.fill" catalog="system" width="16" height="17"/>
         <image name="digitalcrown.horizontal.arrow.counterclockwise.fill" catalog="system" width="16" height="17"/>
+        <image name="menuicon-applemusic" width="18" height="18"/>
         <image name="menuicon-brightness" width="18" height="18"/>
         <image name="menuicon-dial" width="16" height="16"/>
         <image name="menuicon-keyboard" width="18" height="18"/>
@@ -363,6 +378,7 @@
         <image name="menuicon-scroll" width="18" height="18"/>
         <image name="menuicon-spotify" width="18" height="18"/>
         <image name="menuicon-updown" width="18" height="18"/>
+        <image name="menuicon-vlc" width="18" height="18"/>
         <image name="menuicon-volume" width="18" height="18"/>
         <image name="slider.horizontal.3" catalog="system" width="16" height="13"/>
     </resources>

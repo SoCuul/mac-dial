@@ -50,7 +50,11 @@ class scriptable_setRotationMode: NSScriptCommand {
     ///    delay 2
     ///    set rotation mode updown
     ///    delay 2
+    ///    set rotation mode appleMusicVolume
+    ///    delay 2
     ///    set rotation mode spotifyVolume
+    ///    delay 2
+    ///    set rotation mode vlcVolume
     ///    delay 2
     ///    set rotation mode none
     ///    delay 2
@@ -73,20 +77,24 @@ class scriptable_setRotationMode: NSScriptCommand {
             log(tag:"Scripting: setRotationMode", "Enum code: \(getValueCodeString(value: args.values.first, code: code))")
             
             switch (code) {
-                case "MDRv":
+                case "MDRa":
                     AppController.shared.setRotationMode(mode: .volume)
                 case "MDRb":
                     AppController.shared.setRotationMode(mode: .brightness)
-                case "MDRk":
+                case "MDRc":
                     AppController.shared.setRotationMode(mode: .keyboard)
-                case "MDRs":
+                case "MDRd":
                     AppController.shared.setRotationMode(mode: .scrolling)
-                case "MDRl":
+                case "MDRe":
                     AppController.shared.setRotationMode(mode: .leftRight)
-                case "MDRu":
+                case "MDRf":
                     AppController.shared.setRotationMode(mode: .upDown)
-                case "MDRy":
+                case "MDRg":
+                    AppController.shared.setRotationMode(mode: .appleMusicVolume)
+                case "MDRh":
                     AppController.shared.setRotationMode(mode: .spotifyVolume)
+                case "MDRi":
+                    AppController.shared.setRotationMode(mode: .vlcVolume)
                 case "MDno":
                     AppController.shared.setRotationMode(mode: .none)
                 default:
@@ -134,11 +142,11 @@ class scriptable_setButtonMode: NSScriptCommand {
             log(tag:"Scripting: setButtonMode", "Enum code: \(getValueCodeString(value: args.values.first, code: code))")
             
             switch (code) {
-                case "MDBp":
+                case "MDBa":
                     AppController.shared.setButtonMode(mode: .playback)
-                case "MDBl":
+                case "MDBb":
                     AppController.shared.setButtonMode(mode: .leftClick)
-                case "MDBm":
+                case "MDBc":
                     AppController.shared.setButtonMode(mode: .mute)
                 case "MDno":
                     AppController.shared.setButtonMode(mode: .none)

@@ -6,20 +6,22 @@
     <suite name="MacDial Suite" code="MDst" description="Commands for MacDial.">
 
         <enumeration name="rotation mode" code="MDRM" description="The mode for dial rotation">
-            <enumerator name="volume"        code="MDRv" description="Volume"/>
-            <enumerator name="brightness"    code="MDRb" description="Brightness"/>
-            <enumerator name="keyboard"      code="MDRk" description="Keyboard"/>
-            <enumerator name="scrolling"     code="MDRs" description="Scrolling"/>
-            <enumerator name="leftright"     code="MDRl" description="Keyboard (Left/Right)"/>
-            <enumerator name="updown"        code="MDRu" description="Keyboard (Up/Down)"/>
-            <enumerator name="spotifyVolume" code="MDRy" description="Spotify Volume"/>
-            <enumerator name="none"          code="MDno" description="None"/>
+            <enumerator name="volume"           code="MDRa" description="Volume"/>
+            <enumerator name="brightness"       code="MDRb" description="Brightness"/>
+            <enumerator name="keyboard"         code="MDRc" description="Keyboard"/>
+            <enumerator name="scrolling"        code="MDRd" description="Scrolling"/>
+            <enumerator name="leftright"        code="MDRe" description="Keyboard (Left/Right)"/>
+            <enumerator name="updown"           code="MDRf" description="Keyboard (Up/Down)"/>
+            <enumerator name="appleMusicVolume" code="MDRg" description="Apple Music Volume"/>
+            <enumerator name="spotifyVolume"    code="MDRh" description="Spotify Volume"/>
+            <enumerator name="vlcVolume"        code="MDRi" description="VLC Volume"/>
+            <enumerator name="none"             code="MDno" description="None"/>
         </enumeration>
 
         <enumeration name="button mode"  code="MDBM" description="The mode for dial press">
-            <enumerator name="playback"  code="MDBp" description="Playback"/>
-            <enumerator name="mute"      code="MDBm" description="Mute"/>
-            <enumerator name="leftClick" code="MDBl" description="Left Mouse Click"/>
+            <enumerator name="playback"  code="MDBa" description="Playback"/>
+            <enumerator name="mute"      code="MDBb" description="Mute"/>
+            <enumerator name="leftClick" code="MDBc" description="Left Mouse Click"/>
             <enumerator name="none"      code="MDno" description="None"/>
         </enumeration>
 

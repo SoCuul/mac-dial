@@ -189,7 +189,7 @@ class DialDevice {
                     _buttonHandler(stateValue == 1 ? .pressed : .released)
                 
                 default:
-                    break
+                    print("(\(usagePage), \(usageId)): \(IOHIDValueGetIntegerValue(value))")
             }
         }
         IOHIDManagerRegisterInputValueCallback(manager, inputCallback, nil)
