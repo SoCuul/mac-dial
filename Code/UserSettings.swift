@@ -50,6 +50,8 @@ class UserSettings {
         case keyboard         = 4
         case leftRight        = 5
         case upDown           = 6
+        case brushSize        = 7
+        case plusMinus        = 8
         case appleMusicVolume = 100
         case spotifyVolume    = 101
         case vlcVolume        = 102

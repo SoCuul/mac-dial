@@ -10,8 +10,10 @@
             <enumerator name="brightness"       code="MDRb" description="Brightness"/>
             <enumerator name="keyboard"         code="MDRc" description="Keyboard"/>
             <enumerator name="scrolling"        code="MDRd" description="Scrolling"/>
+            <enumerator name="brushsize"        code="MDRj" description="Brush Size"/>
             <enumerator name="leftright"        code="MDRe" description="Keyboard (Left/Right)"/>
             <enumerator name="updown"           code="MDRf" description="Keyboard (Up/Down)"/>
+            <enumerator name="plusminus"        code="MDRk" description="Keyboard (Plus/Minus)"/>
             <enumerator name="appleMusicVolume" code="MDRg" description="Apple Music Volume"/>
             <enumerator name="spotifyVolume"    code="MDRh" description="Spotify Volume"/>
             <enumerator name="vlcVolume"        code="MDRi" description="VLC Volume"/>

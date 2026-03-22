@@ -15,6 +15,10 @@ enum KeyCode: Int32 {
     case rightArrow = 124
     case upArrow = 126
     case downArrow = 125
+    case leftSquareBracket = 33
+    case rightSquareBracket = 30
+    case plus = 69
+    case minus = 27
 }
 
 private let specialSymbols: [Int32: String] = [

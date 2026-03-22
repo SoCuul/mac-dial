@@ -24,8 +24,10 @@ class AppController: NSObject, NSMenuDelegate {
     @IBOutlet private var menuRotationControlModeBrightness: NSMenuItem!
     @IBOutlet private var menuRotationControlModeKeyboard: NSMenuItem!
     @IBOutlet private var menuRotationControlModeScroll: NSMenuItem!
+    @IBOutlet private var menuRotationControlModeBrushSize: NSMenuItem!
     @IBOutlet private var menuRotationControlModeLeftRight: NSMenuItem!
     @IBOutlet private var menuRotationControlModeUpDown: NSMenuItem!
+    @IBOutlet private var menuRotationControlModePlusMinus: NSMenuItem!
     @IBOutlet private var menuRotationControlModeAppleMusicVolume: NSMenuItem!
     @IBOutlet private var menuRotationControlModeSpotifyVolume: NSMenuItem!
     @IBOutlet private var menuRotationControlModeVLCVolume: NSMenuItem!
@@ -116,8 +118,10 @@ class AppController: NSObject, NSMenuDelegate {
         menuRotationControlModeBrightness.title = NSLocalizedString("menu.rotationMode.brightness", comment: "")
         menuRotationControlModeKeyboard.title = NSLocalizedString("menu.rotationMode.keyboard", comment: "")
         menuRotationControlModeScroll.title = NSLocalizedString("menu.rotationMode.scroll", comment: "")
+        menuRotationControlModeBrushSize.title = NSLocalizedString("menu.rotationMode.brushSize", comment: "")
         menuRotationControlModeLeftRight.title = NSLocalizedString("menu.rotationMode.leftRight", comment: "")
         menuRotationControlModeUpDown.title = NSLocalizedString("menu.rotationMode.upDown", comment: "")
+        menuRotationControlModePlusMinus.title = NSLocalizedString("menu.rotationMode.plusMinus", comment: "")
         menuRotationControlModeAppleMusicVolume.title = NSLocalizedString("menu.rotationMode.appleMusicVolume", comment: "")
         menuRotationControlModeSpotifyVolume.title = NSLocalizedString("menu.rotationMode.spotifyVolume", comment: "")
         menuRotationControlModeVLCVolume.title = NSLocalizedString("menu.rotationMode.vlcVolume", comment: "")
@@ -219,6 +223,10 @@ class AppController: NSObject, NSMenuDelegate {
                 dialControl = RotationScrollControl()
                 UserSettings.rotationMode = .scrolling
                 menuKeyScrollModifiers.visible = true
+            case menuRotationControlModeBrushSize.identifier:
+                dialControl = RotationArrowKeyControl(rightTurnKeyCode: .rightSquareBracket, leftTurnKeyCode: .leftSquareBracket)
+                UserSettings.rotationMode = .brushSize
+                menuKeyScrollModifiers.visible = true
             case menuRotationControlModeLeftRight.identifier:
                 dialControl = RotationArrowKeyControl(rightTurnKeyCode: .rightArrow, leftTurnKeyCode: .leftArrow)
                 UserSettings.rotationMode = .leftRight
@@ -226,6 +234,10 @@ class AppController: NSObject, NSMenuDelegate {
             case menuRotationControlModeUpDown.identifier:
                 dialControl = RotationArrowKeyControl(rightTurnKeyCode: .upArrow, leftTurnKeyCode: .downArrow)
                 UserSettings.rotationMode = .upDown
+                menuKeyScrollModifiers.visible = true
+            case menuRotationControlModePlusMinus.identifier:
+                dialControl = RotationArrowKeyControl(rightTurnKeyCode: .plus, leftTurnKeyCode: .minus)
+                UserSettings.rotationMode = .plusMinus
                 menuKeyScrollModifiers.visible = true
                 
             case menuRotationControlModeAppleMusicVolume.identifier:
@@ -405,6 +417,8 @@ class AppController: NSObject, NSMenuDelegate {
                 rotationModeSelect(item: menuRotationControlModeNone)
             case .scrolling:
                 rotationModeSelect(item: menuRotationControlModeScroll)
+            case .brushSize:
+                rotationModeSelect(item: menuRotationControlModeBrushSize)
             case .volume:
                 rotationModeSelect(item: menuRotationControlModeVolume)
             case .brightness:
@@ -415,6 +429,8 @@ class AppController: NSObject, NSMenuDelegate {
                 rotationModeSelect(item: menuRotationControlModeLeftRight)
             case .upDown:
                 rotationModeSelect(item: menuRotationControlModeUpDown)
+            case .plusMinus:
+                rotationModeSelect(item: menuRotationControlModePlusMinus)
             case .appleMusicVolume:
                 rotationModeSelect(item: menuRotationControlModeAppleMusicVolume)
             case .spotifyVolume:

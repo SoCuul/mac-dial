@@ -46,9 +46,13 @@ class scriptable_setRotationMode: NSScriptCommand {
     ///    delay 2
     ///    set rotation mode scrolling
     ///    delay 2
+    ///    set rotation mode brushsize
+    ///    delay 2
     ///    set rotation mode leftright
     ///    delay 2
     ///    set rotation mode updown
+    ///    delay 2
+    ///    set rotation mode plusminus
     ///    delay 2
     ///    set rotation mode appleMusicVolume
     ///    delay 2
@@ -85,10 +89,14 @@ class scriptable_setRotationMode: NSScriptCommand {
                     AppController.shared.setRotationMode(mode: .keyboard)
                 case "MDRd":
                     AppController.shared.setRotationMode(mode: .scrolling)
+                case "MDRj":
+                    AppController.shared.setRotationMode(mode: .brushSize)
                 case "MDRe":
                     AppController.shared.setRotationMode(mode: .leftRight)
                 case "MDRf":
                     AppController.shared.setRotationMode(mode: .upDown)
+                case "MDRk":
+                    AppController.shared.setRotationMode(mode: .plusMinus)
                 case "MDRg":
                     AppController.shared.setRotationMode(mode: .appleMusicVolume)
                 case "MDRh":

@@ -34,9 +34,11 @@
                         <outlet property="menuRotationControlMode" destination="8LI-uh-zfA" id="ama-Z7-Szm"/>
                         <outlet property="menuRotationControlModeAppleMusicVolume" destination="HWh-7Z-VN7" id="wYd-BT-R5x"/>
                         <outlet property="menuRotationControlModeBrightness" destination="IO3-RU-FHq" id="XfP-Fp-XxH"/>
+                        <outlet property="menuRotationControlModeBrushSize" destination="Vzr-jI-5NM" id="OVC-mk-lfv"/>
                         <outlet property="menuRotationControlModeKeyboard" destination="AOl-K5-pLD" id="LMq-rS-MX0"/>
                         <outlet property="menuRotationControlModeLeftRight" destination="hRU-nD-LWM" id="sXh-IF-7ck"/>
                         <outlet property="menuRotationControlModeNone" destination="OPo-Bq-GO4" id="l7x-BE-hYH"/>
+                        <outlet property="menuRotationControlModePlusMinus" destination="X8Q-bn-J9P" id="IcE-PQ-wol"/>
                         <outlet property="menuRotationControlModeScroll" destination="v7h-h5-CmP" id="NVw-8A-4xe"/>
                         <outlet property="menuRotationControlModeSpotifyVolume" destination="Lm6-dm-DA4" id="2mL-lu-NFi"/>
                         <outlet property="menuRotationControlModeUpDown" destination="O5d-g5-OxQ" id="LK3-ZJ-ZNO"/>
@@ -131,6 +133,12 @@
                                             <action selector="rotationModeSelectWithItem:" target="gIN-nu-Pip" id="Emp-LZ-yeT"/>
                                         </connections>
                                     </menuItem>
+                                    <menuItem title="* Brush Size" image="menuicon-brushsize" identifier="rotation.brushsize" id="Vzr-jI-5NM">
+                                        <modifierMask key="keyEquivalentModifierMask"/>
+                                        <connections>
+                                            <action selector="rotationModeSelectWithItem:" target="gIN-nu-Pip" id="L8W-eC-11r"/>
+                                        </connections>
+                                    </menuItem>
                                     <menuItem title="* Keyboard (Left/Right)" image="menuicon-leftright" identifier="rotation.leftright" id="hRU-nD-LWM">
                                         <modifierMask key="keyEquivalentModifierMask"/>
                                         <connections>
@@ -141,6 +149,12 @@
                                         <modifierMask key="keyEquivalentModifierMask"/>
                                         <connections>
                                             <action selector="rotationModeSelectWithItem:" target="gIN-nu-Pip" id="Qbf-t9-zRd"/>
+                                        </connections>
+                                    </menuItem>
+                                    <menuItem title="* Keyboard (Plus/Minus)" image="menuicon-plusminus" identifier="rotation.plusminus" id="X8Q-bn-J9P">
+                                        <modifierMask key="keyEquivalentModifierMask"/>
+                                        <connections>
+                                            <action selector="rotationModeSelectWithItem:" target="gIN-nu-Pip" id="FSd-ne-5eY"/>
                                         </connections>
                                     </menuItem>
                                     <menuItem isSeparatorItem="YES" id="A4U-aO-SM7"/>
@@ -369,12 +383,14 @@
         <image name="digitalcrown.horizontal.arrow.counterclockwise.fill" catalog="system" width="16" height="17"/>
         <image name="menuicon-applemusic" width="18" height="18"/>
         <image name="menuicon-brightness" width="18" height="18"/>
+        <image name="menuicon-brushsize" width="18" height="18"/>
         <image name="menuicon-dial" width="16" height="16"/>
         <image name="menuicon-keyboard" width="18" height="18"/>
         <image name="menuicon-leftclick" width="18" height="18"/>
         <image name="menuicon-leftright" width="18" height="18"/>
         <image name="menuicon-mute" width="18" height="18"/>
         <image name="menuicon-playback" width="18" height="18"/>
+        <image name="menuicon-plusminus" width="18" height="18"/>
         <image name="menuicon-scroll" width="18" height="18"/>
         <image name="menuicon-spotify" width="18" height="18"/>
         <image name="menuicon-updown" width="18" height="18"/>
