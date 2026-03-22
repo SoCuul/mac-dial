@@ -603,8 +603,6 @@ class AppController: NSObject, NSMenuDelegate {
     public func requestPermissions() {
         // More information on this behaviour: https://stackoverflow.com/questions/29006379/accessibility-permissions-reset-after-application-update
         if !AXIsProcessTrusted() {
-            let iconConfig = NSImage.SymbolConfiguration().applying(.init(hierarchicalColor: .systemBlue))
-            
             let alertDelegate = AccessibilityAlertDelegate()
             
             let alert = NSAlert()
@@ -612,8 +610,16 @@ class AppController: NSObject, NSMenuDelegate {
             alert.showsHelp = true
             alert.messageText = NSLocalizedString("accessibilityDialog.title", comment: "")
             alert.alertStyle = NSAlert.Style.informational
-            alert.icon = NSImage(systemSymbolName:"accessibility", accessibilityDescription: "Accessibility")?.withSymbolConfiguration(iconConfig)
             alert.informativeText = NSLocalizedString("accessibilityDialog.description", comment: "")
+            
+            if #available(macOS 12.0, *) {
+                let iconConfig = NSImage.SymbolConfiguration().applying(.init(hierarchicalColor: .systemBlue))
+                alert.icon = NSImage(systemSymbolName:"accessibility", accessibilityDescription: "Accessibility")?.withSymbolConfiguration(iconConfig)
+            }
+            else {
+                alert.icon = NSImage(named:"fallback-accessibility")
+            }
+            
             alert.runModal()
         }
         
