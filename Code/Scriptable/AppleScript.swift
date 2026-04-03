@@ -46,19 +46,19 @@ class scriptable_setRotationMode: NSScriptCommand {
     ///    delay 2
     ///    set rotation mode scrolling
     ///    delay 2
-    ///    set rotation mode brushsize
+    ///    set rotation mode brush size
     ///    delay 2
-    ///    set rotation mode leftright
+    ///    set rotation mode left right
     ///    delay 2
-    ///    set rotation mode updown
+    ///    set rotation mode up down
     ///    delay 2
-    ///    set rotation mode plusminus
+    ///    set rotation mode plus minus
     ///    delay 2
-    ///    set rotation mode appleMusicVolume
+    ///    set rotation mode apple music volume
     ///    delay 2
-    ///    set rotation mode spotifyVolume
+    ///    set rotation mode spotify volume
     ///    delay 2
-    ///    set rotation mode vlcVolume
+    ///    set rotation mode vlc volume
     ///    delay 2
     ///    set rotation mode none
     ///    delay 2
@@ -81,27 +81,27 @@ class scriptable_setRotationMode: NSScriptCommand {
             log(tag:"Scripting: setRotationMode", "Enum code: \(getValueCodeString(value: args.values.first, code: code))")
             
             switch (code) {
-                case "MDRa":
+                case "RMvo":
                     AppController.shared.setRotationMode(mode: .volume)
-                case "MDRb":
+                case "RMbr":
                     AppController.shared.setRotationMode(mode: .brightness)
-                case "MDRc":
+                case "RMkb":
                     AppController.shared.setRotationMode(mode: .keyboard)
-                case "MDRd":
+                case "RMsr":
                     AppController.shared.setRotationMode(mode: .scrolling)
-                case "MDRj":
+                case "RMbs":
                     AppController.shared.setRotationMode(mode: .brushSize)
-                case "MDRe":
+                case "RMlr":
                     AppController.shared.setRotationMode(mode: .leftRight)
-                case "MDRf":
+                case "RMud":
                     AppController.shared.setRotationMode(mode: .upDown)
-                case "MDRk":
+                case "RMpm":
                     AppController.shared.setRotationMode(mode: .plusMinus)
-                case "MDRg":
+                case "RMam":
                     AppController.shared.setRotationMode(mode: .appleMusicVolume)
-                case "MDRh":
+                case "RMsp":
                     AppController.shared.setRotationMode(mode: .spotifyVolume)
-                case "MDRi":
+                case "RMvl":
                     AppController.shared.setRotationMode(mode: .vlcVolume)
                 case "MDno":
                     AppController.shared.setRotationMode(mode: .none)
@@ -127,7 +127,7 @@ class scriptable_setButtonMode: NSScriptCommand {
     ///    delay 2
     ///    set button mode mute
     ///    delay 2
-    ///    set button mode leftClick
+    ///    set button mode left click
     ///    delay 2
     ///    set button mode none
     ///    delay 2
@@ -150,11 +150,11 @@ class scriptable_setButtonMode: NSScriptCommand {
             log(tag:"Scripting: setButtonMode", "Enum code: \(getValueCodeString(value: args.values.first, code: code))")
             
             switch (code) {
-                case "MDBa":
+                case "BMpl":
                     AppController.shared.setButtonMode(mode: .playback)
-                case "MDBb":
+                case "BMlc":
                     AppController.shared.setButtonMode(mode: .leftClick)
-                case "MDBc":
+                case "BMmu":
                     AppController.shared.setButtonMode(mode: .mute)
                 case "MDno":
                     AppController.shared.setButtonMode(mode: .none)
@@ -198,13 +198,13 @@ class scriptable_setWheelSensitivity: NSScriptCommand {
             log(tag:"Scripting: setWheelSensitivity", "Enum code: \(getValueCodeString(value: args.values.first, code: code))")
             
             switch (code) {
-                case "MDSl":
+                case "WSlo":
                     AppController.shared.setSensitivity(sensitivity: .low)
-                case "MDSm":
+                case "WSmd":
                     AppController.shared.setSensitivity(sensitivity: .medium)
-                case "MDSh":
+                case "WShi":
                     AppController.shared.setSensitivity(sensitivity: .high)
-                case "MDSc":
+                case "WScu":
                     AppController.shared.setSensitivity(sensitivity: .custom)
                 default:
                     return nil
@@ -240,9 +240,9 @@ class scriptable_setWheelDirection: NSScriptCommand {
             log(tag:"Scripting: setWheelDirection", "Enum code: \(getValueCodeString(value: args.values.first, code: code))")
             
             switch (code) {
-                case "MDDr":
+                case "WDcl":
                     AppController.shared.setDirection(direction: .clockwise)
-                case "MDDl":
+                case "WDco":
                     AppController.shared.setDirection(direction: .counterclockwise)
                 default:
                     return nil
@@ -280,11 +280,11 @@ class scriptable_setStatusIcon: NSScriptCommand {
             log(tag:"Scripting: setStatusIcon", "Enum code: \(getValueCodeString(value: args.values.first, code: code))")
             
             switch (code) {
-                case "MDMd":
+                case "SIde":
                     AppController.shared.setStatusIcon(icon: .default)
-                case "MDMr":
+                case "SIrm":
                     AppController.shared.setStatusIcon(icon: .rotation)
-                case "MDMb":
+                case "SIbm":
                     AppController.shared.setStatusIcon(icon: .button)
                 default:
                     return nil

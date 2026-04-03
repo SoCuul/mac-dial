@@ -5,44 +5,45 @@
     
     <suite name="MacDial Suite" code="MDst" description="Commands for MacDial.">
 
-        <enumeration name="rotation mode" code="MDRM" description="The mode for dial rotation">
-            <enumerator name="volume"           code="MDRa" description="Volume"/>
-            <enumerator name="brightness"       code="MDRb" description="Brightness"/>
-            <enumerator name="keyboard"         code="MDRc" description="Keyboard"/>
-            <enumerator name="scrolling"        code="MDRd" description="Scrolling"/>
-            <enumerator name="brushsize"        code="MDRj" description="Brush Size"/>
-            <enumerator name="leftright"        code="MDRe" description="Keyboard (Left/Right)"/>
-            <enumerator name="updown"           code="MDRf" description="Keyboard (Up/Down)"/>
-            <enumerator name="plusminus"        code="MDRk" description="Keyboard (Plus/Minus)"/>
-            <enumerator name="appleMusicVolume" code="MDRg" description="Apple Music Volume"/>
-            <enumerator name="spotifyVolume"    code="MDRh" description="Spotify Volume"/>
-            <enumerator name="vlcVolume"        code="MDRi" description="VLC Volume"/>
-            <enumerator name="none"             code="MDno" description="None"/>
+        <enumeration name="rotation mode" code="RMOD" description="The mode for dial rotation">
+            <enumerator name="volume"             code="RMvo" description="Volume"/>
+            <enumerator name="brightness"         code="RMbr" description="Brightness"/>
+            <enumerator name="keyboard"           code="RMkb" description="Keyboard"/>
+            <enumerator name="scrolling"          code="RMsr" description="Scrolling"/>
+            <enumerator name="brush size"          code="RMbs" description="Brush Size"/>
+            <enumerator name="left right"         code="RMlr" description="Keyboard (Left/Right)"/>
+            <enumerator name="up down"            code="RMud" description="Keyboard (Up/Down)"/>
+            <enumerator name="plus minus"         code="RMpm" description="Keyboard (Plus/Minus)"/>
+            <enumerator name="apple music volume" code="RMam" description="Apple Music Volume"/>
+            <enumerator name="spotify volume"     code="RMsp" description="Spotify Volume"/>
+            <enumerator name="vlc volume"         code="RMvl" description="VLC Volume"/>
+            <enumerator name="none"               code="MDno" description="None"/>
         </enumeration>
 
-        <enumeration name="button mode"  code="MDBM" description="The mode for dial press">
-            <enumerator name="playback"  code="MDBa" description="Playback"/>
-            <enumerator name="mute"      code="MDBb" description="Mute"/>
-            <enumerator name="leftClick" code="MDBc" description="Left Mouse Click"/>
-            <enumerator name="none"      code="MDno" description="None"/>
+        <enumeration name="button mode"  code="BMOD" description="The mode for dial press">
+            <enumerator name="playback"   code="BMpl" description="Playback"/>
+            <enumerator name="mute"       code="BMmu" description="Mute"/>
+            <enumerator name="left click" code="BMlc" description="Left Mouse Click"/>
+            <enumerator name="none"       code="MDno" description="None"/>
+        </enumeration>
         </enumeration>
 
-        <enumeration name="wheel sensitivity" code="MDSS" description="The sensitivity of the dial rotation">
-            <enumerator name="low"    code="MDSl" description="Low"/>
-            <enumerator name="medium" code="MDSm" description="Medium"/>
-            <enumerator name="high"   code="MDSh" description="High"/>
-            <enumerator name="custom" code="MDSc" description="Custom"/>
+        <enumeration name="wheel sensitivity" code="WSNT" description="The sensitivity of the dial rotation">
+            <enumerator name="low"    code="WSlo" description="Low"/>
+            <enumerator name="medium" code="WSmd" description="Medium"/>
+            <enumerator name="high"   code="WShi" description="High"/>
+            <enumerator name="custom" code="WScu" description="Custom"/>
         </enumeration>
 
-        <enumeration name="wheel direction" code="MDDD" description="The direction of the wheel rotation">
-            <enumerator name="clockwise"        code="MDDr" description="Clockwise"/>
-            <enumerator name="counterclockwise" code="MDDl" description="Counterclockwise"/>
+        <enumeration name="wheel direction" code="WDIR" description="The direction of the wheel rotation">
+            <enumerator name="clockwise"        code="WDcl" description="Clockwise"/>
+            <enumerator name="counterclockwise" code="WDco" description="Counterclockwise"/>
         </enumeration>
 
-        <enumeration name="status icon" code="MDMM" description="The status bar icon mode">
-            <enumerator name="default"       code="MDMd" description="Default"/>
-            <enumerator name="rotation mode" code="MDMr" description="Rotation Mode"/>
-            <enumerator name="button mode"   code="MDMb" description="Button Mode"/>
+        <enumeration name="status icon" code="SICO" description="The status bar icon mode">
+            <enumerator name="default"       code="SIde" description="Default"/>
+            <enumerator name="rotation mode" code="SIrm" description="Rotation Mode"/>
+            <enumerator name="button mode"   code="SIbm" description="Button Mode"/>
         </enumeration>
         
         <!-- ========================================================================================= -->
