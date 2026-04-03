@@ -38,6 +38,10 @@ class AppController: NSObject, NSMenuDelegate {
     @IBOutlet private var menuButtonControlModePlayback: NSMenuItem!
     @IBOutlet private var menuButtonControlModeMute: NSMenuItem!
     @IBOutlet private var menuButtonControlModeNone: NSMenuItem!
+    
+    @IBOutlet private var menuMultiControlMode: NSMenuItem!
+    @IBOutlet private var menuMultiControlModeColorPicker: NSMenuItem!
+    @IBOutlet private var menuMultiControlModeNone: NSMenuItem!
 
     @IBOutlet private var menuKeyScrollModifiers: NSMenuItem!
     @IBOutlet private var menuKeyScrollModifierShift: NSMenuItem!
@@ -65,6 +69,7 @@ class AppController: NSObject, NSMenuDelegate {
     @IBOutlet private var menuStatusIconDefault: NSMenuItem!
     @IBOutlet private var menuStatusIconRotation: NSMenuItem!
     @IBOutlet private var menuStatusIconButton: NSMenuItem!
+    @IBOutlet private var menuStatusIconMulti: NSMenuItem!
 
     @IBOutlet private var menuState: NSMenuItem!
     @IBOutlet private var menuQuit: NSMenuItem!
@@ -76,6 +81,7 @@ class AppController: NSObject, NSMenuDelegate {
     private var dial: Dial?
     private var dialControl: DeviceControl?
     private var buttonControl: DeviceControl?
+    private var multiControl: DeviceControl?
     
     // Dynamic menu items
     @objc dynamic private var accessibilityPermissionsGranted = false
@@ -106,6 +112,10 @@ class AppController: NSObject, NSMenuDelegate {
         
         menuAccessibilityPermissions.title = NSLocalizedString("menu.accessibilityPermissions", comment: "")
         menuAccessibilityPermissions.toolTip = NSLocalizedString("menu.tooltip.accessibilityPermissions", comment: "")
+        
+        menuMultiControlMode.title = NSLocalizedString("menu.multiMode", comment: "")
+        menuMultiControlModeColorPicker.title = NSLocalizedString("menu.multiMode.colorPicker", comment: "")
+        menuMultiControlModeNone.title = NSLocalizedString("menu.multiMode.none", comment: "")
 
         menuButtonControlMode.title = NSLocalizedString("menu.buttonMode", comment: "")
         menuButtonControlModeLeftClick.title = NSLocalizedString("menu.buttonMode.leftClick", comment: "")
@@ -155,6 +165,8 @@ class AppController: NSObject, NSMenuDelegate {
         menuStatusIconRotation.toolTip = NSLocalizedString("menu.tooltip.statusIcon.rotation", comment: "")
         menuStatusIconButton.title = NSLocalizedString("menu.statusIcon.button", comment: "")
         menuStatusIconButton.toolTip = NSLocalizedString("menu.tooltip.statusIcon.button", comment: "")
+        menuStatusIconMulti.title = NSLocalizedString("menu.statusIcon.multi", comment: "")
+        menuStatusIconMulti.toolTip = NSLocalizedString("menu.tooltip.statusIcon.multi", comment: "")
         
         menuState.title = NSLocalizedString("dial.disconnected", comment: "")
         menuQuit.title = NSLocalizedString("menu.quit", comment: "")
@@ -166,6 +178,7 @@ class AppController: NSObject, NSMenuDelegate {
         // Menu state init
         setRotationMode(mode: UserSettings.rotationMode)
         setButtonMode(mode: UserSettings.buttonMode)
+        setMultiMode(mode: UserSettings.multiMode)
         setSensitivity(sensitivity: UserSettings.sensitivity)
         setDirection(direction: UserSettings.wheelDirection)
         setHaptics(enabled: UserSettings.hapticsEnabled)
@@ -183,6 +196,7 @@ class AppController: NSObject, NSMenuDelegate {
     func menuWillOpen(_ menu: NSMenu) {
         menuStatusIconRotation.image = selectedRotationModeItem?.image
         menuStatusIconButton.image = selectedButtonModeItem?.image
+        menuStatusIconMulti.image = selectedMultiModeItem?.image
         
         // Check if accessibility permissions are granted
         accessibilityPermissionsGranted = AXIsProcessTrusted()
@@ -262,6 +276,11 @@ class AppController: NSObject, NSMenuDelegate {
         }
         
         dial?.controls = (dialControl.map { [ $0 ] } ?? []) + (buttonControl.map { [ $0 ] } ?? [])
+        
+        // Disable multi mode
+        if UserSettings.rotationMode != .none {
+            setMultiMode(mode: .none)
+        }
 
         updateMenuBarTooltip()
         if (UserSettings.statusIcon == .rotation) {
@@ -296,9 +315,48 @@ class AppController: NSObject, NSMenuDelegate {
         
         dial?.controls = (dialControl.map { [ $0 ] } ?? []) + (buttonControl.map { [ $0 ] } ?? [])
         
+        // Disable multi mode
+        if UserSettings.buttonMode != .none {
+            setMultiMode(mode: .none)
+        }
+        
         updateMenuBarTooltip()
         if (UserSettings.statusIcon == .button) {
             statusIconSelect(item: menuStatusIconButton)
+        }
+    }
+    
+    @IBAction
+    private func multiModeSelect(item: NSMenuItem) {
+        menuMultiControlMode.deselectSubmenuItems()
+        
+        item.state = .on
+        menuMultiControlMode.image = item.image
+        
+        switch item.identifier {
+            case menuMultiControlModeColorPicker.identifier:
+                multiControl = ColorPickerControl()
+                UserSettings.multiMode = .colorPicker
+                
+            case menuMultiControlModeNone.identifier:
+                multiControl = NoneControl()
+                UserSettings.multiMode = .none
+            default:
+                break
+        }
+
+        if UserSettings.multiMode != .none {
+            // Disable rotation/button modes
+            setRotationMode(mode: .none)
+            setButtonMode(mode: .none)
+            
+            dial?.controls = multiControl.map { [ $0 ] } ?? []
+        }
+        
+        updateMenuBarTooltip()
+        
+        if (UserSettings.statusIcon == .multi) {
+            statusIconSelect(item: menuStatusIconMulti)
         }
     }
     
@@ -396,6 +454,10 @@ class AppController: NSObject, NSMenuDelegate {
                 menuStatusIconButton.state = .on
                 UserSettings.statusIcon = .button
                 updateMenuBarItemImage(from: selectedButtonModeItem)
+            case menuStatusIconMulti.identifier:
+                menuStatusIconMulti.state = .on
+                UserSettings.statusIcon = .multi
+                updateMenuBarItemImage(from: selectedMultiModeItem)
             default:
                 break
         }
@@ -450,6 +512,15 @@ class AppController: NSObject, NSMenuDelegate {
                 buttonModeSelect(item: menuButtonControlModePlayback)
             case .mute:
                 buttonModeSelect(item: menuButtonControlModeMute)
+        }
+    }
+    
+    public func setMultiMode(mode: UserSettings.MultiOperationMode) {
+        switch mode {
+            case .none:
+                multiModeSelect(item: menuMultiControlModeNone)
+            case .colorPicker:
+                multiModeSelect(item: menuMultiControlModeColorPicker)
         }
     }
     
@@ -518,6 +589,8 @@ class AppController: NSObject, NSMenuDelegate {
                 statusIconSelect(item: menuStatusIconRotation)
             case .button:
                 statusIconSelect(item: menuStatusIconButton)
+            case .multi:
+                statusIconSelect(item: menuStatusIconMulti)
         }
     }
     
@@ -533,6 +606,12 @@ class AppController: NSObject, NSMenuDelegate {
     private var selectedButtonModeItem: NSMenuItem? {
         get {
             menuButtonControlMode?.submenu?.allOnItems().first
+        }
+    }
+    
+    private var selectedMultiModeItem: NSMenuItem? {
+        get {
+            menuMultiControlMode?.submenu?.allOnItems().first
         }
     }
     
@@ -577,7 +656,7 @@ class AppController: NSObject, NSMenuDelegate {
     }
     
     private func updateMenuBarTooltip() {
-        statusItem.button?.toolTip = "Rotation Mode: \(selectedRotationModeItem?.title ?? "Unknown")\nButton Mode: \(selectedButtonModeItem?.title ?? "Unknown")"
+        statusItem.button?.toolTip = "Rotation Mode: \(selectedRotationModeItem?.title ?? "Unknown")\nButton Mode: \(selectedButtonModeItem?.title ?? "Unknown")\nMulti Mode: \(selectedMultiModeItem?.title ?? "Unknown")"
     }
     
     

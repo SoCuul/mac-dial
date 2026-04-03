@@ -169,6 +169,49 @@ class scriptable_setButtonMode: NSScriptCommand {
 }
 
 @MainActor
+class scriptable_setMultiMode: NSScriptCommand {
+    
+    /// ## Applescript Usage
+    ///```perl
+    ///tell application "MacDial"
+    ///    set status icon multi mode
+    ///
+    ///    set multi mode color picker
+    ///    delay 2
+    ///    set multi mode none
+    ///    delay 2
+    ///
+    ///    set status icon default
+    ///end tell
+    ///```
+    
+    override func performDefaultImplementation() -> Any? {
+
+        guard let args = self.evaluatedArguments else { return nil }
+        
+        log(tag:"Scripting: setMultiMode", "Received args: \(args)")
+        
+        guard let enumValue = args[""] as? Int64 else { return nil }
+        
+        if let code = getValueCode(enumValue) {
+            log(tag:"Scripting: setMultiMode", "Enum code: \(getValueCodeString(value: args.values.first, code: code))")
+            
+            switch (code) {
+                case "MMcp":
+                    AppController.shared.setMultiMode(mode: .colorPicker)
+                case "MDno":
+                    AppController.shared.setMultiMode(mode: .none)
+                default:
+                    return nil
+            }
+        }
+        
+        return nil
+        
+    }
+}
+
+@MainActor
 class scriptable_setWheelSensitivity: NSScriptCommand {
     
     /// ## Applescript Usage
@@ -264,6 +307,8 @@ class scriptable_setStatusIcon: NSScriptCommand {
     ///    delay 2
     ///    set status icon button mode
     ///    delay 2
+    ///    set status icon multi mode
+    ///    delay 2
     ///    set status icon default
     ///end tell
     ///```
@@ -286,6 +331,8 @@ class scriptable_setStatusIcon: NSScriptCommand {
                     AppController.shared.setStatusIcon(icon: .rotation)
                 case "SIbm":
                     AppController.shared.setStatusIcon(icon: .button)
+                case "SImm":
+                    AppController.shared.setStatusIcon(icon: .multi)
                 default:
                     return nil
             }

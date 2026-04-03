@@ -67,4 +67,8 @@ class Dial {
     public func sendKeepAlive() {
         device.sendKeepAlive()
     }
+    
+    public func sendHaptic(pattern: DialDevice.DeviceHaptic) {
+        device.sendHaptic(pattern: pattern)
+    }
 }

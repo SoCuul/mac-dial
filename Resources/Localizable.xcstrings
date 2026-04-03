@@ -2,6 +2,7 @@
   "sourceLanguage" : "en",
   "strings" : {
     "accessibilityDialog.description" : {
+      "extractionState" : "manual",
       "localizations" : {
         "en" : {
           "stringUnit" : {
@@ -12,6 +13,7 @@
       }
     },
     "accessibilityDialog.title" : {
+      "extractionState" : "manual",
       "localizations" : {
         "en" : {
           "stringUnit" : {
@@ -22,6 +24,7 @@
       }
     },
     "accessibilityDialogPopover.header" : {
+      "extractionState" : "manual",
       "localizations" : {
         "en" : {
           "stringUnit" : {
@@ -32,6 +35,7 @@
       }
     },
     "accessibilityDialogPopover.settingsButton" : {
+      "extractionState" : "manual",
       "localizations" : {
         "en" : {
           "stringUnit" : {
@@ -42,6 +46,7 @@
       }
     },
     "customSensitivity.display" : {
+      "extractionState" : "manual",
       "localizations" : {
         "en" : {
           "stringUnit" : {
@@ -52,6 +57,7 @@
       }
     },
     "dial.connected" : {
+      "extractionState" : "manual",
       "localizations" : {
         "en" : {
           "stringUnit" : {
@@ -62,6 +68,7 @@
       }
     },
     "dial.disconnected" : {
+      "extractionState" : "manual",
       "localizations" : {
         "en" : {
           "stringUnit" : {
@@ -72,6 +79,7 @@
       }
     },
     "menu.accessibilityPermissions" : {
+      "extractionState" : "manual",
       "localizations" : {
         "en" : {
           "stringUnit" : {
@@ -82,6 +90,7 @@
       }
     },
     "menu.buttonMode" : {
+      "extractionState" : "manual",
       "localizations" : {
         "en" : {
           "stringUnit" : {
@@ -92,6 +101,7 @@
       }
     },
     "menu.buttonMode.leftClick" : {
+      "extractionState" : "manual",
       "localizations" : {
         "en" : {
           "stringUnit" : {
@@ -102,6 +112,7 @@
       }
     },
     "menu.buttonMode.mute" : {
+      "extractionState" : "manual",
       "localizations" : {
         "en" : {
           "stringUnit" : {
@@ -112,6 +123,7 @@
       }
     },
     "menu.buttonMode.none" : {
+      "extractionState" : "manual",
       "localizations" : {
         "en" : {
           "stringUnit" : {
@@ -122,6 +134,7 @@
       }
     },
     "menu.buttonMode.playback" : {
+      "extractionState" : "manual",
       "localizations" : {
         "en" : {
           "stringUnit" : {
@@ -132,6 +145,7 @@
       }
     },
     "menu.direction" : {
+      "extractionState" : "manual",
       "localizations" : {
         "en" : {
           "stringUnit" : {
@@ -142,6 +156,7 @@
       }
     },
     "menu.direction.ccw" : {
+      "extractionState" : "manual",
       "localizations" : {
         "en" : {
           "stringUnit" : {
@@ -152,6 +167,7 @@
       }
     },
     "menu.direction.cw" : {
+      "extractionState" : "manual",
       "localizations" : {
         "en" : {
           "stringUnit" : {
@@ -162,6 +178,7 @@
       }
     },
     "menu.hapticFeedback" : {
+      "extractionState" : "manual",
       "localizations" : {
         "en" : {
           "stringUnit" : {
@@ -172,6 +189,7 @@
       }
     },
     "menu.keepDialAwake" : {
+      "extractionState" : "manual",
       "localizations" : {
         "en" : {
           "stringUnit" : {
@@ -182,6 +200,7 @@
       }
     },
     "menu.keyScrollModifiers" : {
+      "extractionState" : "manual",
       "localizations" : {
         "en" : {
           "stringUnit" : {
@@ -191,7 +210,41 @@
         }
       }
     },
+    "menu.multiMode" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Multi Mode"
+          }
+        }
+      }
+    },
+    "menu.multiMode.colorPicker" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Color Picker"
+          }
+        }
+      }
+    },
+    "menu.multiMode.none" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "None"
+          }
+        }
+      }
+    },
     "menu.quit" : {
+      "extractionState" : "manual",
       "localizations" : {
         "en" : {
           "stringUnit" : {
@@ -202,6 +255,7 @@
       }
     },
     "menu.rotationMode" : {
+      "extractionState" : "manual",
       "localizations" : {
         "en" : {
           "stringUnit" : {
@@ -223,6 +277,7 @@
       }
     },
     "menu.rotationMode.brightness" : {
+      "extractionState" : "manual",
       "localizations" : {
         "en" : {
           "stringUnit" : {
@@ -244,6 +299,7 @@
       }
     },
     "menu.rotationMode.keyboard" : {
+      "extractionState" : "manual",
       "localizations" : {
         "en" : {
           "stringUnit" : {
@@ -254,6 +310,7 @@
       }
     },
     "menu.rotationMode.leftRight" : {
+      "extractionState" : "manual",
       "localizations" : {
         "en" : {
           "stringUnit" : {
@@ -264,6 +321,7 @@
       }
     },
     "menu.rotationMode.music" : {
+      "extractionState" : "manual",
       "localizations" : {
         "en" : {
           "stringUnit" : {
@@ -274,6 +332,7 @@
       }
     },
     "menu.rotationMode.none" : {
+      "extractionState" : "manual",
       "localizations" : {
         "en" : {
           "stringUnit" : {
@@ -295,6 +354,7 @@
       }
     },
     "menu.rotationMode.scroll" : {
+      "extractionState" : "manual",
       "localizations" : {
         "en" : {
           "stringUnit" : {
@@ -316,6 +376,7 @@
       }
     },
     "menu.rotationMode.upDown" : {
+      "extractionState" : "manual",
       "localizations" : {
         "en" : {
           "stringUnit" : {
@@ -337,6 +398,7 @@
       }
     },
     "menu.rotationSensitivity" : {
+      "extractionState" : "manual",
       "localizations" : {
         "en" : {
           "stringUnit" : {
@@ -347,6 +409,7 @@
       }
     },
     "menu.rotationSensitivity.custom" : {
+      "extractionState" : "manual",
       "localizations" : {
         "en" : {
           "stringUnit" : {
@@ -357,6 +420,7 @@
       }
     },
     "menu.rotationSensitivity.high" : {
+      "extractionState" : "manual",
       "localizations" : {
         "en" : {
           "stringUnit" : {
@@ -367,6 +431,7 @@
       }
     },
     "menu.rotationSensitivity.low" : {
+      "extractionState" : "manual",
       "localizations" : {
         "en" : {
           "stringUnit" : {
@@ -377,6 +442,7 @@
       }
     },
     "menu.rotationSensitivity.medium" : {
+      "extractionState" : "manual",
       "localizations" : {
         "en" : {
           "stringUnit" : {
@@ -387,6 +453,7 @@
       }
     },
     "menu.showOSD" : {
+      "extractionState" : "manual",
       "localizations" : {
         "en" : {
           "stringUnit" : {
@@ -397,6 +464,7 @@
       }
     },
     "menu.statusIcon" : {
+      "extractionState" : "manual",
       "localizations" : {
         "en" : {
           "stringUnit" : {
@@ -407,6 +475,7 @@
       }
     },
     "menu.statusIcon.button" : {
+      "extractionState" : "manual",
       "localizations" : {
         "en" : {
           "stringUnit" : {
@@ -417,6 +486,7 @@
       }
     },
     "menu.statusIcon.default" : {
+      "extractionState" : "manual",
       "localizations" : {
         "en" : {
           "stringUnit" : {
@@ -426,7 +496,19 @@
         }
       }
     },
+    "menu.statusIcon.multi" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Multi Mode"
+          }
+        }
+      }
+    },
     "menu.statusIcon.rotation" : {
+      "extractionState" : "manual",
       "localizations" : {
         "en" : {
           "stringUnit" : {
@@ -437,6 +519,7 @@
       }
     },
     "menu.tooltip.accessibilityPermissions" : {
+      "extractionState" : "manual",
       "localizations" : {
         "en" : {
           "stringUnit" : {
@@ -447,6 +530,7 @@
       }
     },
     "menu.tooltip.hapticFeedback" : {
+      "extractionState" : "manual",
       "localizations" : {
         "en" : {
           "stringUnit" : {
@@ -457,6 +541,7 @@
       }
     },
     "menu.tooltip.keepDialAwake" : {
+      "extractionState" : "manual",
       "localizations" : {
         "en" : {
           "stringUnit" : {
@@ -467,6 +552,7 @@
       }
     },
     "menu.tooltip.keyScrollModifiers" : {
+      "extractionState" : "manual",
       "localizations" : {
         "en" : {
           "stringUnit" : {
@@ -477,6 +563,7 @@
       }
     },
     "menu.tooltip.showOSD" : {
+      "extractionState" : "manual",
       "localizations" : {
         "en" : {
           "stringUnit" : {
@@ -487,6 +574,7 @@
       }
     },
     "menu.tooltip.statusIcon.button" : {
+      "extractionState" : "manual",
       "localizations" : {
         "en" : {
           "stringUnit" : {
@@ -496,7 +584,19 @@
         }
       }
     },
+    "menu.tooltip.statusIcon.multi" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Shows the active multi mode"
+          }
+        }
+      }
+    },
     "menu.tooltip.statusIcon.rotation" : {
+      "extractionState" : "manual",
       "localizations" : {
         "en" : {
           "stringUnit" : {

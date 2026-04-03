@@ -26,6 +26,10 @@
             <enumerator name="left click" code="BMlc" description="Left Mouse Click"/>
             <enumerator name="none"       code="MDno" description="None"/>
         </enumeration>
+        
+        <enumeration name="multi mode"  code="MMOD" description="The modes for all rotations and presses">
+            <enumerator name="color picker"  code="MMcp" description="Color Picker"/>
+            <enumerator name="none"          code="MDno" description="None"/>
         </enumeration>
 
         <enumeration name="wheel sensitivity" code="WSNT" description="The sensitivity of the dial rotation">
@@ -44,6 +48,7 @@
             <enumerator name="default"       code="SIde" description="Default"/>
             <enumerator name="rotation mode" code="SIrm" description="Rotation Mode"/>
             <enumerator name="button mode"   code="SIbm" description="Button Mode"/>
+            <enumerator name="multi mode"   code="SImm" description="Multi Mode"/>
         </enumeration>
         
         <!-- ========================================================================================= -->
@@ -60,6 +65,12 @@
             <direct-parameter name="" type="button mode" optional="no" description="the dial button mode">
             </direct-parameter>
             <cocoa class="MacDial.scriptable_setButtonMode"/>
+        </command>
+        
+        <command name="set multi mode" code="MDsetmlm" description="Sets which modes are used for all dial rotations and presses.">
+            <direct-parameter name="" type="multi mode" optional="no" description="the dial multi mode">
+            </direct-parameter>
+            <cocoa class="MacDial.scriptable_setMultiMode"/>
         </command>
 
         <command name="set key scroll modifiers" code="MDsetksm" description="Sets which modifiers are pressed for key/scroll rotation modes.">

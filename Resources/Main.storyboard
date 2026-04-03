@@ -30,6 +30,9 @@
                         <outlet property="menuKeyScrollModifierOption" destination="kgp-pn-FQf" id="DFv-qY-wpS"/>
                         <outlet property="menuKeyScrollModifierShift" destination="maD-G7-YDZ" id="nYi-yS-AuZ"/>
                         <outlet property="menuKeyScrollModifiers" destination="alI-kK-XQC" id="a7v-ma-boz"/>
+                        <outlet property="menuMultiControlMode" destination="gwi-Pj-vsM" id="xR3-1d-kip"/>
+                        <outlet property="menuMultiControlModeColorPicker" destination="feT-s7-EvI" id="k5u-Nm-cb8"/>
+                        <outlet property="menuMultiControlModeNone" destination="XI5-eJ-QOo" id="lkC-pS-utp"/>
                         <outlet property="menuQuit" destination="O5Z-zk-v4Z" id="bua-Re-Fya"/>
                         <outlet property="menuRotationControlMode" destination="8LI-uh-zfA" id="ama-Z7-Szm"/>
                         <outlet property="menuRotationControlModeAppleMusicVolume" destination="HWh-7Z-VN7" id="wYd-BT-R5x"/>
@@ -54,6 +57,7 @@
                         <outlet property="menuStatusIcon" destination="Fkk-zl-dwX" id="sSb-ci-1nx"/>
                         <outlet property="menuStatusIconButton" destination="1HQ-HS-Vri" id="shR-EZ-xQo"/>
                         <outlet property="menuStatusIconDefault" destination="YQw-Pn-Ohl" id="KV3-3R-GSG"/>
+                        <outlet property="menuStatusIconMulti" destination="241-IZ-BVK" id="kC8-7h-8kb"/>
                         <outlet property="menuStatusIconRotation" destination="asL-0d-Pfl" id="rNQ-Xq-yDD"/>
                         <outlet property="menuWheelDirection" destination="Rcn-BF-7He" id="Ctr-CJ-bK0"/>
                         <outlet property="menuWheelDirectionCCW" destination="lmT-ql-Of7" id="aVI-2a-bmL"/>
@@ -252,6 +256,26 @@
                                 </items>
                             </menu>
                         </menuItem>
+                        <menuItem title="* Multi Mode" id="gwi-Pj-vsM">
+                            <modifierMask key="keyEquivalentModifierMask"/>
+                            <menu key="submenu" title="* Multi Mode" id="arI-kS-svz">
+                                <items>
+                                    <menuItem title="* Color Picker" image="menuicon-colorpicker" identifier="multi.colorpicker" id="feT-s7-EvI">
+                                        <modifierMask key="keyEquivalentModifierMask"/>
+                                        <connections>
+                                            <action selector="multiModeSelectWithItem:" target="gIN-nu-Pip" id="mKk-nz-adl"/>
+                                        </connections>
+                                    </menuItem>
+                                    <menuItem isSeparatorItem="YES" id="q6B-wm-t0g"/>
+                                    <menuItem title="* None" identifier="multi.none" id="XI5-eJ-QOo">
+                                        <modifierMask key="keyEquivalentModifierMask"/>
+                                        <connections>
+                                            <action selector="multiModeSelectWithItem:" target="gIN-nu-Pip" id="VWL-YR-deb"/>
+                                        </connections>
+                                    </menuItem>
+                                </items>
+                            </menu>
+                        </menuItem>
                         <menuItem isSeparatorItem="YES" id="dwB-c8-zpm"/>
                         <menuItem title="* Wheel Sensitivity" id="FER-f3-ImN">
                             <modifierMask key="keyEquivalentModifierMask"/>
@@ -351,6 +375,12 @@
                                             <action selector="statusIconSelectWithItem:" target="gIN-nu-Pip" id="Wen-YD-lR5"/>
                                         </connections>
                                     </menuItem>
+                                    <menuItem title="* Multi Mode" identifier="statusicon.multi" id="241-IZ-BVK">
+                                        <modifierMask key="keyEquivalentModifierMask"/>
+                                        <connections>
+                                            <action selector="statusIconSelectWithItem:" target="gIN-nu-Pip" id="Ojp-7S-rrW"/>
+                                        </connections>
+                                    </menuItem>
                                 </items>
                             </menu>
                         </menuItem>
@@ -384,6 +414,7 @@
         <image name="menuicon-applemusic" width="18" height="18"/>
         <image name="menuicon-brightness" width="18" height="18"/>
         <image name="menuicon-brushsize" width="18" height="18"/>
+        <image name="menuicon-colorpicker" width="18" height="18"/>
         <image name="menuicon-dial" width="16" height="16"/>
         <image name="menuicon-keyboard" width="18" height="18"/>
         <image name="menuicon-leftclick" width="18" height="18"/>

@@ -11,6 +11,7 @@
 		6519213E2EC578EF000A91B4 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 651921392EC578EF000A91B4 /* Main.storyboard */; };
 		65478E182EEC0C3000E18598 /* AppIcon.icon in Resources */ = {isa = PBXBuildFile; fileRef = 65478E172EEC0C3000E18598 /* AppIcon.icon */; };
 		65478E1C2EEC185100E18598 /* Localizable.xcstrings in Resources */ = {isa = PBXBuildFile; fileRef = 65478E1B2EEC185100E18598 /* Localizable.xcstrings */; };
+		655C97D62F6FAB4200DE0652 /* AXSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 655C97D52F6FAB4200DE0652 /* AXSwift */; };
 		656BAEF02EE9574D00714682 /* OSD.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 65993F162EC81ECD000C12B7 /* OSD.framework */; };
 		656BAEF12EE9574F00714682 /* MediaRemote.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 652BA41D2EC6AA10004D6964 /* MediaRemote.framework */; };
 		656BAEF22EE9575000714682 /* CoreBrightness.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6577212D2EC0643100C0C55F /* CoreBrightness.framework */; };
@@ -48,6 +49,7 @@
 				656BAEF22EE9575000714682 /* CoreBrightness.framework in Frameworks */,
 				656BAEF12EE9574F00714682 /* MediaRemote.framework in Frameworks */,
 				656BAEF32EE9575200714682 /* DisplayServices.framework in Frameworks */,
+				655C97D62F6FAB4200DE0652 /* AXSwift in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -147,6 +149,7 @@
 			);
 			mainGroup = C882FA0D26F1430C00595EE1;
 			packageReferences = (
+				655C97D42F6FAB4200DE0652 /* XCRemoteSwiftPackageReference "AXSwift" */,
 			);
 			productRefGroup = C882FA1726F1430C00595EE1 /* Products */;
 			projectDirPath = "";
@@ -434,6 +437,25 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		655C97D42F6FAB4200DE0652 /* XCRemoteSwiftPackageReference "AXSwift" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/tmandry/AXSwift";
+			requirement = {
+				kind = exactVersion;
+				version = 0.3.2;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		655C97D52F6FAB4200DE0652 /* AXSwift */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 655C97D42F6FAB4200DE0652 /* XCRemoteSwiftPackageReference "AXSwift" */;
+			productName = AXSwift;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = C882FA0E26F1430C00595EE1 /* Project object */;
 }

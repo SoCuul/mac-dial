@@ -29,10 +29,6 @@
                         <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
                     </textFieldCell>
                 </textField>
-                <customView fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="lm9-5y-soa" userLabel="Web View">
-                    <rect key="frame" x="26" y="63" width="417" height="179"/>
-                    <autoresizingMask key="autoresizingMask" flexibleMinY="YES"/>
-                </customView>
                 <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="tvB-GS-dLz">
                     <rect key="frame" x="133" y="15" width="204" height="32"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
@@ -47,6 +43,10 @@ DQ
                         <action selector="buttonClicked:" target="-2" id="0Tr-5R-1ei"/>
                     </connections>
                 </button>
+                <customView fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="lm9-5y-soa" userLabel="Web View">
+                    <rect key="frame" x="26" y="62" width="418" height="180"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMinY="YES"/>
+                </customView>
             </subviews>
             <point key="canvasLocation" x="134" y="166.5"/>
         </customView>

@@ -19,6 +19,7 @@ extension SettingsValueKey {
     static let rotationMode: SettingsValueKey = "settings.rotationMode"
     static let keyScrollModifiers: SettingsValueKey = "settings.keyScrollModifiers"
     static let buttonMode: SettingsValueKey = "settings.buttonMode"
+    static let multiMode: SettingsValueKey = "settings.multiMode"
     static let sensitivity: SettingsValueKey = "settings.sensitivity"
     static let customSensitivity: SettingsValueKey = "settings.customSensitivity"
     static let hapticFeedback: SettingsValueKey = "settings.isHapticFeedbackEnabled"
@@ -64,10 +65,16 @@ class UserSettings {
         case mute      = 3
     }
     
+    enum MultiOperationMode: Int {
+        case none      = 0
+        case colorPicker = 1
+    }
+    
     enum StatusIconMode: Int {
         case `default` = 0
         case rotation  = 1
         case button    = 2
+        case multi    = 3
     }
     
     private typealias KeyScrollModifiersDict = [String: Bool]
@@ -87,6 +94,9 @@ class UserSettings {
 
     @FromUserDefaults(key: .buttonMode, defaultValue: ButtonOperationMode.playback.rawValue)
     static private var buttonModeSetting: Int
+    
+    @FromUserDefaults(key: .multiMode, defaultValue: MultiOperationMode.none.rawValue)
+    static private var multiModeSetting: Int
 
     @FromUserDefaults(key: .sensitivity, defaultValue: WheelSensitivity.medium.rawValue)
     static private var sensitivitySetting: Int
@@ -123,6 +133,11 @@ class UserSettings {
     static var buttonMode: ButtonOperationMode {
         get { ButtonOperationMode(rawValue: UserSettings.buttonModeSetting) ?? .playback }
         set { UserSettings.buttonModeSetting = newValue.rawValue }
+    }
+    
+    static var multiMode: MultiOperationMode {
+        get { MultiOperationMode(rawValue: UserSettings.multiModeSetting) ?? .none }
+        set { UserSettings.multiModeSetting = newValue.rawValue }
     }
     
     static var sensitivity: WheelSensitivity {
