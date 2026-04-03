@@ -278,7 +278,7 @@ class AppController: NSObject, NSMenuDelegate {
         
         switch item.identifier {
             case menuButtonControlModeLeftClick.identifier:
-                buttonControl = ButtonClickControl(eventDownType: .leftMouseDown, eventUpType: .leftMouseUp)
+                buttonControl = ButtonClickControl(eventDownType: .leftMouseDown, eventUpType: .leftMouseUp, mouseButton: .left)
                 UserSettings.buttonMode = .leftClick
             case menuButtonControlModePlayback.identifier:
                 buttonControl = ButtonPlaybackControl()

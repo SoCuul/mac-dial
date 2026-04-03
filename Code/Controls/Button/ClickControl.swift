@@ -18,11 +18,13 @@ import AppKit
 class ButtonClickControl: DeviceControl {
     private let eventDownType: CGEventType
     private let eventUpType: CGEventType
+    private let mouseButton: CGMouseButton
     private var lastButtonState: ButtonState?
 
-    init(eventDownType: CGEventType, eventUpType: CGEventType) {
+    init(eventDownType: CGEventType, eventUpType: CGEventType, mouseButton: CGMouseButton) {
         self.eventDownType = eventDownType
         self.eventUpType = eventUpType
+        self.mouseButton = mouseButton
     }
 
     func buttonPress(_ dial: Dial) {
@@ -43,7 +45,7 @@ class ButtonClickControl: DeviceControl {
         let mousePos = NSEvent.mouseLocation
         let screenHeight = NSScreen.main?.frame.height ?? 0
         let translatedMousePos = NSPoint(x: mousePos.x, y: screenHeight - mousePos.y)
-        let event = CGEvent(mouseEventSource: nil, mouseType: eventType, mouseCursorPosition: translatedMousePos, mouseButton: .left)
+        let event = CGEvent(mouseEventSource: nil, mouseType: eventType, mouseCursorPosition: translatedMousePos, mouseButton: self.mouseButton)
         event?.post(tap: .cghidEventTap)
 
         log(tag: "Scroll", "sent mouse event: \(eventType.rawValue)")
