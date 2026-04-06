@@ -10,7 +10,7 @@
 import Cocoa
 
 @MainActor
-class CustomSensitivityView: NSViewController {
+class CustomSensitivityVC: NSViewController {
     @IBOutlet var displayText: NSTextField!
     
     @objc dynamic public var value: Int {

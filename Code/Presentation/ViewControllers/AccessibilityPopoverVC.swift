@@ -10,7 +10,7 @@
 import Cocoa
 
 @MainActor
-class AccessibilityPopoverView: NSViewController {
+class AccessibilityPopoverVC: NSViewController {
     @IBOutlet var headerTitle: NSTextField!
     @IBOutlet var webViewContainer: NSView!
     @IBOutlet var settingsButton: NSButton!

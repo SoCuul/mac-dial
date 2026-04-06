@@ -6,7 +6,7 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
-        <customObject id="-2" userLabel="File's Owner" customClass="AccessibilityPopoverView" customModule="MacDial" customModuleProvider="target">
+        <customObject id="-2" userLabel="File's Owner" customClass="AccessibilityPopoverVC" customModule="MacDial" customModuleProvider="target">
             <connections>
                 <outlet property="headerTitle" destination="vQC-Hz-Pcg" id="uBM-dT-ePe"/>
                 <outlet property="settingsButton" destination="tvB-GS-dLz" id="aaq-4L-FLF"/>
@@ -20,7 +20,7 @@
             <rect key="frame" x="0.0" y="0.0" width="470" height="297"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
             <subviews>
-                <textField focusRingType="none" horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="vQC-Hz-Pcg" userLabel="Header">
+                <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="vQC-Hz-Pcg" userLabel="Header">
                     <rect key="frame" x="18" y="252" width="433" height="29"/>
                     <autoresizingMask key="autoresizingMask" flexibleMinY="YES"/>
                     <textFieldCell key="cell" lineBreakMode="charWrapping" alignment="center" title="* How to Reset Accessibility Permissions" id="AFE-90-pZK">

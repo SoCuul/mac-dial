@@ -99,7 +99,7 @@ class AppController: NSObject, NSMenuDelegate {
     // Public
     static public var shared: AppController!
     
-    public var customSensitivity: CustomSensitivityView?
+    public var customSensitivity: CustomSensitivityVC?
     
     // MARK: - Nib & menu delegate setup
 
@@ -172,7 +172,7 @@ class AppController: NSObject, NSMenuDelegate {
         menuQuit.title = NSLocalizedString("menu.quit", comment: "")
         
         // Custom sensitivity view
-        self.customSensitivity = CustomSensitivityView()
+        self.customSensitivity = CustomSensitivityVC()
         menuSensitivityCustomSubitem.view = self.customSensitivity?.view
         
         // Menu state init
@@ -722,7 +722,7 @@ class AccessibilityAlertDelegate : NSObject, NSAlertDelegate {
 
         let popover = NSPopover()
         popover.behavior = .transient
-        popover.contentViewController = AccessibilityPopoverView()
+        popover.contentViewController = AccessibilityPopoverVC()
 
         popover.show(relativeTo: helpButton.bounds, of: helpButton, preferredEdge: .maxX)
         

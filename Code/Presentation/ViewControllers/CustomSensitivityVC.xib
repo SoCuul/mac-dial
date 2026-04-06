@@ -6,7 +6,7 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
-        <customObject id="-2" userLabel="File's Owner" customClass="CustomSensitivityView" customModule="MacDial" customModuleProvider="target">
+        <customObject id="-2" userLabel="File's Owner" customClass="CustomSensitivityVC" customModule="MacDial" customModuleProvider="target">
             <connections>
                 <outlet property="displayText" destination="ZwL-BW-sZS" id="yGZ-4c-XCu"/>
                 <outlet property="view" destination="qo9-9A-lRU" id="x8E-Wx-R7A"/>
@@ -24,7 +24,7 @@
                         <stackView distribution="equalSpacing" orientation="horizontal" alignment="top" spacing="0.0" horizontalStackHuggingPriority="249.99998474121094" verticalStackHuggingPriority="249.99998474121094" detachesHiddenViews="YES" translatesAutoresizingMaskIntoConstraints="NO" id="1Dq-1N-c6h" userLabel="Display">
                             <rect key="frame" x="0.0" y="60" width="199" height="15"/>
                             <subviews>
-                                <textField focusRingType="none" horizontalHuggingPriority="251" verticalHuggingPriority="750" id="ZwL-BW-sZS">
+                                <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" id="ZwL-BW-sZS">
                                     <rect key="frame" x="16" y="0.0" width="167" height="16"/>
                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                     <textFieldCell key="cell" lineBreakMode="clipping" continuous="YES" alignment="center" title="* Sensitivity:" id="t5S-Uv-Sls">
@@ -44,7 +44,7 @@
                         <stackView distribution="equalSpacing" orientation="horizontal" alignment="top" spacing="10" horizontalStackHuggingPriority="249.99998474121094" verticalStackHuggingPriority="249.99998474121094" detachesHiddenViews="YES" translatesAutoresizingMaskIntoConstraints="NO" id="qcx-Ot-iYc" userLabel="Sensitivity Slider">
                             <rect key="frame" x="9" y="30" width="181" height="14"/>
                             <subviews>
-                                <textField focusRingType="none" horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="IwN-sH-bYf">
+                                <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="IwN-sH-bYf">
                                     <rect key="frame" x="-2" y="0.0" width="22" height="14"/>
                                     <textFieldCell key="cell" controlSize="small" lineBreakMode="truncatingTail" alignment="right" title="0%" id="o6Q-2j-YGl">
                                         <font key="font" metaFont="smallSystem"/>
@@ -69,7 +69,7 @@
                                         </binding>
                                     </connections>
                                 </slider>
-                                <textField focusRingType="none" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="I5V-Lz-uLf">
+                                <textField verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="I5V-Lz-uLf">
                                     <rect key="frame" x="149" y="0.0" width="34" height="14"/>
                                     <textFieldCell key="cell" controlSize="small" lineBreakMode="truncatingTail" alignment="left" title="100%" id="LS3-Cb-wLm">
                                         <font key="font" metaFont="smallSystem"/>
