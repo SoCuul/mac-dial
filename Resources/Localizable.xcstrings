@@ -320,17 +320,6 @@
         }
       }
     },
-    "menu.rotationMode.music" : {
-      "extractionState" : "manual",
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Volume Control"
-          }
-        }
-      }
-    },
     "menu.rotationMode.none" : {
       "extractionState" : "manual",
       "localizations" : {
@@ -393,6 +382,17 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "VLC Volume"
+          }
+        }
+      }
+    },
+    "menu.rotationMode.volume" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Volume Control"
           }
         }
       }

@@ -124,7 +124,7 @@ class AppController: NSObject, NSMenuDelegate {
         menuButtonControlModeNone.title = NSLocalizedString("menu.buttonMode.none", comment: "")
 
         menuRotationControlMode.title = NSLocalizedString("menu.rotationMode", comment: "")
-        menuRotationControlModeVolume.title = NSLocalizedString("menu.rotationMode.music", comment: "")
+        menuRotationControlModeVolume.title = NSLocalizedString("menu.rotationMode.volume", comment: "")
         menuRotationControlModeBrightness.title = NSLocalizedString("menu.rotationMode.brightness", comment: "")
         menuRotationControlModeKeyboard.title = NSLocalizedString("menu.rotationMode.keyboard", comment: "")
         menuRotationControlModeScroll.title = NSLocalizedString("menu.rotationMode.scroll", comment: "")
