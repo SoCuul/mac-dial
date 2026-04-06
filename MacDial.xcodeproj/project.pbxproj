@@ -25,7 +25,6 @@
 		651921352EC578EF000A91B4 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		651921382EC578EF000A91B4 /* MacDial.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = MacDial.entitlements; sourceTree = "<group>"; };
 		651921392EC578EF000A91B4 /* Main.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
-		651D5B4D2EDFA6D300C88C77 /* TODO.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = TODO.md; sourceTree = "<group>"; };
 		652BA41D2EC6AA10004D6964 /* MediaRemote.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MediaRemote.framework; path = ../../../../../System/Library/PrivateFrameworks/MediaRemote.framework; sourceTree = "<group>"; };
 		65478E172EEC0C3000E18598 /* AppIcon.icon */ = {isa = PBXFileReference; lastKnownFileType = folder.iconcomposer.icon; path = AppIcon.icon; sourceTree = "<group>"; };
 		65478E1B2EEC185100E18598 /* Localizable.xcstrings */ = {isa = PBXFileReference; lastKnownFileType = text.json.xcstrings; path = Localizable.xcstrings; sourceTree = "<group>"; };
@@ -73,7 +72,6 @@
 		C882FA0D26F1430C00595EE1 = {
 			isa = PBXGroup;
 			children = (
-				651D5B4D2EDFA6D300C88C77 /* TODO.md */,
 				65F4783B2ED401E400B29607 /* Code */,
 				6519213A2EC578EF000A91B4 /* Resources */,
 				C882FA1726F1430C00595EE1 /* Products */,
