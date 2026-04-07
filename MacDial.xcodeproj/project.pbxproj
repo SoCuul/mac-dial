@@ -344,6 +344,7 @@
 				);
 				MACOSX_DEPLOYMENT_TARGET = 10.13;
 				MARKETING_VERSION = 2.0.0;
+				OTHER_LDFLAGS = "-F$(SYSTEM_LIBRARY_DIR)/PrivateFrameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.socuul.macdial;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
@@ -355,10 +356,6 @@
 				RUNTIME_EXCEPTION_DISABLE_LIBRARY_VALIDATION = YES;
 				SWIFT_OBJC_BRIDGING_HEADER = "$(SRCROOT)/Code/$(SWIFT_MODULE_NAME)-Bridging-Header.h";
 				SWIFT_VERSION = 5.0;
-				SYSTEM_FRAMEWORK_SEARCH_PATHS = (
-					"$(inherited)",
-					"$(SYSTEM_LIBRARY_DIR)/PrivateFrameworks",
-				);
 			};
 			name = Debug;
 		};
@@ -395,6 +392,7 @@
 				);
 				MACOSX_DEPLOYMENT_TARGET = 10.13;
 				MARKETING_VERSION = 2.0.0;
+				OTHER_LDFLAGS = "-F$(SYSTEM_LIBRARY_DIR)/PrivateFrameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.socuul.macdial;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
@@ -406,10 +404,6 @@
 				RUNTIME_EXCEPTION_DISABLE_LIBRARY_VALIDATION = YES;
 				SWIFT_OBJC_BRIDGING_HEADER = "$(SRCROOT)/Code/$(SWIFT_MODULE_NAME)-Bridging-Header.h";
 				SWIFT_VERSION = 5.0;
-				SYSTEM_FRAMEWORK_SEARCH_PATHS = (
-					"$(inherited)",
-					"$(SYSTEM_LIBRARY_DIR)/PrivateFrameworks",
-				);
 			};
 			name = Release;
 		};
