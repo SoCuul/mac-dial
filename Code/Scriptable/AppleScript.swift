@@ -364,7 +364,7 @@ class scriptable_setCustomSensitivity: NSScriptCommand {
         log(tag:"Scripting: setCustomSensitivity", "Received args: \(args)")
         
         if let value = args[""] as? Int {
-            AppController.shared.customSensitivity?.value = value
+            AppController.shared.setCustomSensitivity(value: value)
         }
         
         return nil

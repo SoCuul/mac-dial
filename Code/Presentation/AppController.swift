@@ -83,6 +83,8 @@ class AppController: NSObject, NSMenuDelegate {
     private var buttonControl: DeviceControl?
     private var multiControl: DeviceControl?
     
+    private var customSensitivity: CustomSensitivityVC?
+    
     // Dynamic menu items
     @objc dynamic private var accessibilityPermissionsGranted = false
     
@@ -98,8 +100,6 @@ class AppController: NSObject, NSMenuDelegate {
     
     // Public
     static public var shared: AppController!
-    
-    public var customSensitivity: CustomSensitivityVC?
     
     // MARK: - Nib & menu delegate setup
 
@@ -558,6 +558,10 @@ class AppController: NSObject, NSMenuDelegate {
             case .custom:
                 sensitivitySelect(item: menuSensitivityCustom)
         }
+    }
+    
+    public func setCustomSensitivity(value: Int) {
+        customSensitivity?.value = value
     }
     
     public func setDirection(direction: UserSettings.WheelDirection) {
