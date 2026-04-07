@@ -7,7 +7,7 @@
 //  License: MIT
 //
 
-import Cocoa
+import AppKit
 
 @MainActor
 class AccessibilityPopoverVC: NSViewController {

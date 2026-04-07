@@ -12,7 +12,7 @@
 //
 
 import AudioToolbox
-import Cocoa
+import AppKit
 import CoreAudio
 
 /// Entry point to access and modify the system sound settings, such
