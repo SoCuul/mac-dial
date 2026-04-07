@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
-<svg width="100%" height="100%" viewBox="0 0 1064 731" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xml:space="preserve" xmlns:serif="http://www.serif.com/" style="fill-rule:evenodd;clip-rule:evenodd;stroke-linejoin:round;stroke-miterlimit:2;">
-    <g id="Base" transform="matrix(0.905221,0,0,1.07561,-0.132131,-40.0738)">
+<svg width="100%" height="100%" viewBox="0 0 917 731" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xml:space="preserve" xmlns:serif="http://www.serif.com/" style="fill-rule:evenodd;clip-rule:evenodd;stroke-linejoin:round;stroke-miterlimit:2;">
+    <g id="Base" transform="matrix(0.779996,0,0,1.07656,-0.113878,-40.11)">
         <g transform="matrix(1,0,0,0.755393,-467.288,-317.551)">
             <rect x="510" y="1122" width="1090" height="123.294" style="fill:#3d3d3d;"/>
         </g>
@@ -9,7 +9,7 @@
             <ellipse cx="1042" cy="642" rx="451" ry="34" style="fill:#3d3d3d;"/>
         </g>
     </g>
-    <g id="Middle" transform="matrix(0.902252,0,0,1,-419.547,-589)">
+    <g id="Middle" transform="matrix(0.777438,0,0,1.00088,-361.509,-589.52)">
         <g transform="matrix(0.999153,0,0,2.92281,-0.605085,-1221.39)">
             <rect x="466" y="643" width="1180" height="160" style="fill:#919191;"/>
         </g>
@@ -17,7 +17,7 @@
             <ellipse cx="1042" cy="642" rx="451" ry="34" style="fill:#919191;"/>
         </g>
     </g>
-    <g id="Top" transform="matrix(1.17933,0,0,2.02862,-696.984,-1233.4)">
+    <g id="Top" transform="matrix(1.01619,0,0,2.03041,-600.566,-1234.49)">
         <ellipse cx="1042" cy="642" rx="451" ry="34" style="fill:#b0b0b0;"/>
     </g>
 </svg>
