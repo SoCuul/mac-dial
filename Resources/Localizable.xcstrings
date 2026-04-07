@@ -144,39 +144,6 @@
         }
       }
     },
-    "menu.direction" : {
-      "extractionState" : "manual",
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Direction"
-          }
-        }
-      }
-    },
-    "menu.direction.ccw" : {
-      "extractionState" : "manual",
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Counterclockwise Is Up"
-          }
-        }
-      }
-    },
-    "menu.direction.cw" : {
-      "extractionState" : "manual",
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Clockwise Is Up"
-          }
-        }
-      }
-    },
     "menu.hapticFeedback" : {
       "extractionState" : "manual",
       "localizations" : {
@@ -397,61 +364,6 @@
         }
       }
     },
-    "menu.rotationSensitivity" : {
-      "extractionState" : "manual",
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Sensitivity"
-          }
-        }
-      }
-    },
-    "menu.rotationSensitivity.custom" : {
-      "extractionState" : "manual",
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Custom"
-          }
-        }
-      }
-    },
-    "menu.rotationSensitivity.high" : {
-      "extractionState" : "manual",
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "High"
-          }
-        }
-      }
-    },
-    "menu.rotationSensitivity.low" : {
-      "extractionState" : "manual",
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Low"
-          }
-        }
-      }
-    },
-    "menu.rotationSensitivity.medium" : {
-      "extractionState" : "manual",
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Medium"
-          }
-        }
-      }
-    },
     "menu.showOSD" : {
       "extractionState" : "manual",
       "localizations" : {
@@ -605,6 +517,564 @@
           }
         }
       }
+    },
+    "menu.wheelDirection" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Direction"
+          }
+        }
+      }
+    },
+    "menu.wheelDirection.ccw" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Counterclockwise Is Up"
+          }
+        }
+      }
+    },
+    "menu.wheelDirection.cw" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Clockwise Is Up"
+          }
+        }
+      }
+    },
+    "menu.wheelSensitivity" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Sensitivity"
+          }
+        }
+      }
+    },
+    "menu.wheelSensitivity.custom" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Custom"
+          }
+        }
+      }
+    },
+    "menu.wheelSensitivity.high" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "High"
+          }
+        }
+      }
+    },
+    "menu.wheelSensitivity.low" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Low"
+          }
+        }
+      }
+    },
+    "menu.wheelSensitivity.medium" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Medium"
+          }
+        }
+      }
+    },
+    "scripting.enabled" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Enabled"
+          }
+        }
+      }
+    },
+    "scripting.enum.buttonMode" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Button mode"
+          }
+        }
+      }
+    },
+    "scripting.enum.multiMode" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Multi mode"
+          }
+        }
+      }
+    },
+    "scripting.enum.rotationMode" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Rotation mode"
+          }
+        }
+      }
+    },
+    "scripting.enum.statusIcon" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Status icon"
+          }
+        }
+      }
+    },
+    "scripting.enum.wheelDirection" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Wheel direction"
+          }
+        }
+      }
+    },
+    "scripting.enum.wheelSensitivity" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Wheel sensitivity"
+          }
+        }
+      }
+    },
+    "scripting.setButtonMode" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Set Button Mode"
+          }
+        }
+      }
+    },
+    "scripting.setButtonMode.arg" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Mode"
+          }
+        }
+      }
+    },
+    "scripting.setButtonMode.description" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Sets which mode is used for dial press."
+          }
+        }
+      }
+    },
+    "scripting.setCustomSensitivity" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Set Custom Sensitivity"
+          }
+        }
+      }
+    },
+    "scripting.setCustomSensitivity.arg" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Sensitivity"
+          }
+        }
+      }
+    },
+    "scripting.setCustomSensitivity.description" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Sets the custom sensitivity level for dial rotation."
+          }
+        }
+      }
+    },
+    "scripting.setHaptics" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Set Haptics"
+          }
+        }
+      }
+    },
+    "scripting.setHaptics.description" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Sets whether rotation haptics are enabled."
+          }
+        }
+      }
+    },
+    "scripting.setKeepDialAwake" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Set Keep Dial Awake"
+          }
+        }
+      }
+    },
+    "scripting.setKeepDialAwake.description" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Sets whether the dial is prevented from automatically sleeping."
+          }
+        }
+      }
+    },
+    "scripting.setKeyScrollModifiers" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Set Key Scroll Modifiers"
+          }
+        }
+      }
+    },
+    "scripting.setKeyScrollModifiers.argCommand" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Command (⌘)"
+          }
+        }
+      }
+    },
+    "scripting.setKeyScrollModifiers.argControl" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Control (⌃)"
+          }
+        }
+      }
+    },
+    "scripting.setKeyScrollModifiers.argOption" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Option/alt (⌥)"
+          }
+        }
+      }
+    },
+    "scripting.setKeyScrollModifiers.argShift" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Shift (⇧)"
+          }
+        }
+      }
+    },
+    "scripting.setKeyScrollModifiers.description" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Sets which modifiers are pressed for key/scroll rotation modes."
+          }
+        }
+      }
+    },
+    "scripting.setMultiMode" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Set Multi Mode"
+          }
+        }
+      }
+    },
+    "scripting.setMultiMode.arg" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Mode"
+          }
+        }
+      }
+    },
+    "scripting.setMultiMode.description" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Sets which modes are used for all dial rotations and presses."
+          }
+        }
+      }
+    },
+    "scripting.setRotationMode" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Set Rotation Mode"
+          }
+        }
+      }
+    },
+    "scripting.setRotationMode.arg" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Mode"
+          }
+        }
+      }
+    },
+    "scripting.setRotationMode.description" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Sets which mode is used for dial rotation."
+          }
+        }
+      }
+    },
+    "scripting.setShowOsd" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Set Show OSD"
+          }
+        }
+      }
+    },
+    "scripting.setShowOsd.description" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Sets whether changes are displayed on the system OSD."
+          }
+        }
+      }
+    },
+    "scripting.setStatusIcon" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Set Status Icon"
+          }
+        }
+      }
+    },
+    "scripting.setStatusIcon.arg" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Icon"
+          }
+        }
+      }
+    },
+    "scripting.setStatusIcon.description" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Sets the icon mode of the menu bar extra."
+          }
+        }
+      }
+    },
+    "scripting.setWheelDirection" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Set Wheel Direction"
+          }
+        }
+      }
+    },
+    "scripting.setWheelDirection.arg" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Direction"
+          }
+        }
+      }
+    },
+    "scripting.setWheelDirection.description" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Sets the direction of the wheel rotation."
+          }
+        }
+      }
+    },
+    "scripting.setWheelSensitivity" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Set Wheel Sensitivity"
+          }
+        }
+      }
+    },
+    "scripting.setWheelSensitivity.arg" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Sensitivity"
+          }
+        }
+      }
+    },
+    "scripting.setWheelSensitivity.description" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Sets the sensitivity of the dial rotation."
+          }
+        }
+      }
+    },
+    "Set Button Mode to ${buttonMode}" : {
+
+    },
+    "Set Custom Sensitivity to ${customSensitivity}" : {
+
+    },
+    "Set Haptics ${value}" : {
+
+    },
+    "Set Keep Dial Awake ${value}" : {
+
+    },
+    "Set Multi Mode to ${multiMode}" : {
+
+    },
+    "Set Rotation Mode to ${rotationMode}" : {
+
+    },
+    "Set Show OSD ${value}" : {
+
+    },
+    "Set Status Icon to ${statusIcon}" : {
+
+    },
+    "Set Wheel Direction to ${wheelDirection}" : {
+
+    },
+    "Set Wheel Sensitivity to ${wheelSensitivity}" : {
+
     }
   },
   "version" : "1.1"

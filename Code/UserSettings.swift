@@ -14,6 +14,7 @@
 //
 
 import Foundation
+import AppIntents
 
 extension SettingsValueKey {
     static let rotationMode: SettingsValueKey = "settings.rotationMode"
@@ -31,19 +32,41 @@ extension SettingsValueKey {
 
 class UserSettings {
     // MARK: - Data structures
-    enum WheelSensitivity: Int {
+    enum WheelSensitivity: Int, AppEnum {
         case low    = 1
         case medium = 2
         case high   = 3
         case custom = 999
+        
+        // App Intents
+        @available(macOS 13.0, *)
+        static var typeDisplayRepresentation: TypeDisplayRepresentation = "scripting.enum.wheelSensitivity"
+        
+        @available(macOS 13.0, *)
+        static var caseDisplayRepresentations: [UserSettings.WheelSensitivity: DisplayRepresentation] = [
+            .low: .init(title: "menu.wheelSensitivity.low", image: .init(systemName: "dial.low.fill")),
+            .medium: .init(title: "menu.wheelSensitivity.medium", image: .init(systemName: "dial.medium.fill")),
+            .high: .init(title: "menu.wheelSensitivity.high", image: .init(systemName: "dial.high.fill")),
+            .custom: .init(title: "menu.wheelSensitivity.custom", image: .init(systemName: "slider.horizontal.3")),
+        ]
     }
     
-    enum WheelDirection: Int {
+    enum WheelDirection: Int, AppEnum {
         case clockwise        = 0
         case counterclockwise = 1
+        
+        // App Intents
+        @available(macOS 13.0, *)
+        static var typeDisplayRepresentation: TypeDisplayRepresentation = "scripting.enum.wheelDirection"
+        
+        @available(macOS 13.0, *)
+        static var caseDisplayRepresentations: [UserSettings.WheelDirection: DisplayRepresentation] = [
+            .clockwise: .init(title: "menu.wheelDirection.cw", image: .init(systemName: "digitalcrown.horizontal.arrow.clockwise.fill")),
+            .counterclockwise: .init(title: "menu.wheelDirection.ccw", image: .init(systemName: "digitalcrown.horizontal.arrow.counterclockwise.fill")),
+        ]
     }
 
-    enum RotationOperationMode: Int {
+    enum RotationOperationMode: Int, AppEnum {
         case none             = 0
         case scrolling        = 1
         case volume           = 2
@@ -56,25 +79,79 @@ class UserSettings {
         case appleMusicVolume = 100
         case spotifyVolume    = 101
         case vlcVolume        = 102
+        
+        // App Intents
+        @available(macOS 13.0, *)
+        static var typeDisplayRepresentation: TypeDisplayRepresentation = "scripting.enum.rotationMode"
+
+        @available(macOS 13.0, *)
+        static var caseDisplayRepresentations: [UserSettings.RotationOperationMode: DisplayRepresentation] = [
+            .none: .init(title: "menu.rotationMode.none"),
+            .scrolling: .init(title: "menu.rotationMode.scroll",                  image: .init(named: "menuicon-scroll", isTemplate: true)),
+            .volume: .init(title: "menu.rotationMode.volume",                     image: .init(named: "menuicon-volume", isTemplate: true)),
+            .brightness: .init(title: "menu.rotationMode.brightness",             image: .init(named: "menuicon-brightness", isTemplate: true)),
+            .keyboard: .init(title: "menu.rotationMode.keyboard",                 image: .init(named: "menuicon-keyboard", isTemplate: true)),
+            .leftRight: .init(title: "menu.rotationMode.leftRight",               image: .init(named: "menuicon-leftright", isTemplate: true)),
+            .upDown: .init(title: "menu.rotationMode.upDown",                     image: .init(named: "menuicon-updown", isTemplate: true)),
+            .brushSize: .init(title: "menu.rotationMode.brushSize",               image: .init(named: "menuicon-brushsize", isTemplate: true)),
+            .plusMinus: .init(title: "menu.rotationMode.plusMinus",               image: .init(named: "menuicon-plusminus", isTemplate: true)),
+            .appleMusicVolume: .init(title: "menu.rotationMode.appleMusicVolume", image: .init(named: "menuicon-applemusic", isTemplate: true)),
+            .spotifyVolume: .init(title: "menu.rotationMode.spotifyVolume",       image: .init(named: "menuicon-spotify", isTemplate: true)),
+            .vlcVolume: .init(title: "menu.rotationMode.vlcVolume",               image: .init(named: "menuicon-vlc", isTemplate: true)),
+        ]
     }
 
-    enum ButtonOperationMode: Int {
+    enum ButtonOperationMode: Int, AppEnum {
         case none      = 0
         case leftClick = 1
         case playback  = 2
         case mute      = 3
+        
+        // App Intents
+        @available(macOS 13.0, *)
+        static var typeDisplayRepresentation: TypeDisplayRepresentation = "scripting.enum.buttonMode"
+
+        @available(macOS 13.0, *)
+        static var caseDisplayRepresentations: [UserSettings.ButtonOperationMode: DisplayRepresentation] = [
+            .none: .init(title: "menu.buttonMode.none"),
+            .leftClick: .init(title: "menu.buttonMode.leftClick", image: .init(named: "menuicon-leftclick", isTemplate: true)),
+            .playback: .init(title: "menu.buttonMode.playback", image: .init(named: "menuicon-playback", isTemplate: true)),
+            .mute: .init(title: "menu.buttonMode.mute", image: .init(named: "menuicon-mute", isTemplate: true)),
+        ]
     }
     
-    enum MultiOperationMode: Int {
+    enum MultiOperationMode: Int, AppEnum {
         case none      = 0
         case colorPicker = 1
+        
+        // App Intents
+        @available(macOS 13.0, *)
+        static var typeDisplayRepresentation: TypeDisplayRepresentation = "scripting.enum.multiMode"
+
+        @available(macOS 13.0, *)
+        static var caseDisplayRepresentations: [UserSettings.MultiOperationMode: DisplayRepresentation] = [
+            .none: .init(title: "menu.multiMode.none"),
+            .colorPicker: .init( title: "menu.multiMode.colorPicker", image: .init(named: "menuicon-colorpicker", isTemplate: true)),
+        ]
     }
     
-    enum StatusIconMode: Int {
+    enum StatusIconMode: Int, AppEnum {
         case `default` = 0
         case rotation  = 1
         case button    = 2
-        case multi    = 3
+        case multi     = 3
+        
+        // App Intents
+        @available(macOS 13.0, *)
+        static var typeDisplayRepresentation: TypeDisplayRepresentation = "scripting.enum.multiMode"
+
+        @available(macOS 13.0, *)
+        static var caseDisplayRepresentations: [UserSettings.StatusIconMode: DisplayRepresentation] = [
+            .default: .init(title: "menu.statusIcon.default"),
+            .rotation: .init(title: "menu.statusIcon.rotation"),
+            .button: .init(title: "menu.statusIcon.button"),
+            .multi: .init(title: "menu.statusIcon.multi"),
+        ]
     }
     
     private typealias KeyScrollModifiersDict = [String: Bool]
@@ -259,3 +336,69 @@ struct FromUserDefaults<Value> {
         }
     }
 }
+
+
+// MARK: App Intents
+
+//@available(macOS 13, *)
+//extension UserSettings.WheelSensitivity: AppEnum {
+//    static var typeDisplayRepresentation: TypeDisplayRepresentation = TypeDisplayRepresentation(name: .menuWheelSensitivity)
+//
+//    static var caseDisplayRepresentations: [UserSettings.WheelSensitivity: DisplayRepresentation] = [
+//        .low: DisplayRepresentation(title: .menuWheelSensitivityLow),
+//        .medium: DisplayRepresentation(title: .menuWheelSensitivityMedium),
+//        .high: DisplayRepresentation(title: .menuWheelSensitivityHigh),
+//        .custom: DisplayRepresentation(title: .menuWheelSensitivityCustom),
+//    ]
+//}
+//
+//@available(macOS 13, *)
+//extension UserSettings.WheelDirection: AppEnum {
+//    static var typeDisplayRepresentation: TypeDisplayRepresentation = TypeDisplayRepresentation(name: .menuWheelDirection)
+//
+//    static var caseDisplayRepresentations: [UserSettings.WheelDirection: DisplayRepresentation] = [
+//        .clockwise: DisplayRepresentation(title: .menuWheelDirectionCw),
+//        .counterclockwise: DisplayRepresentation(title: .menuWheelDirectionCcw),
+//    ]
+//}
+//
+//
+//@available(macOS 13, *)
+//extension UserSettings.RotationOperationMode: AppEnum {
+//    
+//}
+//
+//@available(macOS 13, *)
+//extension UserSettings.ButtonOperationMode: AppEnum {
+//    static var typeDisplayRepresentation: TypeDisplayRepresentation = "Button Mode"
+//
+//    static var caseDisplayRepresentations: [UserSettings.ButtonOperationMode: DisplayRepresentation] = [
+//        .none: DisplayRepresentation(title: .menuButtonModeNone),
+//        .leftClick: DisplayRepresentation(title: .menuButtonModeLeftClick, image: .init(named: "menuicon-leftclick")),
+//        .playback: DisplayRepresentation(title: .menuButtonModePlayback,   image: .init(named: "menuicon-playback")),
+//        .mute: DisplayRepresentation(title: .menuButtonModeMute,           image: .init(named: "menuicon-mute")),
+//    ]
+//}
+//
+//@available(macOS 13, *)
+//extension UserSettings.MultiOperationMode: AppEnum {
+//    static var typeDisplayRepresentation: TypeDisplayRepresentation = "Multi Mode"
+//
+//    static var caseDisplayRepresentations: [UserSettings.MultiOperationMode: DisplayRepresentation] = [
+//        .none: DisplayRepresentation(title: .menuMultiModeNone),
+//        .colorPicker: DisplayRepresentation(title: .menuMultiModeColorPicker, image: .init(named: "menuicon-colorpicker")),
+//    ]
+//}
+//
+//@available(macOS 13, *)
+//extension UserSettings.StatusIconMode: AppEnum {
+//    static var typeDisplayRepresentation: TypeDisplayRepresentation = TypeDisplayRepresentation(name: .menuStatusIcon)
+//
+//    static var caseDisplayRepresentations: [UserSettings.StatusIconMode: DisplayRepresentation] = [
+//        .default: DisplayRepresentation(title: .menuStatusIconDefault),
+//        .rotation: DisplayRepresentation(title: .menuStatusIconRotation),
+//        .button: DisplayRepresentation(title: .menuStatusIconButton),
+//        .multi: DisplayRepresentation(title: .menuStatusIconMulti),
+//    ]
+//}
+//

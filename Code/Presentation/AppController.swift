@@ -140,15 +140,15 @@ class AppController: NSObject, NSMenuDelegate {
         menuKeyScrollModifiers.title = NSLocalizedString("menu.keyScrollModifiers", comment: "")
         menuKeyScrollModifiers.toolTip = NSLocalizedString("menu.tooltip.keyScrollModifiers", comment: "")
 
-        menuSensitivity.title = NSLocalizedString("menu.rotationSensitivity", comment: "")
-        menuSensitivityLow.title = NSLocalizedString("menu.rotationSensitivity.low", comment: "")
-        menuSensitivityMedium.title = NSLocalizedString("menu.rotationSensitivity.medium", comment: "")
-        menuSensitivityHigh.title = NSLocalizedString("menu.rotationSensitivity.high", comment: "")
-        menuSensitivityCustom.title = NSLocalizedString("menu.rotationSensitivity.custom", comment: "")
+        menuSensitivity.title = NSLocalizedString("menu.wheelSensitivity", comment: "")
+        menuSensitivityLow.title = NSLocalizedString("menu.wheelSensitivity.low", comment: "")
+        menuSensitivityMedium.title = NSLocalizedString("menu.wheelSensitivity.medium", comment: "")
+        menuSensitivityHigh.title = NSLocalizedString("menu.wheelSensitivity.high", comment: "")
+        menuSensitivityCustom.title = NSLocalizedString("menu.wheelSensitivity.custom", comment: "")
 
-        menuWheelDirection.title = NSLocalizedString("menu.direction", comment: "")
-        menuWheelDirectionCW.title = NSLocalizedString("menu.direction.cw", comment: "")
-        menuWheelDirectionCCW.title = NSLocalizedString("menu.direction.ccw", comment: "")
+        menuWheelDirection.title = NSLocalizedString("menu.wheelDirection", comment: "")
+        menuWheelDirectionCW.title = NSLocalizedString("menu.wheelDirection.cw", comment: "")
+        menuWheelDirectionCCW.title = NSLocalizedString("menu.wheelDirection.ccw", comment: "")
 
         hapticFeedback.title = NSLocalizedString("menu.hapticFeedback", comment: "")
         hapticFeedback.toolTip = NSLocalizedString("menu.tooltip.hapticFeedback", comment: "")
