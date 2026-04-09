@@ -11,7 +11,7 @@ import AppKit
 
 @MainActor
 class CustomSensitivityVC: NSViewController {
-    @IBOutlet var displayText: NSTextField!
+    @IBOutlet private weak var displayText: NSTextField!
     
     @objc dynamic public var value: Int {
         get {

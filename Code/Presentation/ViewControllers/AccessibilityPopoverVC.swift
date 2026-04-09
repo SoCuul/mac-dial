@@ -11,9 +11,9 @@ import AppKit
 
 @MainActor
 class AccessibilityPopoverVC: NSViewController {
-    @IBOutlet var headerTitle: NSTextField!
-    @IBOutlet var animationContainer: CAMLContainerView!
-    @IBOutlet var settingsButton: NSButton!
+    @IBOutlet private weak var headerTitle: NSTextField!
+    @IBOutlet private weak var animationContainer: CAMLContainerView!
+    @IBOutlet private weak var settingsButton: NSButton!
     
     private var rootLayer: CALayer?
     private var stateController: CAStateController?

@@ -31,7 +31,7 @@ func log(tag: String, _ message: @autoclosure () -> String) {
 
 @main
 class AppDelegate: NSObject, NSApplicationDelegate {
-    @IBOutlet private var controller: AppController!
+    @IBOutlet private weak var controller: AppController!
 
     func applicationDidFinishLaunching(_ aNotification: Notification) {
         AppController.shared = controller

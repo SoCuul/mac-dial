@@ -15,65 +15,65 @@ import AppKit
 @MainActor
 class AppController: NSObject, NSMenuDelegate {
     // MARK: - @IBOutlet
-    @IBOutlet private var statusMenu: NSMenu!
+    @IBOutlet private weak var statusMenu: NSMenu!
     
-    @IBOutlet private var menuAccessibilityPermissions: NSMenuItem!
+    @IBOutlet private weak var menuAccessibilityPermissions: NSMenuItem!
 
-    @IBOutlet private var menuRotationControlMode: NSMenuItem!
-    @IBOutlet private var menuRotationControlModeVolume: NSMenuItem!
-    @IBOutlet private var menuRotationControlModeBrightness: NSMenuItem!
-    @IBOutlet private var menuRotationControlModeKeyboard: NSMenuItem!
-    @IBOutlet private var menuRotationControlModeScroll: NSMenuItem!
-    @IBOutlet private var menuRotationControlModeBrushSize: NSMenuItem!
-    @IBOutlet private var menuRotationControlModeLeftRight: NSMenuItem!
-    @IBOutlet private var menuRotationControlModeUpDown: NSMenuItem!
-    @IBOutlet private var menuRotationControlModePlusMinus: NSMenuItem!
-    @IBOutlet private var menuRotationControlModeAppleMusicVolume: NSMenuItem!
-    @IBOutlet private var menuRotationControlModeSpotifyVolume: NSMenuItem!
-    @IBOutlet private var menuRotationControlModeVLCVolume: NSMenuItem!
-    @IBOutlet private var menuRotationControlModeNone: NSMenuItem!
+    @IBOutlet private weak var menuRotationControlMode: NSMenuItem!
+    @IBOutlet private weak var menuRotationControlModeVolume: NSMenuItem!
+    @IBOutlet private weak var menuRotationControlModeBrightness: NSMenuItem!
+    @IBOutlet private weak var menuRotationControlModeKeyboard: NSMenuItem!
+    @IBOutlet private weak var menuRotationControlModeScroll: NSMenuItem!
+    @IBOutlet private weak var menuRotationControlModeBrushSize: NSMenuItem!
+    @IBOutlet private weak var menuRotationControlModeLeftRight: NSMenuItem!
+    @IBOutlet private weak var menuRotationControlModeUpDown: NSMenuItem!
+    @IBOutlet private weak var menuRotationControlModePlusMinus: NSMenuItem!
+    @IBOutlet private weak var menuRotationControlModeAppleMusicVolume: NSMenuItem!
+    @IBOutlet private weak var menuRotationControlModeSpotifyVolume: NSMenuItem!
+    @IBOutlet private weak var menuRotationControlModeVLCVolume: NSMenuItem!
+    @IBOutlet private weak var menuRotationControlModeNone: NSMenuItem!
     
-    @IBOutlet private var menuButtonControlMode: NSMenuItem!
-    @IBOutlet private var menuButtonControlModeLeftClick: NSMenuItem!
-    @IBOutlet private var menuButtonControlModePlayback: NSMenuItem!
-    @IBOutlet private var menuButtonControlModeMute: NSMenuItem!
-    @IBOutlet private var menuButtonControlModeNone: NSMenuItem!
+    @IBOutlet private weak var menuButtonControlMode: NSMenuItem!
+    @IBOutlet private weak var menuButtonControlModeLeftClick: NSMenuItem!
+    @IBOutlet private weak var menuButtonControlModePlayback: NSMenuItem!
+    @IBOutlet private weak var menuButtonControlModeMute: NSMenuItem!
+    @IBOutlet private weak var menuButtonControlModeNone: NSMenuItem!
     
-    @IBOutlet private var menuMultiControlMode: NSMenuItem!
-    @IBOutlet private var menuMultiControlModeColorPicker: NSMenuItem!
-    @IBOutlet private var menuMultiControlModeNone: NSMenuItem!
+    @IBOutlet private weak var menuMultiControlMode: NSMenuItem!
+    @IBOutlet private weak var menuMultiControlModeColorPicker: NSMenuItem!
+    @IBOutlet private weak var menuMultiControlModeNone: NSMenuItem!
 
-    @IBOutlet private var menuKeyScrollModifiers: NSMenuItem!
-    @IBOutlet private var menuKeyScrollModifierShift: NSMenuItem!
-    @IBOutlet private var menuKeyScrollModifierCommand: NSMenuItem!
-    @IBOutlet private var menuKeyScrollModifierOption: NSMenuItem!
-    @IBOutlet private var menuKeyScrollModifierControl: NSMenuItem!
+    @IBOutlet private weak var menuKeyScrollModifiers: NSMenuItem!
+    @IBOutlet private weak var menuKeyScrollModifierShift: NSMenuItem!
+    @IBOutlet private weak var menuKeyScrollModifierCommand: NSMenuItem!
+    @IBOutlet private weak var menuKeyScrollModifierOption: NSMenuItem!
+    @IBOutlet private weak var menuKeyScrollModifierControl: NSMenuItem!
 
-    @IBOutlet private var menuSensitivity: NSMenuItem!
-    @IBOutlet private var menuSensitivityLow: NSMenuItem!
-    @IBOutlet private var menuSensitivityMedium: NSMenuItem!
-    @IBOutlet private var menuSensitivityHigh: NSMenuItem!
-    @IBOutlet private var menuSensitivityCustom: NSMenuItem!
-    @IBOutlet private var menuSensitivityCustomSubitem: NSMenuItem!
+    @IBOutlet private weak var menuSensitivity: NSMenuItem!
+    @IBOutlet private weak var menuSensitivityLow: NSMenuItem!
+    @IBOutlet private weak var menuSensitivityMedium: NSMenuItem!
+    @IBOutlet private weak var menuSensitivityHigh: NSMenuItem!
+    @IBOutlet private weak var menuSensitivityCustom: NSMenuItem!
+    @IBOutlet private weak var menuSensitivityCustomSubitem: NSMenuItem!
     
-    @IBOutlet private var menuWheelDirection: NSMenuItem!
-    @IBOutlet private var menuWheelDirectionCW: NSMenuItem!
-    @IBOutlet private var menuWheelDirectionCCW: NSMenuItem!
+    @IBOutlet private weak var menuWheelDirection: NSMenuItem!
+    @IBOutlet private weak var menuWheelDirectionCW: NSMenuItem!
+    @IBOutlet private weak var menuWheelDirectionCCW: NSMenuItem!
 
-    @IBOutlet private var hapticFeedback: NSMenuItem!
+    @IBOutlet private weak var hapticFeedback: NSMenuItem!
     
-    @IBOutlet private var keepDialAwake: NSMenuItem!
-    @IBOutlet private var showOSD: NSMenuItem!
+    @IBOutlet private weak var keepDialAwake: NSMenuItem!
+    @IBOutlet private weak var showOSD: NSMenuItem!
     
-    @IBOutlet private var menuStatusIcon: NSMenuItem!
-    @IBOutlet private var menuStatusIconDefault: NSMenuItem!
-    @IBOutlet private var menuStatusIconRotation: NSMenuItem!
-    @IBOutlet private var menuStatusIconButton: NSMenuItem!
-    @IBOutlet private var menuStatusIconMulti: NSMenuItem!
+    @IBOutlet private weak var menuStatusIcon: NSMenuItem!
+    @IBOutlet private weak var menuStatusIconDefault: NSMenuItem!
+    @IBOutlet private weak var menuStatusIconRotation: NSMenuItem!
+    @IBOutlet private weak var menuStatusIconButton: NSMenuItem!
+    @IBOutlet private weak var menuStatusIconMulti: NSMenuItem!
 
-    @IBOutlet private var menuState: NSMenuItem!
-    @IBOutlet private var menuLaunchAtLogin: NSMenuItem!
-    @IBOutlet private var menuQuit: NSMenuItem!
+    @IBOutlet private weak var menuState: NSMenuItem!
+    @IBOutlet private weak var menuLaunchAtLogin: NSMenuItem!
+    @IBOutlet private weak var menuQuit: NSMenuItem!
 
     private let statusItem: NSStatusItem
 
