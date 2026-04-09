@@ -12,8 +12,13 @@ import AppKit
 @MainActor
 class AccessibilityPopoverVC: NSViewController {
     @IBOutlet var headerTitle: NSTextField!
-    @IBOutlet var webViewContainer: NSView!
+    @IBOutlet var animationContainer: CAMLContainerView!
     @IBOutlet var settingsButton: NSButton!
+    
+    private var rootLayer: CALayer?
+    private var stateController: CAStateController?
+    
+    private var states: [CAState]?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -24,14 +29,7 @@ class AccessibilityPopoverVC: NSViewController {
         settingsButton.title = String(format: NSLocalizedString("accessibilityDialogPopover.settingsButton", comment: ""))
         settingsButton.resizeToFitText()
         
-        // Force WebKit.framework to load
-        _ = NSClassFromString("WKWebViewConfiguration")
-    }
-    
-    override func viewWillAppear() {
-        super.viewWillAppear()
-        
-        self.setupWebView()
+        self.setupCAView()
     }
     
     @IBAction func buttonClicked(_ sender: NSButton) {
@@ -40,41 +38,59 @@ class AccessibilityPopoverVC: NSViewController {
         }
     }
     
-    // MARK: Web view
-    private func setupWebView() {
-        
-        /// This hack job of a solution from ChatGPT is to get around the fact that searching for private frameworks results in build errors when importing WebKit
-        
-        // Dynamically get WKWebView class
-        guard let webViewClass = NSClassFromString("WKWebView") as? NSView.Type else {
-            print("WKWebView not available")
-            return
+    // MARK: Core Animation view
+    private func setupCAView() {
+        do {
+            let asset = NSDataAsset(name: "Animations/AccessibilityRemove")
+            
+            let package = try CAPackage.package(
+                with: asset?.data,
+                type: kCAPackageTypeArchive,
+                options: nil
+            ) as? CAPackage
+            
+            rootLayer = package?.rootLayer
+            rootLayer?.anchorPoint = CGPoint(x: 0.5, y: 0.5)
+            
+            states = rootLayer?.value(forKey: "states") as? [CAState]
+            stateController = CAStateController(layer: rootLayer)
+            
+            stateController?.setInitialStatesOfLayer(rootLayer, transitionSpeed: 0.0)
+            
+            animationContainer.layer?.addSublayer(rootLayer!)
+            animationContainer.rootLayer = rootLayer
+            
+            runAnimation()
         }
-
-        // Instantiate WKWebView
-        let dynamicWebView = webViewClass.init(frame: self.view.bounds)
-        dynamicWebView.frame = webViewContainer?.bounds ?? NSRect(x: 0, y: 0, width: 0, height: 0)
-        dynamicWebView.autoresizingMask = [.width, .height]
-        dynamicWebView.layer?.cornerRadius = 5.0
-        dynamicWebView.needsLayout = true
-        dynamicWebView.layoutSubtreeIfNeeded()
-
-        self.webViewContainer?.addSubview(dynamicWebView)
-
-        // Load local HTML file
-        guard let htmlURL = Bundle.main.url(forResource: "AccessibilityPopover", withExtension: "html") else {
-            print("Could not find HTML file in bundle")
-            return
+        catch {
+            print("Failed to load CA view: \(error)")
         }
-
-        let loadSelector = NSSelectorFromString("loadFileURL:allowingReadAccessToURL:")
-        if dynamicWebView.responds(to: loadSelector) {
-            _ = dynamicWebView.perform(
-                loadSelector,
-                with: htmlURL,
-                with: htmlURL.deletingLastPathComponent()
-            )
+    }
+    
+    private func runAnimation() {
+        // State 1
+        DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) { [weak self] in
+            self?.stateController?.setState(self?.states?[0], ofLayer: self?.rootLayer, transitionSpeed: 1.0)
+            
+            // State 2
+            DispatchQueue.main.asyncAfter(deadline: .now() + 2.7) { [weak self] in
+                self?.stateController?.setState(self?.states?[1], ofLayer: self?.rootLayer, transitionSpeed: 1.0)
+                
+                // State 3
+                DispatchQueue.main.asyncAfter(deadline: .now() + 2.7) { [weak self] in
+                    self?.stateController?.setState(self?.states?[2], ofLayer: self?.rootLayer, transitionSpeed: 1.0)
+                    
+                    // State 4
+                    DispatchQueue.main.asyncAfter(deadline: .now() + 2.85) { [weak self] in
+                        self?.stateController?.setState(self?.states?[3], ofLayer: self?.rootLayer, transitionSpeed: 1.0)
+                        
+                        // Loop
+                        DispatchQueue.main.asyncAfter(deadline: .now() + 0.75) { [weak self] in
+                            self?.runAnimation()
+                        }
+                    }
+                }
+            }
         }
-        
     }
 }

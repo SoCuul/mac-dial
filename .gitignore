@@ -31,3 +31,5 @@ timeline.xctimeline
 playground.xcworkspace
 
 .build/
+
+DevelopmentAssets/

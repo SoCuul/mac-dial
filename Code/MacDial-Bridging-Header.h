@@ -10,6 +10,7 @@
 #import <Foundation/Foundation.h>
 #import <CoreGraphics/CoreGraphics.h>
 
+#import "./Headers/QuartzCore.h"
 #import "./Headers/DisplayServices.h"
 #import "./Headers/KeyboardBrightnessClient.h"
 #import "./Headers/MediaRemote.h"
