@@ -177,6 +177,17 @@
         }
       }
     },
+    "menu.launchAtLogin" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Launch at login"
+          }
+        }
+      }
+    },
     "menu.multiMode" : {
       "extractionState" : "manual",
       "localizations" : {

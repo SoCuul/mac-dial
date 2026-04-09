@@ -72,11 +72,10 @@ class AppController: NSObject, NSMenuDelegate {
     @IBOutlet private var menuStatusIconMulti: NSMenuItem!
 
     @IBOutlet private var menuState: NSMenuItem!
+    @IBOutlet private var menuLaunchAtLogin: NSMenuItem!
     @IBOutlet private var menuQuit: NSMenuItem!
 
     private let statusItem: NSStatusItem
-
-    private let settings: UserSettings = .init()
 
     private var dial: Dial?
     private var dialControl: DeviceControl?
@@ -87,11 +86,13 @@ class AppController: NSObject, NSMenuDelegate {
     
     // Dynamic menu items
     @objc dynamic private var accessibilityPermissionsGranted = false
+    @objc dynamic private var launchAtLoginEnabled = false
     
     override init() {
         statusItem = NSStatusBar.system.statusItem(withLength: NSStatusItem.variableLength)
         
         accessibilityPermissionsGranted = AXIsProcessTrusted()
+        launchAtLoginEnabled = LaunchAtLogin.isEnabled
         
         super.init()
 
@@ -169,6 +170,7 @@ class AppController: NSObject, NSMenuDelegate {
         menuStatusIconMulti.toolTip = NSLocalizedString("menu.tooltip.statusIcon.multi", comment: "")
         
         menuState.title = NSLocalizedString("dial.disconnected", comment: "")
+        menuLaunchAtLogin.title = NSLocalizedString("menu.launchAtLogin", comment: "")
         menuQuit.title = NSLocalizedString("menu.quit", comment: "")
         
         // Custom sensitivity view
@@ -198,8 +200,9 @@ class AppController: NSObject, NSMenuDelegate {
         menuStatusIconButton.image = selectedButtonModeItem?.image
         menuStatusIconMulti.image = selectedMultiModeItem?.image
         
-        // Check if accessibility permissions are granted
+        // Update dynamic values with latest data
         accessibilityPermissionsGranted = AXIsProcessTrusted()
+        launchAtLoginEnabled = LaunchAtLogin.isEnabled
     }
     
 
@@ -464,6 +467,13 @@ class AppController: NSObject, NSMenuDelegate {
     }
     
     // Menu Separator //
+    
+    @IBAction
+    private func launchAtLoginSelect(_ item: NSMenuItem) {
+        if #available(macOS 13.0, *) {
+            LaunchAtLogin.isEnabled = !item.stateBool
+        }
+    }
     
     @IBAction
     private func quitTap(_ item: NSMenuItem) {
