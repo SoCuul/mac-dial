@@ -144,6 +144,17 @@
         }
       }
     },
+    "menu.checkForUpdates" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Check for updates..."
+          }
+        }
+      }
+    },
     "menu.hapticFeedback" : {
       "extractionState" : "manual",
       "localizations" : {
@@ -525,6 +536,17 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Shows the active rotation mode"
+          }
+        }
+      }
+    },
+    "menu.updateAvailable" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Update Available..."
           }
         }
       }

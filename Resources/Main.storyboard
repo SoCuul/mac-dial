@@ -10,11 +10,7 @@
         <scene sceneID="JPo-4y-FX3">
             <objects>
                 <customObject id="Ady-hI-5gd" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
-                <customObject id="Voe-Tx-rLC" customClass="AppDelegate" customModule="MacDial" customModuleProvider="target">
-                    <connections>
-                        <outlet property="controller" destination="gIN-nu-Pip" id="a7Z-td-ets"/>
-                    </connections>
-                </customObject>
+                <userDefaultsController representsSharedInstance="YES" id="HoF-wx-s2o"/>
                 <customObject id="gIN-nu-Pip" customClass="AppController" customModule="MacDial" customModuleProvider="target">
                     <connections>
                         <outlet property="hapticFeedback" destination="g2u-Rf-4tx" id="Ryy-bb-eid"/>
@@ -25,6 +21,7 @@
                         <outlet property="menuButtonControlModeMute" destination="LSm-Mu-42P" id="lZe-Rx-fkd"/>
                         <outlet property="menuButtonControlModeNone" destination="l8i-as-qMM" id="9aY-Oc-Lkr"/>
                         <outlet property="menuButtonControlModePlayback" destination="I2U-aD-qMg" id="bSw-L0-5rz"/>
+                        <outlet property="menuCheckForUpdates" destination="Pk3-08-UaZ" id="Xr5-NJ-vJw"/>
                         <outlet property="menuKeyScrollModifierCommand" destination="UW6-lp-JkP" id="qBS-Hg-sNF"/>
                         <outlet property="menuKeyScrollModifierControl" destination="ZLW-Az-7YN" id="zKR-2O-Ps7"/>
                         <outlet property="menuKeyScrollModifierOption" destination="kgp-pn-FQf" id="DFv-qY-wpS"/>
@@ -67,7 +64,11 @@
                         <outlet property="statusMenu" destination="G3k-FC-fVx" id="8SM-pk-HuJ"/>
                     </connections>
                 </customObject>
-                <customObject id="Q5C-WY-0uK" userLabel="Launch at Login" customClass="LaunchAtLogin" customModule="MacDial" customModuleProvider="target"/>
+                <customObject id="Voe-Tx-rLC" customClass="AppDelegate" customModule="MacDial" customModuleProvider="target">
+                    <connections>
+                        <outlet property="controller" destination="gIN-nu-Pip" id="a7Z-td-ets"/>
+                    </connections>
+                </customObject>
                 <application id="hnw-xV-0zn" sceneMemberID="viewController">
                     <menu key="mainMenu" title="Main Menu" systemMenu="main" id="AYu-sK-qS6">
                         <items>
@@ -387,9 +388,6 @@
                             </menu>
                         </menuItem>
                         <menuItem isSeparatorItem="YES" id="71T-DM-FsF"/>
-                        <menuItem title="* Not Connected to Dial" enabled="NO" id="yM5-u2-cSx">
-                            <modifierMask key="keyEquivalentModifierMask"/>
-                        </menuItem>
                         <menuItem title="* Launch at login" id="ajb-2U-ptQ">
                             <modifierMask key="keyEquivalentModifierMask"/>
                             <connections>
@@ -402,6 +400,16 @@
                                 <binding destination="gIN-nu-Pip" name="value" keyPath="self.launchAtLoginEnabled" id="VRn-O7-gZx"/>
                             </connections>
                         </menuItem>
+                        <menuItem title="* Check for updates..." id="Pk3-08-UaZ">
+                            <modifierMask key="keyEquivalentModifierMask"/>
+                            <connections>
+                                <action selector="checkForUpdates:" target="CVu-n8-MbH" id="pF8-Ii-iUa"/>
+                            </connections>
+                        </menuItem>
+                        <menuItem isSeparatorItem="YES" id="SR4-aZ-FKi"/>
+                        <menuItem title="* Not Connected to Dial" enabled="NO" id="yM5-u2-cSx">
+                            <modifierMask key="keyEquivalentModifierMask"/>
+                        </menuItem>
                         <menuItem title="* Quit" id="O5Z-zk-v4Z">
                             <modifierMask key="keyEquivalentModifierMask"/>
                             <connections>
@@ -413,7 +421,13 @@
                         <outlet property="delegate" destination="gIN-nu-Pip" id="rPD-k0-9b0"/>
                     </connections>
                 </menu>
-                <userDefaultsController representsSharedInstance="YES" id="HoF-wx-s2o"/>
+                <customObject id="Q5C-WY-0uK" userLabel="Launch at Login" customClass="LaunchAtLogin" customModule="MacDial" customModuleProvider="target"/>
+                <customObject id="CVu-n8-MbH" userLabel="Sparkle" customClass="SPUStandardUpdaterController">
+                    <connections>
+                        <outlet property="userDriverDelegate" destination="dNW-hl-K7n" id="vsO-3v-dtZ"/>
+                    </connections>
+                </customObject>
+                <customObject id="dNW-hl-K7n" userLabel="Sparkle User Driver Delegate" customClass="UpdaterDelegate" customModule="MacDial" customModuleProvider="target"/>
             </objects>
             <point key="canvasLocation" x="75" y="0.0"/>
         </scene>

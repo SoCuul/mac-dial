@@ -71,8 +71,10 @@ class AppController: NSObject, NSMenuDelegate {
     @IBOutlet private weak var menuStatusIconButton: NSMenuItem!
     @IBOutlet private weak var menuStatusIconMulti: NSMenuItem!
 
-    @IBOutlet private weak var menuState: NSMenuItem!
     @IBOutlet private weak var menuLaunchAtLogin: NSMenuItem!
+    @IBOutlet private weak var menuCheckForUpdates: NSMenuItem!
+
+    @IBOutlet private weak var menuState: NSMenuItem!
     @IBOutlet private weak var menuQuit: NSMenuItem!
 
     private let statusItem: NSStatusItem
@@ -101,6 +103,7 @@ class AppController: NSObject, NSMenuDelegate {
     
     // Public
     static public var shared: AppController!
+    public var updateAvailable = false
     
     // MARK: - Nib & menu delegate setup
 
@@ -169,8 +172,10 @@ class AppController: NSObject, NSMenuDelegate {
         menuStatusIconMulti.title = NSLocalizedString("menu.statusIcon.multi", comment: "")
         menuStatusIconMulti.toolTip = NSLocalizedString("menu.tooltip.statusIcon.multi", comment: "")
         
-        menuState.title = NSLocalizedString("dial.disconnected", comment: "")
         menuLaunchAtLogin.title = NSLocalizedString("menu.launchAtLogin", comment: "")
+        menuCheckForUpdates.title = NSLocalizedString("menu.checkForUpdates", comment: "")
+        
+        menuState.title = NSLocalizedString("dial.disconnected", comment: "")
         menuQuit.title = NSLocalizedString("menu.quit", comment: "")
         
         // Custom sensitivity view
@@ -199,6 +204,14 @@ class AppController: NSObject, NSMenuDelegate {
         menuStatusIconRotation.image = selectedRotationModeItem?.image
         menuStatusIconButton.image = selectedButtonModeItem?.image
         menuStatusIconMulti.image = selectedMultiModeItem?.image
+        
+        // Check whether update is available
+        if updateAvailable {
+            menuCheckForUpdates.title = NSLocalizedString("menu.updateAvailable", comment: "")
+        }
+        else {
+            menuCheckForUpdates.title = NSLocalizedString("menu.checkForUpdates", comment: "")
+        }
         
         // Update dynamic values with latest data
         accessibilityPermissionsGranted = AXIsProcessTrusted()

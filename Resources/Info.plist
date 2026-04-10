@@ -26,6 +26,8 @@
 	<string>$(MACOSX_DEPLOYMENT_TARGET)</string>
 	<key>LSUIElement</key>
 	<true/>
+	<key>SUPublicEDKey</key>
+	<string>pBCczzozWOZGGPchBFy1SoIyKP2IqoZiI7KRArJ9eP4=</string>
 	<key>NSAppleEventsUsageDescription</key>
 	<string>MacDial uses Apple events to control functionality in certain apps with your Surface Dial</string>
 	<key>NSAppleScriptEnabled</key>
@@ -36,5 +38,7 @@
 	<string>NSApplication</string>
 	<key>OSAScriptingDefinition</key>
 	<string>MacDial</string>
+	<key>SUFeedURL</key>
+	<string>https://raw.githubusercontent.com/socuul/mac-dial/main/appcast.xml</string>
 </dict>
 </plist>

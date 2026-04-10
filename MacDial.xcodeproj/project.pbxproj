@@ -16,6 +16,7 @@
 		656BAEF12EE9574F00714682 /* MediaRemote.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 652BA41D2EC6AA10004D6964 /* MediaRemote.framework */; };
 		656BAEF22EE9575000714682 /* CoreBrightness.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6577212D2EC0643100C0C55F /* CoreBrightness.framework */; };
 		656BAEF32EE9575200714682 /* DisplayServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 657721232EC0542C00C0C55F /* DisplayServices.framework */; };
+		658C6B7B2F883CA900C543BF /* Sparkle in Frameworks */ = {isa = PBXBuildFile; productRef = 658C6B7A2F883CA900C543BF /* Sparkle */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -30,6 +31,7 @@
 		657721232EC0542C00C0C55F /* DisplayServices.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = DisplayServices.framework; path = ../../../../../System/Library/PrivateFrameworks/DisplayServices.framework; sourceTree = "<group>"; };
 		6577212D2EC0643100C0C55F /* CoreBrightness.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreBrightness.framework; path = ../../../../../System/Library/PrivateFrameworks/CoreBrightness.framework; sourceTree = "<group>"; };
 		65993F162EC81ECD000C12B7 /* OSD.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OSD.framework; path = ../../../../../System/Library/PrivateFrameworks/OSD.framework; sourceTree = "<group>"; };
+		65CD60002F886CA600BA8F3B /* update_appcast.sh */ = {isa = PBXFileReference; lastKnownFileType = text.script.sh; path = update_appcast.sh; sourceTree = "<group>"; };
 		C882FA1626F1430C00595EE1 /* MacDial.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MacDial.app; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -46,6 +48,7 @@
 				656BAEF22EE9575000714682 /* CoreBrightness.framework in Frameworks */,
 				656BAEF12EE9574F00714682 /* MediaRemote.framework in Frameworks */,
 				656BAEF32EE9575200714682 /* DisplayServices.framework in Frameworks */,
+				658C6B7B2F883CA900C543BF /* Sparkle in Frameworks */,
 				655C97D62F6FAB4200DE0652 /* AXSwift in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -73,6 +76,7 @@
 				6519213A2EC578EF000A91B4 /* Resources */,
 				C882FA1726F1430C00595EE1 /* Products */,
 				C89F31562701079000A8B365 /* Frameworks */,
+				65CD60002F886CA600BA8F3B /* update_appcast.sh */,
 				2DBA1824516DE7C2EA24F590 /* HIDReport.md */,
 			);
 			sourceTree = "<group>";
@@ -106,6 +110,7 @@
 				C882FA1226F1430C00595EE1 /* Sources */,
 				C882FA1326F1430C00595EE1 /* Frameworks */,
 				C882FA1426F1430C00595EE1 /* Resources */,
+				658C6B7C2F883D0E00C543BF /* Remove Unneeded Sparkle XPC Services */,
 			);
 			buildRules = (
 			);
@@ -145,6 +150,7 @@
 			mainGroup = C882FA0D26F1430C00595EE1;
 			packageReferences = (
 				655C97D42F6FAB4200DE0652 /* XCRemoteSwiftPackageReference "AXSwift" */,
+				658C6B792F883CA900C543BF /* XCRemoteSwiftPackageReference "Sparkle" */,
 			);
 			productRefGroup = C882FA1726F1430C00595EE1 /* Products */;
 			projectDirPath = "";
@@ -168,6 +174,28 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		658C6B7C2F883D0E00C543BF /* Remove Unneeded Sparkle XPC Services */ = {
+			isa = PBXShellScriptBuildPhase;
+			alwaysOutOfDate = 1;
+			buildActionMask = 8;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+			);
+			name = "Remove Unneeded Sparkle XPC Services";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 1;
+			shellPath = /bin/sh;
+			shellScript = "#!/bin/bash\n\n# Only run for install / archive builds\nif [ \"$ACTION\" != \"install\" ]; then\n    exit 0\nfi\n\nAPP_PATH=\"${TARGET_BUILD_DIR}/${WRAPPER_NAME}\"\nSPARKLE_FRAMEWORK=\"${APP_PATH}/Contents/Frameworks/Sparkle.framework\"\n\n# Paths to remove if present\nPATHS_TO_REMOVE=(\n    # Uncomment these two lines if you don't need any XPC Services\n    \"${SPARKLE_FRAMEWORK}/Versions/B/XPCServices\"\n    \"${SPARKLE_FRAMEWORK}/XPCServices\"\n)\n\nfor p in \"${PATHS_TO_REMOVE[@]}\"; do\n    if [ -e \"$p\" ] || [ -L \"$p\" ]; then\n        rm -rf \"$p\"\n    fi\ndone\n\n# Re-sign to fix code signing signature\ncodesign --force --sign \"$EXPANDED_CODE_SIGN_IDENTITY\" --preserve-metadata \"$SPARKLE_FRAMEWORK\"\n\nexit 0\n";
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		C882FA1226F1430C00595EE1 /* Sources */ = {
@@ -321,7 +349,7 @@
 				"CODE_SIGN_IDENTITY[sdk=macosx*]" = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
-				CURRENT_PROJECT_VERSION = 4;
+				CURRENT_PROJECT_VERSION = 10;
 				DEAD_CODE_STRIPPING = YES;
 				ENABLE_APP_SANDBOX = NO;
 				ENABLE_HARDENED_RUNTIME = YES;
@@ -368,7 +396,7 @@
 				"CODE_SIGN_IDENTITY[sdk=macosx*]" = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
-				CURRENT_PROJECT_VERSION = 4;
+				CURRENT_PROJECT_VERSION = 10;
 				DEAD_CODE_STRIPPING = YES;
 				ENABLE_APP_SANDBOX = NO;
 				ENABLE_HARDENED_RUNTIME = YES;
@@ -435,6 +463,14 @@
 				version = 0.3.2;
 			};
 		};
+		658C6B792F883CA900C543BF /* XCRemoteSwiftPackageReference "Sparkle" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/sparkle-project/Sparkle";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 2.9.1;
+			};
+		};
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
@@ -442,6 +478,11 @@
 			isa = XCSwiftPackageProductDependency;
 			package = 655C97D42F6FAB4200DE0652 /* XCRemoteSwiftPackageReference "AXSwift" */;
 			productName = AXSwift;
+		};
+		658C6B7A2F883CA900C543BF /* Sparkle */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 658C6B792F883CA900C543BF /* XCRemoteSwiftPackageReference "Sparkle" */;
+			productName = Sparkle;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};
