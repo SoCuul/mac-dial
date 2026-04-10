@@ -9,7 +9,7 @@
             <sparkle:version>10</sparkle:version>
             <sparkle:shortVersionString>2.0.0</sparkle:shortVersionString>
             <sparkle:minimumSystemVersion>10.13</sparkle:minimumSystemVersion>
-            <enclosure url="https://github.com/SoCuul/mac-dial/releases/tag/v2.0.0/MacDial.dmg" length="7950314" type="application/octet-stream" sparkle:edSignature="foZAofSxPRB5lqww7qnP2hfQTbkOLOuWrVCRrJavgv8GFlY93/VSSnwLDr4TjjJzmWSLvymsTOM15SyXUN1BCQ=="/>
+            <enclosure url="https://github.com/SoCuul/mac-dial/releases/download/v2.0.0/MacDial.dmg" length="7950314" type="application/octet-stream" sparkle:edSignature="foZAofSxPRB5lqww7qnP2hfQTbkOLOuWrVCRrJavgv8GFlY93/VSSnwLDr4TjjJzmWSLvymsTOM15SyXUN1BCQ=="/>
         </item>
     </channel>
 </rss>

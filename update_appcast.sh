@@ -41,7 +41,7 @@ echo "Download source: $DOWNLOAD_LINK"
 echo
 "$SPARKLE_PATH/bin/generate_appcast" \
     --account com.socuul.macdial \
-    --download-url-prefix "https://github.com/SoCuul/mac-dial/releases/tag/v$VERSION/" \
+    --download-url-prefix "https://github.com/SoCuul/mac-dial/releases/download/v$VERSION/" \
     --full-release-notes-url "https://github.com/SoCuul/mac-dial/releases" \
     -o "./appcast.xml" \
     "$SPARKLE_PATH"
