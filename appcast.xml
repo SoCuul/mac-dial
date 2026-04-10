@@ -1,0 +1,15 @@
+<?xml version="1.0" standalone="yes"?>
+<rss xmlns:sparkle="http://www.andymatuschak.org/xml-namespaces/sparkle" version="2.0">
+    <channel>
+        <title>MacDial</title>
+        <item>
+            <title>2.0.0</title>
+            <pubDate>Thu, 09 Apr 2026 18:28:12 -0700</pubDate>
+            <sparkle:fullReleaseNotesLink>https://github.com/SoCuul/mac-dial/releases</sparkle:fullReleaseNotesLink>
+            <sparkle:version>10</sparkle:version>
+            <sparkle:shortVersionString>2.0.0</sparkle:shortVersionString>
+            <sparkle:minimumSystemVersion>10.13</sparkle:minimumSystemVersion>
+            <enclosure url="https://github.com/SoCuul/mac-dial/releases/tag/v2.0.0/MacDial.dmg" length="7950314" type="application/octet-stream" sparkle:edSignature="foZAofSxPRB5lqww7qnP2hfQTbkOLOuWrVCRrJavgv8GFlY93/VSSnwLDr4TjjJzmWSLvymsTOM15SyXUN1BCQ=="/>
+        </item>
+    </channel>
+</rss>
