@@ -10,7 +10,7 @@ Supports macOS 10.13 (High Sierra) to macOS 26 (Tahoe)
 
 ## Usage
 
-The app will continuously try to open any Surface Dial connected to the computer and then process inpout controls. You will need to pair and connect the device as any other bluetooth device.
+The app will continuously try to open any Surface Dial connected to the computer and then process input controls. You will need to pair and connect the device as any other bluetooth device.
 
 There are three mode types that you can select from:
 - **Rotation Mode:** Allows for rotational feature control with the dial (eg: scrolling, volume/brightness control)
