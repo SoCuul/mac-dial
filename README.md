@@ -6,7 +6,7 @@ The Surface Dial can be paired through Bluetooth with macOS, but sends invalid i
 
 Built as a native macOS app as to use as little resource consumption as possible, with easy customization from the menu bar. Every option in the app can additionally be scripted with both [Shortcuts](https://support.apple.com/en-ca/guide/shortcuts-mac/welcome/mac) as well as [AppleScript](https://developer.apple.com/library/archive/documentation/AppleScript/Conceptual/AppleScriptLangGuide/introduction/ASLR_intro.html)/[JXA](https://bru6.de/jxa/).
 
-Supports macOS 10.13 (High Sierra) to macOS 26 (Tahoe)
+Supports macOS 10.13 (High Sierra) to macOS 27 (Golden Gate)
 
 ## Usage
 
