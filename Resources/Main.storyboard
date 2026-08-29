@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.Cocoa.Storyboard.XIB" version="3.0" toolsVersion="24506" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES">
+<document type="com.apple.InterfaceBuilder3.Cocoa.Storyboard.XIB" version="3.0" toolsVersion="25098" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES">
     <dependencies>
         <deployment identifier="macosx"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="24506"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="25098"/>
         <capability name="Image references" minToolsVersion="12.0"/>
     </dependencies>
     <scenes>
@@ -16,6 +16,7 @@
                         <outlet property="hapticFeedback" destination="g2u-Rf-4tx" id="Ryy-bb-eid"/>
                         <outlet property="keepDialAwake" destination="TgS-Ih-mTC" id="H7S-HT-wYI"/>
                         <outlet property="menuAccessibilityPermissions" destination="e44-d1-klT" id="vfb-my-JVN"/>
+                        <outlet property="menuBattery" destination="l01-0z-tU5" id="dct-6M-Mct"/>
                         <outlet property="menuButtonControlMode" destination="Bi4-hl-Bnf" id="Xvg-wh-u3h"/>
                         <outlet property="menuButtonControlModeLeftClick" destination="swb-eL-lJi" id="BEp-XR-1sK"/>
                         <outlet property="menuButtonControlModeMute" destination="LSm-Mu-42P" id="lZe-Rx-fkd"/>
@@ -408,6 +409,9 @@
                         </menuItem>
                         <menuItem isSeparatorItem="YES" id="SR4-aZ-FKi"/>
                         <menuItem title="* Not Connected to Dial" enabled="NO" id="yM5-u2-cSx">
+                            <modifierMask key="keyEquivalentModifierMask"/>
+                        </menuItem>
+                        <menuItem title="* Battery" preferredImageVisibility="visible" hidden="YES" enabled="NO" id="l01-0z-tU5">
                             <modifierMask key="keyEquivalentModifierMask"/>
                         </menuItem>
                         <menuItem title="* Quit" id="O5Z-zk-v4Z">

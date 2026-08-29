@@ -75,6 +75,7 @@ class AppController: NSObject, NSMenuDelegate {
     @IBOutlet private weak var menuCheckForUpdates: NSMenuItem!
 
     @IBOutlet private weak var menuState: NSMenuItem!
+    @IBOutlet private weak var menuBattery: NSMenuItem!
     @IBOutlet private weak var menuQuit: NSMenuItem!
 
     private let statusItem: NSStatusItem
@@ -216,6 +217,7 @@ class AppController: NSObject, NSMenuDelegate {
         // Update dynamic values with latest data
         accessibilityPermissionsGranted = AXIsProcessTrusted()
         launchAtLoginEnabled = LaunchAtLogin.isEnabled
+        updateBattery()
     }
     
 
@@ -662,7 +664,27 @@ class AppController: NSObject, NSMenuDelegate {
         UserSettings.showOSD = enabled
         showOSD.state = enabled ? .on : .off
     }
-    
+
+    private func updateBattery() {
+        guard let percent = dialBattery() else {
+            menuBattery.isHidden = true
+            return
+        }
+
+        menuBattery.isHidden = false
+        menuBattery.title = percent.formatted(.percent)
+
+        let imageName = switch percent {
+            case ..<26:  "battery.25"
+            case ..<51:  "battery.50"
+            case ..<76:  "battery.75"
+            default:     "battery.100"
+        }
+
+        menuBattery.image = NSImage(named: imageName)
+        menuBattery.image?.accessibilityDescription = "Battery Percentage"
+    }
+
     private func updateMenuBarItemImage(from: NSMenuItem?) {
         guard let from else { return }
         
